@@ -1,0 +1,39 @@
+
+<div class="page">
+	<div class="pageHeader">
+		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=goods" method="post">
+		
+		</form>
+	</div>
+	<div class="pageContent">
+		<div class="panelBar">
+			<!--  <ul class="toolBar">	
+				<li><a class="add" href="?dir=admin&action=goods&do=new" target="dialog" mask="true"><span>添加</span></a></li>
+				<li><a class="edit" href="?dir=admin&action=goods&do=edit&id={id}" target="navTab" rel="goods_list"><span>修改库存</span></a></li>
+				<li><a class="edit" href="?dir=admin&action=goods&do=edit1&id={id}" target="dialog" rel="goods_list"><span>修改</span></a></li>
+				<li class="line">line</li>
+			</ul>-->
+		</div>
+		<table class="list" layouth="90" style="width:1000px">
+			<thead>
+				<tr>
+					<th align="center">ID</th>
+					<th align="center">大区名称</th>
+					<th align="center">下载数</th>
+					<th align="center">二维码</th>
+				</tr>
+			</thead>
+			<tbody>			
+			<{foreach from=$list item=row}>
+				<tr target="id" rel="<{$row.id}>" >
+					<td align="center"><{$row.id}></td>
+					<td align="center"><{$row.partiton_name}></td>
+					<td align="center"><{$row.count}></td>
+					<td align="center"style="width: 500px;"><{$row.qode}></td>
+				</tr>			
+			<{/foreach}>
+			</tbody>
+		</table>
+		
+	</div>
+</div>

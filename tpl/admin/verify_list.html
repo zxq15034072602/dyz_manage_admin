@@ -1,0 +1,130 @@
+
+<form id="pagerForm" method="post" action="index.php?dir=admin&action=verify&do=store_list">
+	<input type="hidden" name="pageNum" value="1" />
+    <input type="hidden" name="numPerPage" value="20" />
+    <input type="hidden" name="name" value="<{$name}>" />
+</form>
+
+<div class="page">
+	<div class="pageHeader">
+		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=verify&do=store_list" method="post">
+		<div class="searchBar">
+			<table class="searchContent">
+				<tr>
+					<td>
+						申请人:<input type="text" name="name" size="10" value="<{$name}>"/>
+					</td>
+					<td>
+						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</form>
+	</div>
+	<div class="pageContent">
+		<div class="panelBar">
+			
+		</div>
+		<table class="list" layouth="90" style="width:900px">
+			<thead>
+				<tr>
+					<th align="center">ID</th>
+					<th align="center">申请人</th>
+					<th align="center">所选门店</th>
+					<th align="center">申请时间</th>
+					<th align="center">是否通过</th>
+					<th align="center">状态</th>
+				</tr>
+			</thead>
+			<tbody>			
+			<{foreach from=$list item=row}>
+				<tr target="id" rel="<{$row.id}>" >
+					<td align="center"><{$row.id}></td>
+					<td align="center"><{$row.name}></td>
+					<td align="center"><{$row.mdname}></td>
+					<td align="center"><{$row.addtime}></td>
+					<td align="center">
+					    <{if $row.status == 0}>
+						<a href="index.php?dir=admin&action=verify&do=tg&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>" target="ajaxTodo">通过</a>
+						<a href="index.php?dir=admin&action=verify&do=jj&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>" target="ajaxTodo">拒绝</a>
+						<{else}>
+						<{if $row.status == 0}>未审核<{elseif $row.status ==1}>已审核<{else}>已拒绝<{/if}>
+						<{/if}>
+					</td>
+					<td align="center"><{if $row.status == 0}>未审核<{elseif $row.status ==1}>已审核<{else}>已拒绝<{/if}></td>
+				</tr>			
+			<{/foreach}>
+			</tbody>
+		</table>
+		<div class="panelBar">
+			<div class="pages">
+				<span>共<{$total}>条</span>
+			</div>
+			
+			<div class="pagination" targetType="navTab" totalCount="<{$total}>" numPerPage="20" pageNumShown="10" currentPage="<{$pageNum}>"></div>
+
+		</div>
+	</div>
+</div><form id="pagerForm" method="post" action="index.php?dir=admin&action=goods">
+	<input type="hidden" name="pageNum" value="1" />
+    <input type="hidden" name="numPerPage" value="20" />
+    <input type="hidden" name="name" value="<{$name}>" />
+</form>
+
+<div class="page">
+	<div class="pageHeader">
+		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=goods" method="post">
+		<div class="searchBar">
+			<table class="searchContent">
+				<tr>
+					<td>
+						商品名称:<input type="text" name="name" size="10" value="<{$name}>"/>
+					</td>
+					<td>
+						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</form>
+	</div>
+	<div class="pageContent">
+		<div class="panelBar">
+			<ul class="toolBar">	
+				<li><a class="add" href="?dir=admin&action=goods&do=new" target="dialog" mask="true"><span>添加</span></a></li>
+				<li><a class="edit" href="?dir=admin&action=goods&do=edit&id={id}" target="navTab" rel="goods_list"><span>修改库存</span></a></li>
+				<li><a class="edit" href="?dir=admin&action=goods&do=edit1&id={id}" target="dialog" rel="goods_list"><span>修改</span></a></li>
+				<li class="line">line</li>
+			</ul>
+		</div>
+		<table class="list" layouth="90" style="width:900px">
+			<thead>
+				<tr>
+					<th align="center">ID</th>
+					<th align="center">商品名称</th>
+					<th align="center">所属品牌</th>
+					<th align="center">单价</th>
+				</tr>
+			</thead>
+			<tbody>			
+			<{foreach from=$list item=row}>
+				<tr target="id" rel="<{$row.id}>" >
+					<td align="center"><{$row.id}></td>
+					<td align="center"><{$row.name}></td>
+					<td align="center"><{$row.pp}></td>
+					<td align="center"><{$row.money}>/<{$row.dw}></td>
+				</tr>			
+			<{/foreach}>
+			</tbody>
+		</table>
+		<div class="panelBar">
+			<div class="pages">
+				<span>共<{$total}>条</span>
+			</div>
+			
+			<div class="pagination" targetType="navTab" totalCount="<{$total}>" numPerPage="20" pageNumShown="10" currentPage="<{$pageNum}>"></div>
+
+		</div>
+	</div>
+</div>

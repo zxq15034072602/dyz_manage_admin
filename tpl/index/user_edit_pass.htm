@@ -1,0 +1,22 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?action=user&do=updatapass" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+			<input type="hidden" style="display:none;"  name="id" value="<{$smarty.session.userid}>"/>
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>用户名：</dt>
+					<dd><input type="text" name="username" class="required" size="30" value="<{$smarty.session.username}>" readonly/></dd>
+				</dl>
+				<dl>
+					<dt>密 码：</dt>
+					<dd><input name="password" class="required" type="password" size="30"/></dd>
+				</dl>
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

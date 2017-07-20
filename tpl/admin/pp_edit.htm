@@ -1,0 +1,20 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?dir=admin&action=pp&do=updata" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+			<input type="hidden" name="id" value="<{$row.id}>" />
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+				    <input type="hidden" name="type" value="<{$type}>" />
+					<dt>品牌名称：</dt>
+					<dd><input type="text" name="name" class="required" size="30" value="<{$row.name}>"/></dd>
+				</dl>
+				
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

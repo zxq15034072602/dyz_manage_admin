@@ -1,0 +1,44 @@
+<script type="text/javascript" > 
+$("document").ready(function(){     
+     $("#action_all").click(function(){   
+		if(this.checked){   
+			$("input[type='checkbox']").each(function(){this.checked=true;});
+		}else{   
+			$("input[type='checkbox']").each(function(){this.checked=false;}); 
+		}   
+	 });  
+});
+function qx(obj,tt){
+	if(obj.checked){   
+		$("input[tt='"+tt+"']").each(function(){this.checked=true;});
+	}else{   
+		$("input[tt='"+tt+"']").each(function(){this.checked=false;});  
+	}  
+}
+</script>
+
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?action=role&do=updata" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+			<input type="hidden" style="display:none;" name="id" value="<{$row.id}>" />
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>角色名称：</dt>
+					<dd><input type="text" name="title" class="required" size="30" value="<{$row.title}>" readonly/></dd>
+				</dl>
+				<dl>
+					<dt>页面权限：</dt>
+					<dd><input type="checkbox" id="action_all"><span>全选</span></dd>
+				</dl>
+				<dl style="width:450px">
+					<{$checkbox_role_action}>
+				</dl>
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

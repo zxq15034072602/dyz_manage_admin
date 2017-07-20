@@ -1,0 +1,29 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?dir=admin&action=goods&do=add_kucun&id=<{$gid}>" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">		
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>商品名称：</dt>
+					<dd><input type="text" name="name" class="required" size="30" value="<{$goods.name}>" readonly /></dd>
+				</dl>
+				<dl>
+					<dt>所属门店：</dt>
+					<select name="md">
+						<{foreach from=$md item=row}>
+						<option value="<{$row.id}>"><{$row.name}></option>
+						<{/foreach}>
+					</select>
+				</dl>
+				<dl>
+					<dt>库存：</dt>
+					<dd><input type="number" name="kucun" class="required" size="30" value=""/></dd>
+				</dl>
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

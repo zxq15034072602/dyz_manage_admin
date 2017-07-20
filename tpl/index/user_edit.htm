@@ -1,0 +1,71 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?action=user&do=updata" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+			<input type="hidden" name="id" value="<{$row.id}>" />
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>用户名：</dt>
+					<dd><input type="text" name="username" class="required" size="30" value="<{$row.username}>" readonly /></dd>
+				</dl>
+				<dl>
+					<dt>手机号：</dt>
+					<dd><input type="text" name="mobile" class="required" size="30" value="<{$row.mobile}>"  /></dd>
+				</dl>
+				<dl>
+					<dt>姓名：</dt>
+					<dd><input type="text" name="name" class="required" size="30" value="<{$row.name}>"/></dd>
+				</dl>
+				<dl>
+					<dt>密 码：</dt>
+					<dd><input name="password" class="" type="password" size="30"/></dd>
+				</dl>
+				<dl>
+					<dt>角 色：</dt>
+					<select name="roleid" id="role"> 
+						<{foreach from=$list_role item=aaa}>
+						<option value="<{$aaa.id}>"><{$aaa.title}></option>
+						<{/foreach}>
+					</select>
+				</dl>
+				<dl>
+					<dt>所属部门：</dt>
+					<select name="zz" id="zz"> 
+						<option value="0">总部</option>
+						<{foreach from=$zb_list item=zbrow}>
+						<option value="<{$zbrow.id}>"><{$zbrow.name}></option>
+						<{/foreach}>
+					</select>
+				</dl>
+				<dl>
+					<dt>发 布：</dt>
+					<dd><input type="text" name="" class="input" value="<{$row.created_at}>" readonly/></dd>
+				</dl>
+				
+				<dl>
+					<dt>更 新：</dt>
+					<dd><input type="text" name="" class="input" value="<{$row.updated_at}>" readonly/></dd>
+				</dl>
+				
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+$('#role').change(function(){
+	var roleid = $(this).children('option:selected').val(); 
+	$.ajax({
+		type:"POST",
+		url:'http://dyz.duyiwang.cn/index.php?dir=index&action=user&do=cha_list',
+		data:{"roleid":roleid},
+		dataType:"html",
+		success: function(msg){
+			$("#zz").html(msg);	
+		}
+	});	
+});
+</script>

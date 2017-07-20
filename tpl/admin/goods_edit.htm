@@ -1,0 +1,34 @@
+<div class="page">
+	<div class="pageContent">
+		<div class="panelBar">
+			<ul class="toolBar">	
+				<li><a class="add" href="?dir=admin&action=goods&do=new_kucun&id=<{$gid}>" target="dialog" mask="true"><span>添加</span></a></li>
+				<li><a class="edit" href="?dir=admin&action=goods&do=edit_kucun&id={id}" target="dialog" mask="true"><span>修改</span></a></li>
+			</ul>
+		</div>
+		<table class="list" layouth="90" style="width:900px">
+			<thead>
+				<tr>
+					<th align="center">ID</th>
+					<th align="center">门店名称</th>
+					<th align="center">库存量</th>
+					<th align="center">商品名称</th>
+					<th align="center">所属品牌</th>
+					<th align="center">单价</th>
+				</tr>
+			</thead>
+			<tbody>			
+			<{foreach from=$list item=row}>
+				<tr target="id" rel="<{$row.kid}>" >
+					<td align="center"><{$row.kid}></td>
+					<td align="center"><{$row.mdname}></td>
+					<td align="center"><{$row.kucun}></td>
+					<td align="center"><{$goods.name}></td>
+					<td align="center"><{$goods.pp}></td>
+					<td align="center"><{$goods.money}></td>
+				</tr>			
+			<{/foreach}>
+			</tbody>
+		</table>
+	</div>
+</div>
