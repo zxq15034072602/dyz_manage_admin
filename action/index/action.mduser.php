@@ -158,6 +158,7 @@ if($do=="updata"){
 	$id=$_POST['id'];
 	$type=$_REQUEST[type];
 	$head_img=$_REQUEST['head_img'];
+	$zz=$_POST['zz']??0;
 	if(!$head_img){//如果更新图片
 	    $old_head_img=$_REQUEST['old_head_img'];
 	    if($old_head_img){
@@ -178,11 +179,11 @@ if($do=="updata"){
 	if($_POST[password]){
 		$password=md5($_POST[password]);
 		$pasql="password=?,";
-		$arr=array($password,$_POST['username'],$_POST[mobile],$_POST['zz'],$_POST['roleid'],$_SESSION['dys']['userid'],$_POST['name'],$head_img,$id);
+		$arr=array($password,$_POST['username'],$_POST[mobile],$zz,$_POST['roleid'],$_SESSION['dys']['userid'],$_POST['name'],$head_img,$id);
 	}else{
-		$arr=array($_POST['username'],$_POST[mobile],$_POST['zz'],$_POST['roleid'],$_SESSION['dys']['userid'],$_POST['name'],$head_img,$id);
+		$arr=array($_POST['username'],$_POST[mobile],$zz,$_POST['roleid'],$_SESSION['dys']['userid'],$_POST['name'],$head_img,$id);
 	}
-	file_put_contents("e://error.txt",$_POST['zz']);
+	file_put_contents("e://error.txt",$zz);
 	$sql="UPDATE rv_user SET ".$pasql." username=?,mobile=?,zz=?,roleid=?,updated_at=now(),userid=?,name=?,head_img=? WHERE id=? LIMIT 1";
 	if($db->p_e($sql,$arr)){
 	    echo close($msg,"mduser");
