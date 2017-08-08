@@ -45,6 +45,7 @@ if($do==""){
 if($do=="new"){	
 	If_rabc(); //检测权限
 	$smt = new smarty();smarty_cfg($smt);
+	
 	$smt->display('gg_new.htm');
 	exit;
 }
@@ -65,14 +66,15 @@ if($do=="edit"){
 
 //写入
 if($do=="add"){
-	If_rabc(); //检测权限
+    If_rabc(); //检测权限
 	//查询
 	$sql="SELECT * FROM rv_gonggao where title =? LIMIT 1";
 	$arr=array($_POST['name']);
 	$db->p_e($sql,$arr);
-	if($db->fetchRow()){echo  error("错误!公告已存在!");exit();}
-	$sql="insert into rv_gonggao (uid,title,img,content,is_tuijian,status) VALUES (?,?,?,?,?,1)";
-	$arr1=array($_SESSION['dys']['userid'],$_POST['name'],$_POST['img'],$_POST['content'],$_POST['is_tuijian']);
+	if($db->fetchRow()){echo  error("错误!公告已存在!");exit();}	
+	//var_dump($_POST);exit();
+	$sql="insert into rv_gonggao (uid,title,content,status) VALUES (?,?,?,1)";
+	$arr1=array($_SESSION['dys']['userid'],$_POST['name'],$_POST['content']);
 	if($db->p_e($sql,$arr1)){echo close($msg,"gg_list");}else{echo  error($msg);}
 	exit;
 }
@@ -81,8 +83,8 @@ if($do=="add"){
 if($do=="updata"){
 	If_rabc(); //检测权限
 	$id=$_POST['id'];
-	$arr=array($_POST['name'],$_POST['img'],$_POST['content'],$id);
-	$sql="UPDATE rv_gonggao SET title=?,img=?,content=? WHERE id=? LIMIT 1";
+	$arr=array($_POST['name'],$_POST['content'],$id);
+	$sql="UPDATE rv_gonggao SET  title=?,content=? WHERE id=? LIMIT 1";
 	if($db->p_e($sql,$arr)){echo close($msg,"gg_list");}else{echo  error($msg);}
 	exit;
 }
@@ -109,4 +111,7 @@ if($do=="jy"){
 	if($db->p_e($sql,array($id))){echo success($msg);}else{echo  error($msg);}	
 	exit;
 }
+
+
+
 ?>

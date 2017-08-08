@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-07-22 10:31:51
-         compiled from ".\tpl\admin\feedback_list.html" */ ?>
-<?php /*%%SmartyHeaderCode:26785594cb291e73a67-02910046%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.12, created on 2017-07-24 09:21:58
+         compiled from ".\tpl\admin\advinfo_list.htm" */ ?>
+<?php /*%%SmartyHeaderCode:18325972bc3bdd7843-97999220%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '654332d8d522ca82007d838318095f554543a729' => 
+    'f95acee515c7167e151a3c3adc4b188ab1d6476c' => 
     array (
-      0 => '.\\tpl\\admin\\feedback_list.html',
-      1 => 1500600483,
+      0 => '.\\tpl\\admin\\advinfo_list.htm',
+      1 => 1500859054,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '26785594cb291e73a67-02910046',
+  'nocache_hash' => '18325972bc3bdd7843-97999220',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_594cb291e73a69_22268929',
+  'unifunc' => 'content_5972bc3be21ac5_03855666',
   'variables' => 
   array (
     'username' => 0,
@@ -27,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_594cb291e73a69_22268929')) {function content_594cb291e73a69_22268929($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
+<?php if ($_valid && !is_callable('content_5972bc3be21ac5_03855666')) {function content_5972bc3be21ac5_03855666($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
@@ -41,16 +41,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">				
-				<li class=""><a class="edit" href="?&dir=admin&action=feedback&do=show&id={id}" target="dialog" mask="true"><span>查看</span></a></li>
-				<li class=""><a class="delete" href="?&dir=admin&action=feedback&do=delete&id={id}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-				<li class="line">line</li>
+ <li><a class="add" href="?dir=admin&action=menu&do=new" target="dialog" mask="true"><span>添加</span></a></li> 
+				<li><a class="edit" href="?dir=admin&action=menu&do=edit&id={id}" target="dialog" mask="true"><span>修改</span></a></li>
+				<li><a class="delete" href="?dir=admin&action=menu&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>
 			</ul>
 		</div>
 		<table class="list" layouth="90" style="width:1200px">
 			<thead>
 				<tr>
 					<th align="center">ID</th>
-					<th align="center">反馈人姓名</th>
+					<th align="center">标题</th>
 					<th align="center">时间</th>
 					
 				</tr>
@@ -65,7 +65,7 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 " >
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
 </td>
-					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['user']['name'];?>
+					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['title'];?>
 </td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['addtime'];?>
 </td>

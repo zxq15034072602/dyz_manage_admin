@@ -2,7 +2,8 @@
 if(!defined('CORE'))exit("error!");
 class dyz_image
 {
-     var $root_path="e:/dyz.duyiwang.cn/";
+     //var $root_path="e:/dyz.duyiwang.cn";
+     var $root_path="f:/wamp/www/dyz.duyiwang.cn";
      var $images_dir;
      var $type_maping = array(1 => 'image/gif', 2 => 'image/jpeg', 3 => 'image/png');
     

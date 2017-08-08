@@ -1,29 +1,25 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-07-24 14:23:45
-         compiled from ".\tpl\admin\gg_edit.htm" */ ?>
-<?php /*%%SmartyHeaderCode:1765358a26c6ab95ad1-92147175%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.12, created on 2017-07-24 14:23:41
+         compiled from ".\tpl\admin\gg_new.htm" */ ?>
+<?php /*%%SmartyHeaderCode:122955971b6dd21c196-67365681%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '5b64d0df84ee291a8b047185c49394986453ee3a' => 
+    '9ae374c659e41200a4392fc94d9162dc9622e030' => 
     array (
-      0 => '.\\tpl\\admin\\gg_edit.htm',
-      1 => 1500877412,
+      0 => '.\\tpl\\admin\\gg_new.htm',
+      1 => 1500877394,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1765358a26c6ab95ad1-92147175',
+  'nocache_hash' => '122955971b6dd21c196-67365681',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_58a26c6abbfa49_41616634',
-  'variables' => 
-  array (
-    'row' => 0,
-  ),
+  'unifunc' => 'content_5971b6dd24fca2_31812842',
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58a26c6abbfa49_41616634')) {function content_58a26c6abbfa49_41616634($_smarty_tpl) {?>	<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
+<?php if ($_valid && !is_callable('content_5971b6dd24fca2_31812842')) {function content_5971b6dd24fca2_31812842($_smarty_tpl) {?>	<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
 	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
 	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
 	<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
@@ -52,20 +48,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</script>
 <div class="page">
 	<div class="pageContent">
-		<form method="post" action="?dir=admin&action=gg&do=updata" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
-			<input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
-" />
+		<form method="post" action="?dir=admin&action=gg&do=add" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);" enctype="multipart/form-data" >		
 			<div class="pageFormContent" layoutH="56">
 				<dl>
 					<dt style="float:left;">公告标题：</dt>
-					<dd><input type="text" name="name" class="required" style="display:block;float:left;" size="60" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['title'];?>
-"/></dd>
+					<dd><input type="text" name="name" style="display:block;float:left;" size="30" value=""/></dd>
 				</dl>
-				<br/><br/>	
-				<textarea name="content" style="width:700px;height:200px;visibility:hidden;"><?php echo $_smarty_tpl->tpl_vars['row']->value['content'];?>
-</textarea>
-				
+				<br/><br/>
+						<textarea name="content" style="width:700px;height:200px;visibility:hidden;float:left;"></textarea>	
 			</div>
+
 			<div class="formBar">
 				<ul>
 					<li style="list-style-type:none;"><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-07-06 09:29:45
+<?php /* Smarty version Smarty-3.1.12, created on 2017-07-22 10:15:19
          compiled from ".\tpl\index\index.htm" */ ?>
 <?php /*%%SmartyHeaderCode:16943589d17e74f1a22-22646345%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9ca9f456f8088b1d834dd24c941ad58479058ead' => 
     array (
       0 => '.\\tpl\\index\\index.htm',
-      1 => 1499304583,
+      1 => 1500689666,
       2 => 'file',
     ),
   ),
@@ -214,6 +214,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								</ul>
 							</li>
 							<?php }?>
+							<?php if (in_array('admin_menu_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
+							<li><a>菜单</a>
+								
+								<ul>
+									<li><a href="index.php?action=menu&dir=admin&do=list" target="navTab" rel="role">广告管理</a></li>
+									<li><a href="index.php?action=menu&dir=admin&do=banner" target="navTab" rel="role">banner管理</a></li>
+								</ul>
+							</li>
+							<?php }?>
+
 						</ul>
 					</div>
 				</div>

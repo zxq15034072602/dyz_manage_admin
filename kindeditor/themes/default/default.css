@@ -415,7 +415,8 @@
 }
 /* container */
 .ke-container {
-	display: block;
+	display: inline;
+	width:700px;
 	border: 1px solid #CCCCCC;
 	background-color: #FFF;
 	overflow: hidden;

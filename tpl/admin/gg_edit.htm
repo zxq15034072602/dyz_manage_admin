@@ -1,24 +1,46 @@
+	<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
+	<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+	<script charset="utf-8" src="kindeditor/plugins/code/prettify.js"></script>
+	<script>
+		KindEditor.ready(function(K) {
+			var editor1 = K.create('textarea[name="content"]', {
+				cssPath : 'kindeditor/plugins/code/prettify.css',
+				uploadJson : 'kindeditor/php/upload_json.php',
+				fileManagerJson : 'kindeditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+				}
+			});
+			prettyPrint();
+		});
+	</script>
 <div class="page">
 	<div class="pageContent">
 		<form method="post" action="?dir=admin&action=gg&do=updata" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 			<input type="hidden" name="id" value="<{$row.id}>" />
 			<div class="pageFormContent" layoutH="56">
 				<dl>
-					<dt>公告标题：</dt>
-					<dd><input type="text" name="name" class="required" size="60" value="<{$row.title}>"/></dd>
+					<dt style="float:left;">公告标题：</dt>
+					<dd><input type="text" name="name" class="required" style="display:block;float:left;" size="60" value="<{$row.title}>"/></dd>
 				</dl>
-				<dl>
-					<dt>公告图片：</dt>
-					<dd><img name="img" class="required" src="<{$row.img}>"/></dd>
-				</dl>
-				<dl>
-					<dt>公告内容：</dt>
-					<dd><textarea name="content" rows="20" cols="50"><{$row.content}></textarea></dd>
-				</dl>
+				<br/><br/>	
+				<textarea name="content" style="width:700px;height:200px;visibility:hidden;"><{$row.content}></textarea>
+				
 			</div>
 			<div class="formBar">
 				<ul>
-					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+					<li style="list-style-type:none;"><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
 				</ul>
 			</div>
 		</form>

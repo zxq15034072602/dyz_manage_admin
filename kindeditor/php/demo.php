@@ -1,5 +1,13 @@
 <?php
 	$htmlData = '';
+	var_dump($_POST['content1']);
+	$arr=explode('>', $_POST['content1']);
+	$img=explode('"', $arr[0]);
+	echo $img[1];
+	
+	$content=$arr[1];
+
+	
 	if (!empty($_POST['content1'])) {
 		if (get_magic_quotes_gpc()) {
 			$htmlData = stripslashes($_POST['content1']);

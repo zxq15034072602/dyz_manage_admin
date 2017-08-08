@@ -1,0 +1,35 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" enctype="multipart/form-data" action="?dir=admin&action=menu&do=updata" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+			<input type="hidden" name="id" value="<{$row.id}>" />
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>广告标题：</dt>
+					<dd><input type="text" name="title" class="required" size="30" value="<{$row.title}>"/></dd>
+				</dl>
+				<dl>
+					<dt>url地址：</dt>
+					<dd><input type="text" name="url"  size="30" value="<{$row.url}>"/></dd>
+				</dl>
+			  	<dl style="width:100%">
+					<dt>图片：</dt>
+					<dd>
+					    <input type="file" name="adv_img" class="" multiple id="files" onchange="javascript:setImagePreviews();"/>
+					     <p id="preview">
+					     <{foreach from=$img_names item=img key=i}>
+					     	<img id="img_<{$i}>" src="../dyz.duyiwang.cn/img/<{$img}>" style="width:70px;height:70px;padding-right:15px"/>
+					     	<input type="hidden" name="img_names[]" value="<{$img}>"/>
+					     <{/foreach}>
+					     </p>
+					     <input type="hidden" name="old_img_names" value="<{$str_img_names}>"/> 
+					</dd>
+				</dl>
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>
