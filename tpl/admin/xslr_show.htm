@@ -1,0 +1,42 @@
+   
+<div class="review_con_zn">
+    <p class="review_title_zn">
+        <span class="review_title_man">录入人员</span>
+        <span class="review_man"><{$verify_info.name}></span>
+    </p>
+    <div class="review_con">
+        <p class="review_con_title">审批内容</p>
+        <div class="review_con_box">
+            <ul class="product_con_zn">
+                <{foreach from=$verify_info.goods item=good}>
+                 <{if $good.goods_type == 0}>
+                <li class="product_list_zn">
+                    <span><{$good.name|truncate:7:""}></span>
+                    <span>数量<{$good.count}></span>
+                    <span>总价￥<{$good.count*$good.money}></span>
+                </li>
+                <{/if}>
+                <{/foreach}>
+            </ul>
+           
+            <p class="present_zn">赠品:</p>
+            <ul class="present_con_zn">
+                 <{foreach from=$verify_info.goods item=good}>
+                 <{if $good.goods_type == 1}>
+                <li class="product_list_zn">
+                    <span><{$good.name|truncate:7:""}></span>
+                    <span>数量<{$good.count}></span>
+                    <span></span>
+                </li>
+                <{/if}>
+                <{/foreach}>
+            </ul>
+            
+            <p class="real_price_zn"><span>实际收款额：</span><span>￥<{$verify_info.sale_price}></span></p>
+        </div>
+    </div>
+    <p class="time_zn">
+        <span class="review_title_man">录入时间</span>
+        <span class="review_man"><{$verify_info.addtime}></span>
+    </p>
+</div>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-02-14 10:34:07
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-09 09:52:51
          compiled from ".\tpl\admin\gg_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:2206858a268859e92f1-58094840%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e7e0f521c1d7da51a67ac360f8250e3883643ae' => 
     array (
       0 => '.\\tpl\\admin\\gg_list.htm',
-      1 => 1487039645,
+      1 => 1500624601,
       2 => 'file',
     ),
   ),
@@ -58,7 +58,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">	
-				<!-- <li><a class="add" href="?dir=admin&action=gg&do=new" target="dialog" mask="true"><span>添加</span></a></li> -->
+				 <li><a class="add" href="?dir=admin&action=gg&do=new" target="dialog" mask="true"><span>添加</span></a></li> 
 				<li><a class="edit" href="?dir=admin&action=gg&do=edit&id={id}" target="dialog" mask="true"><span>修改</span></a></li>
 				<li><a class="delete" href="?dir=admin&action=gg&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>
 				<li class="line">line</li>

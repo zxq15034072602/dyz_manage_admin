@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-06-23 09:52:40
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-04 14:25:59
          compiled from ".\tpl\admin\xslr_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:1781158c5f2b9dbcff3-94245584%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5dccb81f5694bf6a78d6df44d1709af19bede524' => 
     array (
       0 => '.\\tpl\\admin\\xslr_list.htm',
-      1 => 1498182594,
+      1 => 1501582296,
       2 => 'file',
     ),
   ),
@@ -56,6 +56,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="panelBar">
 			<ul class="toolBar">
 				<li><a class="icon" href="?dir=admin&action=xslr&do=daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出</span></a></li>
+				 <li class=""><a class="edit" href="?&dir=admin&action=xslr&do=show_i_verify&vid={id}" target="dialog" mask="true"><span>查看</span></a></li>
 				<li class="line">line</li>
 			</ul>
 		</div>

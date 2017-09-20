@@ -1,0 +1,76 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?dir=admin&action=case&do=update" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
+			<div class="pageFormContent" layoutH="56">
+				<input type="hidden" name="id" value="<{$case.id}>" />
+				<dl>
+					<dt>来自门店：</dt>
+					<select name="mid">
+						<option value="<{$case.mid}>"><{$case.mname}></option>					
+						<{foreach from=$md item=row}>
+						<option value="<{$row.id}>"><{$row.name}></option>
+						<{/foreach}>
+					</select>
+				</dl>
+				<dl>
+					<dt>产品：</dt>
+					<select name="gid">
+						<option value="<{$case.gid}>"><{$case.gname}></option>
+						<{foreach from=$sp item=row}>
+						<option value="<{$row.id}>" ><{$row.name}></option>
+						<{/foreach}>
+					</select>
+				</dl>
+			<dl style="width:100%">
+					<dt>图片(第一张封面,第二张患者图片)：</dt>
+					<dd>
+					    <input type="file" name="img[]" class="" multiple id="files" onchange="javascript:setImagePreviews();"/>
+					     <p id="preview">
+					     <{foreach from=$img_names item=img key=i}>
+					     	<img id="img_<{$i}>" src="./img/<{$img}>" style="width:70px;height:70px;padding-right:15px"/>
+					     	<input type="hidden" name="img_names[]" value="<{$img}>"/>
+					     <{/foreach}>
+					     </p>
+					     <br/><br/><br/><br/><br/><br/>
+					     <input type="hidden" name="old_img_names" value="<{$str_img_names}>"/>
+					</dd>
+				</dl>
+				<dl>				    
+					<dt>患者：</dt>
+					<dd><input type="text" name="name" class="required" size="30" value="<{$case.name}>"/></dd>
+				</dl>
+			
+				<dl>
+					<dt>年龄：</dt>
+					<dd><input type="text" name="age" class="required" size="30" value="<{$case.age}>"/></dd>
+				</dl>
+				<dl>
+					<dt>用药：</dt>
+					<dd><input type="text" name="yongyao" class="required" size="30" value="<{$case.yongyao}>"/></dd>
+				</dl>
+				<dl>
+					<dt>周期：</dt>
+					<dd><input type="text" name="date" class="required" size="30" value="<{$case.date}>"/></dd>
+				</dl>
+				<dl>
+					<dt>如何知道独一张：</dt>
+					<dd><input type="text" name="way" class="required" size="30" value="<{$case.way}>"/></dd>
+				</dl>
+
+				<dl>
+					<dt>康复故事：</dt>
+					<dd><textarea name="content" rows="30" cols="60"><{$case.content}></textarea></dd>
+				</dl>
+				<dl>
+					<dt>调理过程：</dt>
+					<dd><textarea name="process" rows="30" cols="60"><{$case.process}></textarea></dd>
+				</dl>
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

@@ -9,6 +9,10 @@ if($do=="md_user"){
 		$search .= "and name like ? ";
 		$arr[]="%".$_POST['mdusername']."%";
 		}	
+    if($_POST['mduser_name']){
+		$search .= "and username like ? ";
+		$arr[]="%".$_POST['mduser_name']."%";
+		}	
 	//设置分页
 	if($_POST[numPerPage]==""){
 		$numPerPage="20";

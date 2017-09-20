@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-07-06 09:29:45
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-14 19:10:14
          compiled from ".\tpl\index\index.htm" */ ?>
 <?php /*%%SmartyHeaderCode:16943589d17e74f1a22-22646345%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9ca9f456f8088b1d834dd24c941ad58479058ead' => 
     array (
       0 => '.\\tpl\\index\\index.htm',
-      1 => 1499304583,
+      1 => 1502709012,
       2 => 'file',
     ),
   ),
@@ -211,6 +211,29 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								
 								<ul>
 									<li><a href="index.php?action=verify&dir=admin&do=store_list" target="navTab" rel="role">店长申请审核</a></li>
+								</ul>
+							</li>
+							<?php }?>
+							<?php if (in_array('admin_menu_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
+							<li><a>菜单</a>								
+								<ul>
+									<li><a href="index.php?action=menu&dir=admin&do=list" target="navTab" rel="role">广告管理</a></li>
+								</ul>
+							</li>
+							<?php }?>
+							<?php if (in_array('admin_file_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
+							<li><a>文件管理</a>								
+								<ul>
+									<li><a href="index.php?action=file&dir=admin&do=list" target="navTab" rel="role">文件上传</a></li>
+								</ul>
+							</li>
+							<?php }?>
+							<?php if (in_array('admin_data_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
+							<li><a>资料模块</a>								
+								<ul>
+									<li><a href="index.php?action=product&dir=admin&do=list" target="navTab" rel="role">产品资料</a></li>
+									<li><a href="index.php?action=video&dir=admin&do=list" target="navTab" rel="role">营销秘籍视频</a></li>
+									<li><a href="index.php?action=case&dir=admin&do=list" target="navTab" rel="role">康复案例</a></li>
 								</ul>
 							</li>
 							<?php }?>

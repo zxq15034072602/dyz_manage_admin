@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
+	<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+	<script charset="utf-8" src="kindeditor/plugins/code/prettify.js"></script>
+	<script>
+		KindEditor.ready(function(K) {
+			var editor1 = K.create('textarea[name="content"]', {
+				cssPath : 'kindeditor/plugins/code/prettify.css',
+				uploadJson : 'kindeditor/php/upload_json.php',
+				fileManagerJson : 'kindeditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterBlur: function () { this.sync(); },
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+				}
+
+			});
+			prettyPrint();
+		});
+	</script>
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?dir=admin&action=product&do=update" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
+			<input type="hidden" name="id" value="<{$row.id}>" />
+			<div class="pageFormContent" layoutH="56">
+					<dl>
+					<dt>商品名称：</dt>
+					<dd><input type="text" name="name" class="required" size="30" value="<{$row.name}>"/></dd>
+				</dl>
+				<dl>
+					<dt>单 价：</dt>
+					<dd><input type="number" name="money" class="required" size="30" value="<{$row.money}>"/></dd>
+				</dl>
+				<dl>
+					<dt>单 位：</dt>
+					<dd><input type="text" name="dw" class="required" size="15" value="<{$row.dw}>"/></dd>
+				</dl>
+				<dl>
+					<dt>所属品牌：</dt>
+					<select name="pp">
+						<option value="<{$row.ppid}>"><{$row.ppname}></option>
+						<{foreach from=$pp item=roww}>
+						<option value="<{$roww.id}>"><{$roww.name}></option>
+						<{/foreach}>
+					</select>
+				</dl>
+				<dl>
+					<dt>是否推荐：</dt>
+					<{if $row.is_recommend}>
+					<dd><input type="radio" name="is_recommend" value="1" checked/>是  &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="is_recommend" value="0"/>否</dd>
+				    <{else}>
+				    <dd><input type="radio" name="is_recommend" value="1" />是  &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="is_recommend" value="0" checked/>否</dd>
+				    <{/if}>
+				</dl>
+				<dl>
+					<dt>商品链接：</dt>
+					<dd><input type="text" name="good_url" class="" size="60" value="<{$row.good_url}>"/></dd>
+				</dl>
+				<dl>
+					<dt>商品介绍：</dt>
+					<dd><textarea cols="50" rows="6" name="description"><{$row.description}></textarea></dd>
+				</dl>
+				<dl>
+					<dt>商品图片：</dt>
+					<dd><input type="file" name="good_img" class="" multiple id="files" onchange="javascript:setImagePreviews();"/>
+					<p id="preview">
+					        <{if $row.good_img}>
+					     	<img id="img" src="<{$row.good_img}>" style="width:70px;height:70px;padding-right:15px"/>
+					     	<input type="hidden" name="good_img" value="<{$row.good_img}>"/>
+					        <{/if}>
+					</p>
+					<input type="hidden" name="old_good_img" value="<{$row.good_img}>"/>
+					</dd>
+				</dl>
+				<br/><br/><br/><br/>
+				<dl>
+					<dt>产品详情标题：</dt>
+					<dd><input type="text" name="title" class="" size="60" value="<{$row.title}>"/></dd>
+				</dl>
+				<br/><br/><br/><br/><br/><br/>
+				<p>产品详情内容</p>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<textarea name="content" placeholder="请输入产品详情" style="width:700px;height:200px;visibility:hidden;float:left;"><{$row.content}></textarea>			
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

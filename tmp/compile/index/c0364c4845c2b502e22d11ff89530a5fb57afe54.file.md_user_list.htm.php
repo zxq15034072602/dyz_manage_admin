@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-07-19 11:14:46
+<?php /* Smarty version Smarty-3.1.12, created on 2017-07-29 17:48:54
          compiled from ".\tpl\index\md_user_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:863458afa20a040db3-85419403%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c0364c4845c2b502e22d11ff89530a5fb57afe54' => 
     array (
       0 => '.\\tpl\\index\\md_user_list.htm',
-      1 => 1500434084,
+      1 => 1501321657,
       2 => 'file',
     ),
   ),
@@ -45,6 +45,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<tr>
 					<td>
 						姓名: <input type="text" name="mdusername" size="10" value="<?php echo $_REQUEST['mdusername'];?>
+"/>
+						用户名: <input type="text" name="mduser_name" size="10" value="<?php echo $_REQUEST['mdusername'];?>
 "/>
 					    门店所属：<select name="type" >
 								<option value='0' <?php if ($_smarty_tpl->tpl_vars['type']->value==0){?>selected<?php }?>>独一张</option>

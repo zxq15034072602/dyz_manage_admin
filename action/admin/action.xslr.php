@@ -46,7 +46,7 @@ if($do==""){
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('list',$list);
 	$smt->assign('total',$total);
-	$smt->assign('name',$_POST['name']);
+	$smt->assign('username',$_POST['name']);
 	$smt->assign('pageNum',$_POST['pageNum']);
 	$smt->display('xslr_list.htm');
 	exit;
@@ -109,5 +109,25 @@ if($do=="daochu"){
 		}
 	echo "</table>";
 	exit;
+}elseif ($do == "show_i_verify") { // 查看录入审核信息
+    $vid = $_REQUEST['vid'];
+
+    $sql ="select b.id,b.uid,b.mid,b.addtime,b.endtime,u.name,b.status,b.total_price,b.sale_price,GROUP_CONCAT(bg.goods_id) as goods_id from rv_buy as b,rv_buy_goods as bg,rv_user as u where b.id=bg.buy_id and b.uid=u.id and b.id=?";
+    $db->p_e($sql, array(
+        $vid
+    ));
+    $verify_info = $db->fetchRow();
+    if($verify_info){
+        $sql="select * from rv_buy_goods as bg, rv_goods as g where bg.goods_id=g.id and bg.goods_id and buy_id=?";
+        $db->p_e($sql, array($verify_info[id]));
+        $verify_info['goods']=$db->fetchAll();
+    }
+    
+    $smt = new Smarty();
+    smarty_cfg($smt);
+    $smt->assign("verify_info", $verify_info);
+    $smt->assign("flag", "show_i_verify");
+    $smt->display('xslr_show.htm');
+    exit();
 }
 ?>

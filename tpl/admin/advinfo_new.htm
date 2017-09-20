@@ -1,0 +1,32 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" enctype="multipart/form-data"  action="?dir=admin&action=menu&do=add" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>标题</dt>
+					<dd><input type="text" name="title" size="30" class="required" value=""/></dd>
+				</dl>
+
+				<dl>
+					<dt>url</dt>
+					<dd><input type="text" name="url" size="30" class="required" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>类型</dt>
+					<dd><input type="text" name="type" size="30" class="required" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>图片</dt>
+					<dd><input type="file" name="adv_img[]" class="" multiple id="files" onchange="javascript:setImagePreviews();"/></dd>
+					 <p id="preview">
+					 </p>
+				</dl>
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

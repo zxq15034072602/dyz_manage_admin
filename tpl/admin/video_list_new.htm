@@ -1,0 +1,27 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" enctype="multipart/form-data"  action="?dir=admin&action=video&do=video_list_add" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
+			<div class="pageFormContent" layoutH="56">
+				<input type="hidden" name="vid" value="<{$vid.id}>" />
+				<dl>
+					<dt>标题</dt>
+					<dd><input type="text" name="title" size="30" class="required" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>主讲人</dt>
+					<dd><input type="text" name="teacher" size="30" class="required" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>url地址</dt>
+					<dd><input type="text" name="url" size="30" class="required" value=""/></dd>
+				</dl>
+							
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

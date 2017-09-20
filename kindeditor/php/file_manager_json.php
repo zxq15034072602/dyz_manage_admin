@@ -13,9 +13,9 @@
 //$php_url = dirname($_SERVER['PHP_SELF']) . '/';
 
 //根目录路径，可以指定绝对路径，比如 /var/www/attached/
-$root_path = 'D:/ansuai/uploadfile';
+$root_path = 'E:/dyz.duyiwang.cn/uploadfile';
 //根目录URL，可以指定绝对路径，比如 http://www.yoursite.com/attached/
-$root_url = 'http://static.duyiwang.cn/';
+$root_url = 'http://app.duyiwang.cn/uploadfile/';
 //图片扩展名
 $ext_arr = array('gif', 'jpg', 'jpeg', 'png', 'bmp');
 

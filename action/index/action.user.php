@@ -84,7 +84,7 @@ if($do=="new"){
 	If_rabc(); //检测权限
 	
 	//角色数组
-	$sql="SELECT id,title FROM rv_role where id=1";
+	$sql="SELECT id,title FROM rv_role where id in(1,6,7)";
 	$db->query($sql);
 	$list=$db->fetchAll();
 	

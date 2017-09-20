@@ -55,4 +55,12 @@ if($do == "list"){
            @header("Location:http://app.duyiwang.cn/android/app.apk");exit;
         }
         exit;
+}else if($do == "shiweijianappdownload"){
+     $smt = new smarty();smarty_cfg($smt);
+     if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {//判断是否为微信内置浏览器
+            $smt->display('appdownload_show.htm');
+        }else{
+           @header("Location:http://app.duyiwang.cn/android/shiweijian.apk");exit;
+        }
+        exit;
 }
