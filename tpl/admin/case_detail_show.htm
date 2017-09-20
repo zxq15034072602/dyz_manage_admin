@@ -1,0 +1,54 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?dir=admin&action=case&do=addcdetail" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+			<div class="pageFormContent" layoutH="56">
+				<input type="hidden" name="cid" value="<{$case.id}>" />
+				<p>来自:<{$cArr.mname}></p>
+				<dl>				    
+					<dt>患者：</dt>
+					<dd><input type="text" name="name" class="required" size="30" value="<{$cArr.name}>"/></dd>
+				</dl>
+			
+				<dl>
+					<dt>年龄：</dt>
+					<dd><input type="text" name="age" class="required" size="30" value="<{$cArr.age}>"/></dd>
+				</dl>
+				<dl>
+					<dt>用药：</dt>
+					<dd><input type="text" name="yongyao" class="required" size="30" value="<{$cArr.yongyao}>"/></dd>
+				</dl>
+				<dl>
+					<dt>周期：</dt>
+					<dd><input type="text" name="date" class="required" size="30" value="<{$cArr.date}>"/></dd>
+				</dl>
+				<dl>
+					<dt>如何知道独一张：</dt>
+					<dd><input type="text" name="way" class="required" size="30" value="<{$cArr.way}>"/></dd>
+				</dl>
+
+				<dl>
+					<dt>康复故事：</dt>
+					<dd><textarea name="content" rows="30" cols="60"><{$cArr.content}></textarea></dd>
+				</dl>
+				<dl>
+					<dt>调理过程：</dt>
+					<dd><textarea name="process" rows="30" cols="60"><{$cArr.process}></textarea></dd>
+				</dl>
+				 <dl>
+					<dt>患者图片：</dt>
+					<dd><input type="file" name="hz_img" class="" multiple id="files" onchange="javascript:setImagePreviews();"/>
+					<p id="preview">
+					        
+					</p>
+					
+					</dd>
+				</dl> 
+			</div>
+<!-- 			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div> -->
+		</form>
+	</div>
+</div>

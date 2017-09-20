@@ -6,13 +6,20 @@
 					<dt>标题</dt>
 					<dd><input type="text" name="title" size="30" class="required" value=""/></dd>
 				</dl>
-				<dl>
-					<dt>图片</dt>
-					<dd><input type="file" name="adv_img" class="" multiple id="files" onchange="javascript:setImagePreviews();"/></dd>
-				</dl>
+
 				<dl>
 					<dt>url</dt>
 					<dd><input type="text" name="url" size="30" class="required" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>类型</dt>
+					<dd><input type="text" name="type" size="30" class="required" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>图片</dt>
+					<dd><input type="file" name="adv_img[]" class="" multiple id="files" onchange="javascript:setImagePreviews();"/></dd>
+					 <p id="preview">
+					 </p>
 				</dl>
 			</div>
 			<div class="formBar">

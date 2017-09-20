@@ -1,0 +1,71 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?dir=admin&action=case&do=add" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>来自门店：</dt>
+					<select name="mid">
+						<{foreach from=$md item=row}>
+						<option value="<{$row.id}>"><{$row.name}></option>
+						<{/foreach}>
+					</select>
+				</dl>
+				<dl>
+					<dt>产品：</dt>
+					<select name="gid">
+						<{foreach from=$sp item=row}>
+						<option value="<{$row.id}>"><{$row.name}></option>
+						<{/foreach}>
+					</select>
+				</dl>
+			<dl>
+					<dt>图片(第一张封面,第二张患者)：</dt>
+					<dd><input type="file" name="img[]" class="" multiple id="files" onchange="javascript:setImagePreviews();"/>
+					<p id="preview">
+					        
+					</p>
+					<br/><br/><br/><br/><br/>
+					</dd>
+				</dl>  
+				
+				<dl>				    
+					<dt>患者：</dt>
+					<dd><input type="text" name="name" class="required" size="30" value=""/></dd>
+				</dl>
+			
+				<dl>
+					<dt>年龄：</dt>
+					<dd><input type="text" name="age" class="required" size="30" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>用药：</dt>
+					<dd><input type="text" name="yongyao" class="required" size="30" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>周期：</dt>
+					<dd><input type="text" name="date" class="required" size="30" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>如何知道独一张：</dt>
+					<dd><input type="text" name="way" class="required" size="30" value=""/></dd>
+				</dl>
+
+				<dl>
+					<dt>康复故事：</dt>
+					<dd><textarea name="content" rows="30" cols="60"></textarea></dd>
+				</dl>
+				<dl>
+					<dt>调理过程：</dt>
+					<dd><textarea name="process" rows="30" cols="60"></textarea></dd>
+				</dl>
+				<dl>
+ 
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

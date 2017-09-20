@@ -124,6 +124,7 @@ if($do=="edit_kucun"){
 //编辑商品信息	
 if($do=="edit1"){	
 	If_rabc(); //检测权限
+	$id=$_REQUEST[id];
 	//查询
 	$sql="SELECT a.id,a.name,a.money,a.dw,a.fatherid,b.id as ppid,a.is_recommend,a.good_img,a.description,a.good_url,b.name as ppname from rv_goods as a left join rv_type as b on a.fatherid=b.id where 1=1 and a.id=?";
 	$db->p_e($sql,array($id));

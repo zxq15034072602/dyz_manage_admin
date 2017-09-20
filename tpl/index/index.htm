@@ -134,6 +134,12 @@
 									<li><a href="index.php?dir=admin&action=xslr" target="navTab" rel="xslr_list">销售录入列表</a></li>
 								</ul>
 							</li>
+							<li><a>销售录入记录查看</a>
+								<ul>
+									<li><a href="index.php?dir=admin&action=xslr&do=mendian" target="navTab" rel="xslr_list">按门店排行查看</a></li>
+									<li><a href="index.php?dir=admin&action=xslr&do=goods" target="navTab" rel="xslr_list">按产品销售排行</a></li>
+								</ul>
+							</li>
 							<{if in_array('admin_gg_',$role1)}>
 							<li><a>公告管理</a>
 								<ul>
@@ -182,19 +188,35 @@
 								
 								<ul>
 									<li><a href="index.php?action=verify&dir=admin&do=store_list" target="navTab" rel="role">店长申请审核</a></li>
+									<li><a href="index.php?action=verify&dir=admin&do=store_list1" target="navTab" rel="role">经销商申请审核</a></li>
+									<li><a href="index.php?action=verify&dir=admin&do=store_list2" target="navTab" rel="role">加盟商申请审核</a></li>
+									<li><a href="index.php?action=verify&dir=admin&do=store_list3" target="navTab" rel="role">总部人员申请审核</a></li>
 								</ul>
 							</li>
 							<{/if}>
 							<{if in_array('admin_menu_list',$role1)}>
-							<li><a>菜单</a>
-								
+							<li><a>菜单</a>								
 								<ul>
 									<li><a href="index.php?action=menu&dir=admin&do=list" target="navTab" rel="role">广告管理</a></li>
-									<li><a href="index.php?action=menu&dir=admin&do=banner" target="navTab" rel="role">banner管理</a></li>
 								</ul>
 							</li>
 							<{/if}>
-
+							<{if in_array('admin_file_list',$role1)}>
+							<li><a>文件管理</a>								
+								<ul>
+									<li><a href="index.php?action=file&dir=admin&do=list" target="navTab" rel="role">文件上传</a></li>
+								</ul>
+							</li>
+							<{/if}>
+							<{if in_array('admin_data_list',$role1)}>
+							<li><a>资料模块</a>								
+								<ul>
+									<li><a href="index.php?action=product&dir=admin&do=list" target="navTab" rel="role">产品资料</a></li>
+									<li><a href="index.php?action=video&dir=admin&do=list" target="navTab" rel="role">营销秘籍视频</a></li>
+									<li><a href="index.php?action=case&dir=admin&do=list" target="navTab" rel="role">康复案例</a></li>
+								</ul>
+							</li>
+							<{/if}>
 						</ul>
 					</div>
 				</div>

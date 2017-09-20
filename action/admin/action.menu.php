@@ -50,23 +50,28 @@ if($do=="add"){
     $arr=array($_POST['title']);
     $db->p_e($sql,$arr);
     if($db->fetchRow()){echo  error("错误!广告已存在!");exit();}
-    $img_names=array();
-    
-        if(is_uploaded_file($_FILES['adv_img']['tmp_name'])){    
-            $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['adv_img']['name']);
-            if(!$img->check_img_type($_FILES['adv_img']['type'])){
+    $sql="SELECT * FROM rv_advinfo where type =? LIMIT 1";
+    $arr=array($_POST['type']);
+    $db->p_e($sql, $arr);
+    if($db->fetchRow()){echo error("错误!类型已存在");exit();}
+    $img_names=array();   
+    foreach($_FILES['adv_img']['tmp_name'] as $k=>$v){
+        if(is_uploaded_file($_FILES['adv_img']['tmp_name'][$k])){    
+            $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['adv_img']['name'][$k]);
+            if(!$img->check_img_type($_FILES['adv_img']['type'][$k])){
                 echo error("请上传正确的图片");
                 exit();
             }
-            if(move_uploaded_file($_FILES['adv_img']['tmp_name'],$save)){
-                $img_names=str_replace($img->root_path.$img->images_dir."/", '', $save);
+            if(move_uploaded_file($_FILES['adv_img']['tmp_name'][$k],$save)){
+                $img_names[]=str_replace($img->root_path.$img->images_dir."/", '', $save);
             }else{
                 echo error("上传图片失败");
                 exit();
             }
         }
+    }
     $imgs=implode(",", $img_names);
-    $insert_id=$db->insert(0, 2, "rv_advinfo",array("title='$_POST[title]'","url='$_POST[url]'","img='$img_names'"));
+    $insert_id=$db->insert(0, 2, "rv_advinfo",array("title='$_POST[title]'","url='$_POST[url]'","img='$imgs'","type='$_POST[type]'"));
     if($insert_id){
         echo close($msg,"menu_list");
     }else{echo  error($msg);}
@@ -90,7 +95,7 @@ if($do=="edit"){
     smarty_cfg($smt);
     //模版
     $smt->assign('row',$row);
-    $smt->assign("str_img_names",$row['img']);
+    $smt->assign("str_img_names",$row['img']);   
     $smt->assign("img_names",$img_names);
     $smt->display('advinfo_edit.htm');
     exit;
@@ -99,33 +104,34 @@ if($do=="edit"){
 //更新
 if($do=="updata"){
   If_rabc(); //检测权限
-	$id=$_REQUEST['id'];
-	$img_names=$_REQUEST['img'];
+    $id=$_REQUEST['id'];
+	$img_names=$_REQUEST['img_names'];
 	if(!$img_names){//如果更改了图片
 	    $old_img_names=$_REQUEST['old_img_names'];
 	    $old_img_names=explode(",", $old_img_names);
 	    foreach ($old_img_names as $v){
 	        unlink($img->root_path.$img->images_dir."/".$v);
-	    }	     
-	    $img_names=array();
-	       if(is_uploaded_file($_FILES['adv_img']['tmp_name'])){    
-	        $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['adv_img']['name']);
-         if(!$img->check_img_type($_FILES['adv_img']['type'])){
-                echo error("请上传正确的图片");
-                exit();
-            }
-            if(move_uploaded_file($_FILES['adv_img']['tmp_name'],$save)){
-               $img_names=str_replace($img->root_path.$img->images_dir."/", '', $save);
-
-            }else{
-                echo error("上传图片失败");
-                exit();
-            }
-        }
+	    }
+    	$img_names=array();
+	    foreach($_FILES['adv_img']['tmp_name'] as $k=>$v){
+	        if(is_uploaded_file($_FILES['adv_img']['tmp_name'][$k])){
+    	        $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['adv_img']['name'][$k]);
+    	        if(!$img->check_img_type($_FILES['adv_img']['type'][$k])){
+    	            echo error("请上传正确的图片");
+    	            exit();
+    	        }
+    	        if(move_uploaded_file($_FILES['adv_img']['tmp_name'][$k],$save)){
+    	            $img_names[]=str_replace($img->root_path.$img->images_dir."/", '', $save);
+    	        }else{
+    	            echo error("上传图片失败");
+    	            exit();
+    	        }
+	        }
+	    }
 	   
 	}
-	$arr=array($_POST['title'],$_POST['url'],$img_names,$id);
-	$sql="UPDATE rv_advinfo SET title=?,url=?,img=? WHERE id=? LIMIT 1";
+	$arr=array($_POST['title'],$_POST['url'],implode(',',$img_names),$_POST['type'],$id);
+	$sql="UPDATE rv_advinfo SET title=?,url=?,img=?,type=? WHERE id=? LIMIT 1";
 	if($db->p_e($sql,$arr)){
 	    echo close($msg,"adv_list");
 	}else{echo  error($msg);}
@@ -142,7 +148,3 @@ if($do=="del"){//删除
     echo error("删除失败！");exit;
 }
 
-if($do=='banner'){ //banner管理
-    If_rabc(); //检测权限
-   
-}

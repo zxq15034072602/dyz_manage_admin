@@ -1,0 +1,67 @@
+<form id="pagerForm" method="post" action="index.php?dir=admin&action=xslr&do=mendian">
+	<input type="hidden" name="pageNum" value="1" />
+    <input type="hidden" name="numPerPage" value="20" />
+    <input type="hidden" name="name" value="<{$username}>" />
+</form>
+
+<div class="page">
+	<div class="pageHeader">
+		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=xslr&do=mendian" method="post">
+		<div class="searchBar">
+			<table class="searchContent">
+				<tr>
+					<td>
+						<select name="province">
+							<option value="-1">选择地区进行检索</option>
+							<{foreach from=$province item=p }>
+							<option value="<{$p.provinceid}>"><{$p.province}></option>
+							<{/foreach}>
+						</select>						
+					</td>
+					<td>
+						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</form>
+	</div>
+	<div class="pageContent">
+		<div class="panelBar">
+			<ul class="toolBar">
+				<li><a class="icon" href="?dir=admin&action=xslr&do=daochu_mendian" target="dwzExport" title="是要导出这些记录吗?"><span>导出</span></a></li> 
+				<li class=""><a class="edit" href="?&dir=admin&action=xslr&do=md_day_show" target="dialog" mask="true"><span>查看今天</span></a></li>
+				<li class=""><a class="edit" href="?&dir=admin&action=xslr&do=md_week_show" target="dialog" mask="true"><span>查看本周</span></a></li>
+				<li class=""><a class="edit" href="?&dir=admin&action=xslr&do=md_month_show" target="dialog" mask="true"><span>查看本月</span></a></li>
+				<li class=""><a class="edit" href="?&dir=admin&action=xslr&do=md_year_show" target="dialog" mask="true"><span>查看今年</span></a></li>
+				<li class="line">line</li>
+			</ul>
+		</div>
+		<table class="list" layouth="90" style="width:1200px">
+			<thead>
+				<tr>
+					<th align="center">排名</th>
+					<th align="center">门店名</th>
+					<th align="center">总销售额（元）</th>
+				</tr>
+			</thead>
+			<tbody>
+			<{foreach from=$list item=row key=key}>
+				<tr>
+					<td align="center"><{if $pageNum>1}> <{($pageNum-1)*20+$key+1}> <{else}><{$key+1}><{/if}></td>
+					<td align="center"><{$row.mdname}></td>
+					<td align="center"><{$row.sum}></td>
+				</tr>
+			<{/foreach}>
+			</tbody>
+		</table>
+		<div class="panelBar">
+			<div class="pages">
+				<span>共<{$total}>条</span>
+			</div>
+			
+			<div class="pagination" targetType="navTab" totalCount="<{$total}>" numPerPage="20" pageNumShown="10" currentPage="<{$pageNum}>"></div>
+
+		</div>
+	</div>
+</div>

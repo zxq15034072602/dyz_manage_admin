@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-07-24 09:21:58
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-29 12:02:33
          compiled from ".\tpl\admin\advinfo_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:18325972bc3bdd7843-97999220%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f95acee515c7167e151a3c3adc4b188ab1d6476c' => 
     array (
       0 => '.\\tpl\\admin\\advinfo_list.htm',
-      1 => 1500859054,
+      1 => 1503977299,
       2 => 'file',
     ),
   ),
@@ -51,6 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<tr>
 					<th align="center">ID</th>
 					<th align="center">标题</th>
+					<th align="center">类型</th>
 					<th align="center">时间</th>
 					
 				</tr>
@@ -66,6 +67,8 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
 </td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['title'];?>
+</td>
+					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['type'];?>
 </td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['addtime'];?>
 </td>
