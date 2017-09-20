@@ -1,22 +1,40 @@
+<<<<<<< HEAD
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-29 12:02:33
+         compiled from ".\tpl\admin\advinfo_list.htm" */ ?>
+<?php /*%%SmartyHeaderCode:18325972bc3bdd7843-97999220%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+=======
 <?php /* Smarty version Smarty-3.1.12, created on 2017-08-29 11:30:12
          compiled from ".\tpl\admin\advinfo_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:5158598a6be5008931-86105541%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+>>>>>>> upstream/master
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f95acee515c7167e151a3c3adc4b188ab1d6476c' => 
     array (
       0 => '.\\tpl\\admin\\advinfo_list.htm',
+<<<<<<< HEAD
+      1 => 1503977299,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '18325972bc3bdd7843-97999220',
+=======
       1 => 1503977405,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '5158598a6be5008931-86105541',
+>>>>>>> upstream/master
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
+<<<<<<< HEAD
+  'unifunc' => 'content_5972bc3be21ac5_03855666',
+=======
   'unifunc' => 'content_598a6be5008934_13104427',
+>>>>>>> upstream/master
   'variables' => 
   array (
     'username' => 0,
@@ -27,7 +45,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
+<<<<<<< HEAD
+<?php if ($_valid && !is_callable('content_5972bc3be21ac5_03855666')) {function content_5972bc3be21ac5_03855666($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
+=======
 <?php if ($_valid && !is_callable('content_598a6be5008934_13104427')) {function content_598a6be5008934_13104427($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
+>>>>>>> upstream/master
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>

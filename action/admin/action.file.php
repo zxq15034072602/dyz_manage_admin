@@ -53,11 +53,13 @@ if($do=="add"){
     $upfilename=array_filter($_FILES['filename']['name'],delEmpty);
     //配置上传目录
     $dirname="e:/dyz_manage/file/".date("Y-m-d");
-    $path="/file/".date("Y-m-d")."/";
-   // $dirname="F:/wamp/www/dyz_manage_admin/file/".date("Y-m");
+   // $dirname="E:/dyz_manage_admin/file/".date("Y-m");
+    //$dirname="F:/wamp/www/dyz_manage_admin/file/".date("Y-m");
+    $path="/file/".date("Y-m")."/";
     if(!is_dir($dirname)){
         mkdir($dirname);
     }
+    $time=date("Y-m-d",time());
 
     foreach($upfilename as $k=>$v){
         
@@ -77,8 +79,8 @@ if($do=="add"){
             echo "<script>alert('非法文件')</script>";
         }
         //插入数据库
-        $sql="insert into rv_file(filename,file_url,size)VALUES(?,?,?)";
-        $arr=array($v,$path.$v,$_FILES['filename']['size'][$k]);
+        $sql="insert into rv_file(filename,file_url,size,addtime)VALUES(?,?,?,?)";
+        $arr=array($v,$path.$v,$_FILES['filename']['size'][$k],$time);
         $upfile=$db->p_e($sql, $arr);
     }
     if($upfile){echo close($msg,"file_upload");}else{echo error($msg);}
@@ -92,3 +94,5 @@ if($do=='del'){
     }
     echo error("删除失败！");exit;
 }
+
+

@@ -43,7 +43,7 @@ if($do=="new"){
 	$pp=$db->fetchAll();
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('pp',$pp);
-	$smt->display('goods_new.htm');
+	$smt->display('product_new.htm');
 	exit;
 }
 

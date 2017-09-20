@@ -81,27 +81,27 @@ if($do=='editvideo'){
 
 //修改
 if($do=='updatevideo'){
-    If_rabc(); //检测权限
-    $id=$_POST['id'];
-    $video_img=$_REQUEST['video_img'];
-    if(!$video_img){//修改图片
-        $old_img_names=$_REQUEST['old_img_names'];//获取旧的图片
-        if(old_img_names){
-            unlink($img->root_path.old_img_names);//删除旧图片
-        }
-        if(is_uploaded_file($_FILES['video_img']['tmp_name'])){//判断是否上传
-            if(!$img->check_img_type($_FILES['video_img']['type'])){
-                echo error("请上传正确的图片");
-                exit();
-            }
-            $video_img=$img->upload_image($_FILES['video_img']);
-            if(!$video_img){
-                echo error('上传失败');
-                exit();
-            }
-        }
-    }
-    $arr=array($_POST['name'],$_POST['content'],$_POST['type'],$video_img,$id);
+   	If_rabc(); //检测权限
+	$id=$_POST['id'];
+	$video_img=$_REQUEST['video_img'];
+	if(!$video_img){//修改图片
+	    $old_img_names=$_REQUEST['old_img_names'];//获取旧的图片
+	    if(old_img_names){
+	        unlink($img->root_path.old_img_names);//删除旧图片
+	    }
+	    if(is_uploaded_file($_FILES['video_img']['tmp_name'])){//判断是否上传
+	        if(!$img->check_img_type($_FILES['video_img']['type'])){
+	            echo error("请上传正确的图片");
+	            exit();
+	        }
+	        $video_img=$img->upload_image($_FILES['video_img']);
+	        if(!$video_img){
+	            echo error('上传失败');
+	            exit();
+	        }
+	    }
+	}
+	$arr=array($_POST['name'],$_POST['content'],$_POST['type'],$video_img,$id);
     $sql="UPDATE rv_video_type SET name=?,content=?,type=?,video_img=? WHERE id=? LIMIT 1";
     if($db->p_e($sql,$arr)){echo close($msg,"video_type");}else{echo  error($msg);}
     exit;
@@ -143,6 +143,7 @@ if($do=='video_list_add'){
 if($do=='video_list'){//视频列表页
     If_rabc(); //检测权限
     $id=$_REQUEST['id'];
+
     $arr=array();
     $sqlcount ="select count(*) from rv_video_list as a left join rv_video_type as b on a.vid=b.id where vid=$id and b.type=0";
     //设置分页
@@ -172,6 +173,37 @@ if($do=='video_list'){//视频列表页
     $smt->display('video_list.htm');
     exit;
 }
+//修改视频列表页
+if($do=='editvideolist'){
+    $id=$_REQUEST[id];
+    $sql="select * from rv_video_list where id=?";
+    $db->p_e($sql, array(
+        $id
+    ));
+    $row=$db->fetchRow();
+    $smt=new Smarty();
+    smarty_cfg($smt);
+    $smt->assign('row',$row);
+    $smt->display('video_edit_list.htm');
+    exit();
+}
+//更新
+if($do=='updatevideo'){
+    $id=$_POST['id'];
+    $arr=array($_POST['vid'],$_POST['title'],$_POST['teacher'],$_POST['url'],$id);
+    $sql="update rv_video_list set vid=?,title=?,teacher=?,url=? where id=? limit 1";
+    if($db->p_e($sql, $arr)){echo close($msg,"video_list");}else{echo  error($msg);}
+}
+//删除视频
+if($do=='delvideo'){
+    $id=$_REQUEST[id];
+    if(empty($id)){echo error("id为空！");exit;}
+    if($db->delete(0, 1, "rv_video_list",array("id=$id"))){
+        echo success("删除成功");exit;
+    }
+    echo error("删除失败！");exit;
+}
+
 //////////////////////////////////////////////////////////
 //////////////////////   图文     //////////////////////////
 //////////////////////////////////////////////////////////
@@ -242,4 +274,33 @@ if($do=='article_detail'){//查看图文详情页
     $smt->assign('aArr',$aArr);
     $smt->display('article_detail_show.htm');
     exit();
+}
+//修改图文
+if($do=='editarticlelist'){
+    $id=$_REQUEST['id'];
+    $sql="select * from rv_article_list where id=?";
+    $db->p_e($sql, array(
+        $id
+    ));
+    $row=$db->fetchRow();
+    $smt=new Smarty();
+    smarty_cfg($smt);
+    $smt->assign('row',$row);
+    $smt->display('article_edit.htm');
+    exit();
+}
+if($do=='updatearticle'){
+    $id=$_POST['id']; 
+    $arr=array($_POST['vid'],$_POST['title'],$_POST['teacher'],$_POST['content'],$id);
+    $sql="update rv_video_list set vid=?,title=?,teacher=?,content=? where id=? limit 1";
+    if($db->p_e($sql, $arr)){echo close($msg,"video_list");}else{echo  error($msg);}
+}
+//删除图文
+if($do=='delarticle'){
+    $id=$_REQUEST[id];
+    if(empty($id)){echo error("id为空！");exit;}
+    if($db->delete(0, 1, "rv_article_list",array("id=$id"))){
+        echo success("删除成功");exit;
+    }
+    echo error("删除失败！");exit;
 }

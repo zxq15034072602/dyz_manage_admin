@@ -1,12 +1,30 @@
+<<<<<<< HEAD
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-16 11:54:48
+         compiled from ".\tpl\admin\video_list.htm" */ ?>
+<?php /*%%SmartyHeaderCode:1211598fb59de84db1-18645998%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+=======
 <?php /* Smarty version Smarty-3.1.12, created on 2017-08-14 19:18:31
          compiled from ".\tpl\admin\video_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:2423759918707bf4554-13430602%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+>>>>>>> upstream/master
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '06c72eba6ec635604bef556dc5d657290b8f1f39' => 
     array (
       0 => '.\\tpl\\admin\\video_list.htm',
+<<<<<<< HEAD
+      1 => 1502855670,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1211598fb59de84db1-18645998',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_598fb59dee1498_93212644',
+=======
       1 => 1502704223,
       2 => 'file',
     ),
@@ -15,6 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+>>>>>>> upstream/master
   'variables' => 
   array (
     'list' => 0,
@@ -23,10 +42,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
+<<<<<<< HEAD
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_598fb59dee1498_93212644')) {function content_598fb59dee1498_93212644($_smarty_tpl) {?>
+=======
   'version' => 'Smarty-3.1.12',
   'unifunc' => 'content_59918707c315e3_37538213',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59918707c315e3_37538213')) {function content_59918707c315e3_37538213($_smarty_tpl) {?>
+>>>>>>> upstream/master
 
 <div class="page">
 	<div class="pageHeader">
@@ -34,9 +58,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 	<div class="pageContent">
 		<div class="panelBar">
+<<<<<<< HEAD
+			<ul class="toolBar">	
+						<li><a class="edit" href="?dir=admin&action=video&do=editvideolist&id={id}" target="dialog" mask="true"><span>修改</span></a></li>			
+ 				<!-- <li><a class="add" href="?dir=admin&action=video&do=video_list_new&id={id}" target="dialog" mask="true"><span>添加</span></a></li>  -->
+			<li><a class="delete" href="?dir=admin&action=video&do=delvideo&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>			
+=======
 			<ul class="toolBar">				
  				<!-- <li><a class="add" href="?dir=admin&action=video&do=video_list_new&id={id}" target="dialog" mask="true"><span>添加</span></a></li>  -->
 				<!-- <li><a class="delete" href="?dir=admin&action=product&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li> -->
+>>>>>>> upstream/master
 			</ul>
 		</div>
 		<table class="list" layouth="90" style="width:1200px">

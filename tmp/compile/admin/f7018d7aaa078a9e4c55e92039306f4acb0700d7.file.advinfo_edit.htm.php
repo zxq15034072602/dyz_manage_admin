@@ -1,22 +1,40 @@
+<<<<<<< HEAD
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-17 10:40:49
+         compiled from ".\tpl\admin\advinfo_edit.htm" */ ?>
+<?php /*%%SmartyHeaderCode:1441659754daa996656-54734445%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+=======
 <?php /* Smarty version Smarty-3.1.12, created on 2017-08-17 10:52:36
          compiled from ".\tpl\admin\advinfo_edit.htm" */ ?>
 <?php /*%%SmartyHeaderCode:4416598a6bfeac3281-98208973%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+>>>>>>> upstream/master
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f7018d7aaa078a9e4c55e92039306f4acb0700d7' => 
     array (
       0 => '.\\tpl\\admin\\advinfo_edit.htm',
+<<<<<<< HEAD
+      1 => 1502937644,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1441659754daa996656-54734445',
+=======
       1 => 1502938327,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '4416598a6bfeac3281-98208973',
+>>>>>>> upstream/master
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
+<<<<<<< HEAD
+  'unifunc' => 'content_59754daa9ca452_86582739',
+=======
   'unifunc' => 'content_598a6bfeb00315_42994325',
+>>>>>>> upstream/master
   'variables' => 
   array (
     'row' => 0,
@@ -27,7 +45,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
+<<<<<<< HEAD
+<?php if ($_valid && !is_callable('content_59754daa9ca452_86582739')) {function content_59754daa9ca452_86582739($_smarty_tpl) {?><div class="page">
+=======
 <?php if ($_valid && !is_callable('content_598a6bfeb00315_42994325')) {function content_598a6bfeb00315_42994325($_smarty_tpl) {?><div class="page">
+>>>>>>> upstream/master
 	<div class="pageContent">
 		<form method="post" enctype="multipart/form-data" action="?dir=admin&action=menu&do=updata" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">
 			<input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
@@ -61,7 +83,11 @@ $_smarty_tpl->tpl_vars['img']->_loop = true;
  $_smarty_tpl->tpl_vars['i']->value = $_smarty_tpl->tpl_vars['img']->key;
 ?>
 					     	<img id="img_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+<<<<<<< HEAD
+" src="http://192.168.1.138/dyz.duyiwang.cn/img/<?php echo $_smarty_tpl->tpl_vars['img']->value;?>
+=======
 " src="/img/<?php echo $_smarty_tpl->tpl_vars['img']->value;?>
+>>>>>>> upstream/master
 " style="width:70px;height:70px;padding-right:15px"/>
 					     	<input type="hidden" name="img_names[]" value="<?php echo $_smarty_tpl->tpl_vars['img']->value;?>
 "/>

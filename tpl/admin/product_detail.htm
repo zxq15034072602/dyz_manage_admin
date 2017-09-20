@@ -1,3 +1,4 @@
+
 	<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
 	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
 	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
@@ -29,6 +30,66 @@
 	</script>
 <div class="page">
 	<div class="pageContent">
+		<form method="post" action="?dir=admin&action=product&do=detail" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>商品名称：</dt>
+					<dd><input type="text" name="name" class="required" size="30" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>所属品牌：</dt>
+					<select name="pp">
+						<{foreach from=$pp item=row}>
+						<option value="<{$row.id}>"><{$row.name}></option>
+						<{/foreach}>
+					</select>
+				</dl>
+				<dl>
+					<dt>单价：</dt>
+					<dd><input type="number" name="money" class="required" size="30" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>单位：</dt>
+					<dd><input type="text" name="dw" class="required" size="20" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>是否推荐：</dt>
+					<dd><input type="radio" name="is_recommend" value="1" checked/>是  &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="is_recommend" value="0"/>否</dd>
+				</dl>
+				<dl>
+					<dt>商品链接：</dt>
+					<dd><input type="text" name="good_url" class="" size="60" value=""/></dd>
+				</dl>
+				<dl>
+					<dt>商品介绍：</dt>
+					<dd><textarea cols="50" rows="6" name="description"></textarea></dd>
+				</dl>
+				<dl>
+					<dt>商品图片：</dt>
+					<dd><input type="file" name="good_img" class="" multiple id="files" onchange="javascript:setImagePreviews();"/>
+					<p id="preview">
+					        
+					</p>
+					
+					</dd>
+				</dl>
+				<br/><br/><br/><br/>
+				<dl>
+					<dt>产品详情标题：</dt>
+					<dd><input type="text" name="title" class="" size="60" value=""/></dd>
+				</dl>
+				<br/><br/><br/><br/><br/><br/>
+				<p>产品详情内容</p>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<br/><br/><br/><br/>
+				<textarea name="content" placeholder="请输入产品详情" style="width:700px;height:200px;visibility:hidden;float:left;"></textarea>			
+			</div>
 		<form method="post" action="?dir=admin&action=product&do=addpdetail" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 			<input type="hidden" name="id" value="<{$row.id}>" />
 			<div class="pageFormContent" layoutH="56">

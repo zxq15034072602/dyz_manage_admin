@@ -11,6 +11,8 @@ date_default_timezone_set('asia/shanghai');
 //初始化数据库连接
 $db	= new pdo_mysql($Config);
 $img= new dyz_image();
+// /$file=new dyz_file();
+
 //提示信息
 $lang_cn =array(
 	"rabc_error"=>"<script>alert(\"权限不足!\");window.location=\"index.php\";</script>",

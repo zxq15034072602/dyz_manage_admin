@@ -45,35 +45,37 @@ if($do=="new"){
     $sql="select g.* from rv_goods as g left join rv_type as t on g.fatherid=t.id where 1=1 and t.type=0 ";
     $db->p_e($sql, array());
     $sp=$db->fetchAll();
-    
+  
     $smt = new smarty();
     smarty_cfg($smt);
     $smt->assign('md',$md);
     $smt->assign('sp',$sp);
     $smt->display('case_new.htm');
     exit;
+
 }
 
 if($do=="add"){
     //查询
     If_rabc(); //检测权限
     $img_names=array();
-    foreach($_FILES['img']['tmp_name'] as $k=>$v){
-        if(is_uploaded_file($_FILES['img']['tmp_name'][$k])){
-            $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['img']['name'][$k]);
-                if(!$img->check_img_type($_FILES['img']['type'][$k])){
-                    echo error("请上传正确的图片");
-                    exit();
-                }
-                if(move_uploaded_file($_FILES['img']['tmp_name'][$k],$save)){
-                    $img_names[]=str_replace($img->root_path.$img->images_dir."/", '', $save);
-                }else{
-                    echo error("上传图片失败");
-                    exit();
-                }
-        }
-    }
-    $imgs=implode(",", $img_names);
+
+	foreach($_FILES['img']['tmp_name'] as $k=>$v){
+	    if(is_uploaded_file($_FILES['img']['tmp_name'][$k])){
+    	    $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['img']['name'][$k]);
+        	    if(!$img->check_img_type($_FILES['img']['type'][$k])){
+        	        echo error("请上传正确的图片");
+        	        exit();
+        	    }
+        	    if(move_uploaded_file($_FILES['img']['tmp_name'][$k],$save)){
+        	        $img_names[]=str_replace($img->root_path.$img->images_dir."/", '', $save);
+        	    }else{
+        	        echo error("上传图片失败");
+        	        exit();
+        	    }
+	    }
+	}
+	$imgs=implode(",", $img_names);
     $time=date("Y-m-d",time());
     $sql="insert into rv_case(mid,gid,case_img,addtime,name,age,yongyao,date,way,content,process) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     $arr=array($_POST['mid'],$_POST['gid'],$imgs,$time,$_POST['name'],$_POST['age'],$_POST['yongyao'],$_POST['date'],$_POST['way'],$_POST['content'],$_POST['process']);
@@ -113,38 +115,39 @@ if($do=='edit'){//编辑案例详情页
 
 if($do=='update'){//
     $id=$_REQUEST['id'];
-    $img_names=$_REQUEST['img_names'];
-    if(!$img_names){//如果更改了图片
-        $old_img_names=$_REQUEST['old_img_names'];
-        $old_img_names=explode(",", $old_img_names);
-        foreach ($old_img_names as $v){
-            unlink($img->root_path.$img->images_dir."/".$v);
-        }
-        $img_names=array();
-        foreach($_FILES['img']['tmp_name'] as $k=>$v){
-            if(is_uploaded_file($_FILES['img']['tmp_name'][$k])){
-                $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['img']['name'][$k]);
-                if(!$img->check_img_type($_FILES['img']['type'][$k])){
-                    echo error("请上传正确的图片");
-                    exit();
-                }
-                if(move_uploaded_file($_FILES['img']['tmp_name'][$k],$save)){
-                    $img_names[]=str_replace($img->root_path.$img->images_dir."/", '', $save);
-                }else{
-                    echo error("上传图片失败");
-                    exit();
-                }
-            }
-        }   
-    }
-    $imgs=implode(",", $img_names);
-    $time=date("Y-m-d",time());
+
+	$img_names=$_REQUEST['img_names'];
+	if(!$img_names){//如果更改了图片
+	    $old_img_names=$_REQUEST['old_img_names'];
+	    $old_img_names=explode(",", $old_img_names);
+	    foreach ($old_img_names as $v){
+	        unlink($img->root_path.$img->images_dir."/".$v);
+	    }
+    	$img_names=array();
+	    foreach($_FILES['img']['tmp_name'] as $k=>$v){
+	        if(is_uploaded_file($_FILES['img']['tmp_name'][$k])){
+    	        $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['img']['name'][$k]);
+    	        if(!$img->check_img_type($_FILES['img']['type'][$k])){
+    	            echo error("请上传正确的图片");
+    	            exit();
+    	        }
+    	        if(move_uploaded_file($_FILES['img']['tmp_name'][$k],$save)){
+    	            $img_names[]=str_replace($img->root_path.$img->images_dir."/", '', $save);
+    	        }else{
+    	            echo error("上传图片失败");
+    	            exit();
+    	        }
+	        }
+	    }   
+	}
+	$imgs=implode(",", $img_names);
+	$time=date("Y-m-d",time());
     $arr=array($_POST['mid'],$_POST['gid'],$imgs,$time,$_POST['name'],$_POST['age'],$_POST['yongyao'],$_POST['date'],$_POST['way'],$_POST['content'],$_POST['process'],$id);
     $sql="UPDATE rv_case SET mid=?,gid=?,case_img=?,addtime=?,name=?,age=?,yongyao=?,date=?,way=?,content=?,process=? WHERE id=? LIMIT 1";
-    if($db->p_e($sql,$arr)){
-        echo close($msg,"adv_list");
-    }else{echo  error($msg);}
-    exit;
+	if($db->p_e($sql,$arr)){
+	    echo close($msg,"adv_list");
+	}else{echo  error($msg);}
+	exit;
 }
 
 if($do=='addcdetail'){//添加案例详情
@@ -192,5 +195,3 @@ if($do=='del'){
     }
     echo error("删除失败！");exit;
 }
-
-
