@@ -14,11 +14,15 @@
 
 //文件保存目录路径
 //$save_path = 'D:/ansuai/uploadfile/';
-$save_path = 'F:/wamp/www/dyz_manage_admin/uploadfile/';
+//$save_path = 'F:/wamp/www/dyz_manage_admin/uploadfile/';
 
 //文件保存目录URL
 //$save_url = 'http://static.duyiwang.cn/';
-$save_url = 'http://192.168.1.138/dyz_manage_admin/uploadfile/';
+//$save_url = 'http://192.168.1.138/dyz_manage_admin/uploadfile/';
+$save_path = 'E:/dyz.duyiwang.cn/uploadfile/';
+//文件保存目录URL
+$save_url = 'http://app.duyiwang.cn/uploadfile/';
+
 //定义允许上传的文件扩展名
 $ext_arr = array(
 	'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp'),

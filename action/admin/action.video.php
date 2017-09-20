@@ -64,6 +64,7 @@ if($do=='video_add'){//添加视频图文
 }
 //修改视频图文
 if($do=='editvideo'){
+    If_rabc(); //检测权限
     $id=$_REQUEST[id];
     //查询
     $sql="select * from rv_video_type where 1=1 and id=?";
@@ -115,7 +116,6 @@ if($do=='del'){
     echo error("删除失败！");exit;
 }
 
-
 //////////////////////////////////////////////////////////
 //////////////////////   视频     //////////////////////////
 //////////////////////////////////////////////////////////
@@ -142,7 +142,8 @@ if($do=='video_list_add'){
 
 if($do=='video_list'){//视频列表页
     If_rabc(); //检测权限
-    $id=$_REQUEST[id];
+    $id=$_REQUEST['id'];
+
     $arr=array();
     $sqlcount ="select count(*) from rv_video_list as a left join rv_video_type as b on a.vid=b.id where vid=$id and b.type=0";
     //设置分页
@@ -202,7 +203,6 @@ if($do=='delvideo'){
     }
     echo error("删除失败！");exit;
 }
-
 
 //////////////////////////////////////////////////////////
 //////////////////////   图文     //////////////////////////

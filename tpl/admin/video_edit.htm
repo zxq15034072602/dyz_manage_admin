@@ -29,7 +29,7 @@
 					<dd><input type="file" name="video_img" class="" multiple id="files" onchange="javascript:setImagePreviews();"/>
 					<p id="preview">
 					 	<{if $row.video_img}>
-					      <img src="http://192.168.1.138/dyz.duyiwang.cn/<{$row.video_img}>"  style="width:70px;height:70px;padding-right:15px"/>  
+					      <img src="<{$row.video_img}>"  style="width:70px;height:70px;padding-right:15px"/>  
 						  <input type="hidden" name="video_img" value="<{$row.video_img}>"/>
 					</p>
 						<{/if}>

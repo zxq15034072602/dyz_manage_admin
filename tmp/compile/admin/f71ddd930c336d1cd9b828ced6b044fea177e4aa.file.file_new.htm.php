@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <?php /* Smarty version Smarty-3.1.12, created on 2017-08-13 16:34:50
          compiled from ".\tpl\admin\file_new.htm" */ ?>
 <?php /*%%SmartyHeaderCode:20156598a81f91a3815-52389803%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+=======
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-14 19:15:12
+         compiled from ".\tpl\admin\file_new.htm" */ ?>
+<?php /*%%SmartyHeaderCode:19723599186404162c5-69989049%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+>>>>>>> upstream/master
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,6 +17,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
+<<<<<<< HEAD
   'nocache_hash' => '20156598a81f91a3815-52389803',
   'function' => 
   array (
@@ -20,6 +27,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_598a81f91c1d29_59453861')) {function content_598a81f91c1d29_59453861($_smarty_tpl) {?><div class="page">
+=======
+  'nocache_hash' => '19723599186404162c5-69989049',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59918640453358_31673428',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_59918640453358_31673428')) {function content_59918640453358_31673428($_smarty_tpl) {?><div class="page">
+>>>>>>> upstream/master
 	<div class="pageContent">
 		<form method="post" enctype="multipart/form-data"  action="?dir=admin&action=file&do=add" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
 			<div class="pageFormContent" layoutH="56">

@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 <?php /* Smarty version Smarty-3.1.12, created on 2017-08-16 14:04:25
          compiled from ".\tpl\admin\article_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:896598fb70880dff6-03218964%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+=======
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-14 19:18:13
+         compiled from ".\tpl\admin\article_list.htm" */ ?>
+<?php /*%%SmartyHeaderCode:31585599186f5991fb8-43774632%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+>>>>>>> upstream/master
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'fdf5f18670bcdb9596b65f13762f025fcf8f8b69' => 
     array (
       0 => '.\\tpl\\admin\\article_list.htm',
+<<<<<<< HEAD
       1 => 1502855680,
       2 => 'file',
     ),
@@ -17,6 +24,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.12',
   'unifunc' => 'content_598fb70885e1c5_52537886',
+=======
+      1 => 1502704280,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '31585599186f5991fb8-43774632',
+  'function' => 
+  array (
+  ),
+>>>>>>> upstream/master
   'variables' => 
   array (
     'list' => 0,
@@ -25,8 +42,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
+<<<<<<< HEAD
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_598fb70885e1c5_52537886')) {function content_598fb70885e1c5_52537886($_smarty_tpl) {?>
+=======
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_599186f59cf045_22252952',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_599186f59cf045_22252952')) {function content_599186f59cf045_22252952($_smarty_tpl) {?>
+>>>>>>> upstream/master
 
 <div class="page">
 	<div class="pageHeader">
@@ -36,7 +60,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="panelBar">
 			<ul class="toolBar">				
  				<!-- <li><a class="add" href="?dir=admin&action=video&do=article_new&id={id}" target="dialog" mask="true"><span>添加</span></a></li>  -->
+<<<<<<< HEAD
 			<li><a class="delete" href="?dir=admin&action=video&do=delarticle&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>			
+=======
+				<!-- <li><a class="delete" href="?dir=admin&action=product&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li> -->
+>>>>>>> upstream/master
 			</ul>
 		</div>
 		<table class="list" layouth="90" style="width:1200px">

@@ -1,22 +1,40 @@
+<<<<<<< HEAD
 <?php /* Smarty version Smarty-3.1.12, created on 2017-08-16 13:58:06
          compiled from ".\tpl\admin\file_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:18112598a7e666e95a3-28197188%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+=======
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-28 09:03:02
+         compiled from ".\tpl\admin\file_list.htm" */ ?>
+<?php /*%%SmartyHeaderCode:316255991856ab00313-91072501%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+>>>>>>> upstream/master
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'a714f9c93aab86711e11a98758f2facdcfa0888d' => 
     array (
       0 => '.\\tpl\\admin\\file_list.htm',
+<<<<<<< HEAD
       1 => 1502863080,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '18112598a7e666e95a3-28197188',
+=======
+      1 => 1503882154,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '316255991856ab00313-91072501',
+>>>>>>> upstream/master
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
+<<<<<<< HEAD
   'unifunc' => 'content_598a7e66709015_99047632',
+=======
+  'unifunc' => 'content_5991856ab3d3a0_58130724',
+>>>>>>> upstream/master
   'variables' => 
   array (
     'username' => 0,
@@ -27,7 +45,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
+<<<<<<< HEAD
 <?php if ($_valid && !is_callable('content_598a7e66709015_99047632')) {function content_598a7e66709015_99047632($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
+=======
+<?php if ($_valid && !is_callable('content_5991856ab3d3a0_58130724')) {function content_5991856ab3d3a0_58130724($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
+>>>>>>> upstream/master
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
@@ -42,7 +64,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="panelBar">
 			<ul class="toolBar">				
  			<li><a class="add" href="?dir=admin&action=file&do=new" target="dialog" mask="true"><span>添加</span></a></li> 
+<<<<<<< HEAD
 			<li><a class="delete" href="?dir=admin&action=file&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>						
+=======
+ 			<li><a class="delete" href="?dir=admin&action=file&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>						
+
+>>>>>>> upstream/master
 			</ul>
 		</div>
 		<table class="list" layouth="90" style="width:1200px">

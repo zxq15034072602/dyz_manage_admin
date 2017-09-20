@@ -35,7 +35,7 @@ if($do=='list'){
 }
 
 //新建
-if($do=="new"){	
+if($do=="new"){ 
     If_rabc(); //检测权限
     //门店
     $sql="select * from rv_mendian";
@@ -45,19 +45,21 @@ if($do=="new"){
     $sql="select g.* from rv_goods as g left join rv_type as t on g.fatherid=t.id where 1=1 and t.type=0 ";
     $db->p_e($sql, array());
     $sp=$db->fetchAll();
-    
-	$smt = new smarty();
-	smarty_cfg($smt);
-	$smt->assign('md',$md);
-	$smt->assign('sp',$sp);
-	$smt->display('case_new.htm');
-	exit;
+  
+    $smt = new smarty();
+    smarty_cfg($smt);
+    $smt->assign('md',$md);
+    $smt->assign('sp',$sp);
+    $smt->display('case_new.htm');
+    exit;
+
 }
 
 if($do=="add"){
     //查询
     If_rabc(); //检测权限
     $img_names=array();
+
 	foreach($_FILES['img']['tmp_name'] as $k=>$v){
 	    if(is_uploaded_file($_FILES['img']['tmp_name'][$k])){
     	    $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['img']['name'][$k]);
@@ -113,6 +115,7 @@ if($do=='edit'){//编辑案例详情页
 
 if($do=='update'){//
     $id=$_REQUEST['id'];
+
 	$img_names=$_REQUEST['img_names'];
 	if(!$img_names){//如果更改了图片
 	    $old_img_names=$_REQUEST['old_img_names'];
@@ -192,24 +195,3 @@ if($do=='del'){
     }
     echo error("删除失败！");exit;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

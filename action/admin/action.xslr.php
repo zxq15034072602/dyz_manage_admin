@@ -46,11 +46,86 @@ if($do==""){
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('list',$list);
 	$smt->assign('total',$total);
-	$smt->assign('name',$_POST['name']);
+	$smt->assign('username',$_POST['name']);
 	$smt->assign('pageNum',$_POST['pageNum']);
 	$smt->display('xslr_list.htm');
 	exit;
 	
+}if($do=="daochu"){	
+	If_rabc(); //检测权限
+	$sql2="SELECT * FROM rv_buy where 1=1 order by id desc";
+	$db->p_e($sql2,array());
+	$list=$db->fetchAll();
+	foreach($list as &$k){
+		if($k['sex']==1){
+			$k['sex1']='男';
+		}elseif($k['sex']==2){
+			$k['sex1']='女';
+		}else{
+			$k['sex1']='保密';
+		}
+		$sql="select * from rv_user where 1=1 and id=?";
+		$db->p_e($sql,array($k['uid']));
+		$k['user']=$db->fetchRow();
+		
+		$sql="select * from rv_goods where 1=1 and id=?";
+		$db->p_e($sql,array($k['gid']));
+		$k['goods']=$db->fetchRow();	
+	}
+	$time=date(time());
+	header("Content-Type: application/vnd.ms-excel;charset=gbk");   
+	header("Content-Disposition: attachment; filename=".$time.".xls");
+	echo "<table border='1'>";
+			echo "<tr>";
+			echo "<th width='30'>ID</th>";
+			echo "<th width='80'>销售人姓名</th>";
+			echo "<th width='120'>销售商品</th>";
+			echo "<th width='80'>姓名</th>";
+			echo "<th width='80'>姓别</th>";
+			echo "<th width='80'>年龄</th>";
+			echo "<th width='200'>电话</th>";
+			echo "<th width='80'>数量</th>";
+			echo "<th width='80'>单价</th>";
+			echo "<th width='80'>总价</th>";
+			echo "<th width='160'>时间</th>";
+			echo "</tr>";
+		foreach($list as $v){
+			echo "<tr>";
+			echo "<td width='30'>".$v['id']."</td>";
+			echo "<td width='80'>".$v['user']['name']."</td>";
+			echo "<td width='120'>".$v['goods']['name']."</td>";
+			echo "<td width='80'>".$v['username']."</td>";
+			echo "<td width='80'>".$v['sex1']."</td>";
+			echo "<td width='80'>".$v['age']."</td>";
+			echo "<td width='200'>".$v['tel']."</td>";
+			echo "<td width='80'>".$v['shuliang']."</td>";
+			echo "<td width='80'>".$v['goods']['money']."/".$v['goods']['dw']."</td>";
+			echo "<td width='80'>".$v['goods']['money']*$v['shuliang']."</td>";
+			echo "<td width='160'>".$v['addtime']."</td>";
+			echo "</tr>";
+		}
+	echo "</table>";
+	exit;
+}elseif ($do == "show_i_verify") { // 查看录入审核信息
+    $vid = $_REQUEST['vid'];
+
+    $sql ="select b.id,b.uid,b.mid,b.addtime,b.endtime,u.name,b.status,b.total_price,b.sale_price,GROUP_CONCAT(bg.goods_id) as goods_id from rv_buy as b,rv_buy_goods as bg,rv_user as u where b.id=bg.buy_id and b.uid=u.id and b.id=?";
+    $db->p_e($sql, array(
+        $vid
+    ));
+    $verify_info = $db->fetchRow();
+    if($verify_info){
+        $sql="select * from rv_buy_goods as bg, rv_goods as g where bg.goods_id=g.id and bg.goods_id and buy_id=?";
+        $db->p_e($sql, array($verify_info[id]));
+        $verify_info['goods']=$db->fetchAll();
+    }
+    
+    $smt = new Smarty();
+    smarty_cfg($smt);
+    $smt->assign("verify_info", $verify_info);
+    $smt->assign("flag", "show_i_verify");
+    $smt->display('xslr_show.htm');
+    exit();
 }
 
 if($do=='mendian'){
@@ -615,5 +690,6 @@ if($do=='daochu_goods_year'){
         echo "</tr>";
     }
     echo "</table>";
+
 }
 ?>

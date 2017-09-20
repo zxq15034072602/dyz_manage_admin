@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-03-07 14:17:34
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-11 16:34:49
          compiled from ".\tpl\admin\pp_edit.htm" */ ?>
 <?php /*%%SmartyHeaderCode:1652458b7df2f203ee9-04696747%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd97d032dd28860315c606d118b9ae08de7304b25' => 
     array (
       0 => '.\\tpl\\admin\\pp_edit.htm',
-      1 => 1488867450,
+      1 => 1498298295,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'row' => 0,
-    'pp' => 0,
+    'type' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -31,15 +31,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " />
 			<div class="pageFormContent" layoutH="56">
 				<dl>
+				    <input type="hidden" name="type" value="<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
+" />
 					<dt>品牌名称：</dt>
-					<dd><input type="text" name="name" class="required" size="30" value="<?php echo $_smarty_tpl->tpl_vars['pp']->value['name'];?>
+					<dd><input type="text" name="name" class="required" size="30" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['name'];?>
 "/></dd>
 				</dl>
-				<dl>
-					<dt>url地址：</dt>
-					<dd><input type="text" name="url" class="required" size="30" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['url'];?>
-"/></dd>
-				</dl>
+				
 			</div>
 			<div class="formBar">
 				<ul>

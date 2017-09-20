@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version Smarty-3.1.12, created on 2017-07-21 16:10:04
+=======
+<?php /* Smarty version Smarty-3.1.12, created on 2017-08-09 09:52:51
+>>>>>>> upstream/master
          compiled from ".\tpl\admin\gg_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:2206858a268859e92f1-58094840%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (

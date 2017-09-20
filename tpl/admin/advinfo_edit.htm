@@ -21,7 +21,11 @@
 					    <input type="file" name="adv_img[]" class="" multiple id="files" onchange="javascript:setImagePreviews();"/>
 					     <p id="preview">
 					     <{foreach from=$img_names item=img key=i}>
+<<<<<<< HEAD
 					     	<img id="img_<{$i}>" src="http://192.168.1.138/dyz.duyiwang.cn/img/<{$img}>" style="width:70px;height:70px;padding-right:15px"/>
+=======
+					     	<img id="img_<{$i}>" src="/img/<{$img}>" style="width:70px;height:70px;padding-right:15px"/>
+>>>>>>> upstream/master
 					     	<input type="hidden" name="img_names[]" value="<{$img}>"/>
 					     <{/foreach}>
 					     </p>

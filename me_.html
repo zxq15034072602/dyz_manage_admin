@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+    <title>Title</title>
+    <style type="">
+        html,body{
+            padding: 0;
+            margin: 0;
+        }
+        #youkuplayer{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="youkuplayer"></div>
+<script type="text/javascript" src="./jquery.min.js"></script>
+<script type="text/javascript" src="//player.youku.com/jsapi"></script>
+<script type="text/javascript">
+    var winHeight;
+    if (window.innerHeight)
+        winHeight = window.innerHeight;
+    else if ((document.body) && (document.body.clientHeight))
+        winHeight = document.body.clientHeight;
+    $("#youkuplayer").css("height",winHeight)
+
+
+
+    var reg = new RegExp("(^|&)vid=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    var player = new YKU.Player('youkuplayer',{
+        styleid: '0',
+        client_id: 'cd87e08045473b0a',
+        vid: r[2],
+        newPlayer: true,
+        autoplay: true
+    });
+</script>
+</body>
+</html>

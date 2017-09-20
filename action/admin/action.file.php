@@ -52,14 +52,15 @@ if($do=="add"){
     }
     $upfilename=array_filter($_FILES['filename']['name'],delEmpty);
     //配置上传目录
-    
-    $dirname="E:/dyz_manage_admin/file/".date("Y-m");
+    $dirname="e:/dyz_manage/file/".date("Y-m-d");
+   // $dirname="E:/dyz_manage_admin/file/".date("Y-m");
     //$dirname="F:/wamp/www/dyz_manage_admin/file/".date("Y-m");
     $path="/file/".date("Y-m")."/";
     if(!is_dir($dirname)){
         mkdir($dirname);
     }
     $time=date("Y-m-d",time());
+
     foreach($upfilename as $k=>$v){
         
         //判断文件是否存在
@@ -84,7 +85,6 @@ if($do=="add"){
     }
     if($upfile){echo close($msg,"file_upload");}else{echo error($msg);}
 }
-
 //删除文件
 if($do=='del'){
     $id=$_REQUEST[id];
@@ -94,4 +94,5 @@ if($do=='del'){
     }
     echo error("删除失败！");exit;
 }
+
 
