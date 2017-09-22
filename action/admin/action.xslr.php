@@ -7,8 +7,11 @@ if($do==""){
 	$arr=array();
 	$sqlcount ="SELECT count(*) FROM rv_buy where 1=1 ";
 	if($_POST['name']){
-		$search .= "and username like ? ";
-		$arr[]="%".$_POST['name']."%";
+	    $sql="select id from rv_user where name='$_POST[name]'";
+	    $db->p_e($sql, array());
+	    $uid=$db->fetchRow()['id'];
+		$search .= "and uid = ? ";
+		$arr[]=$uid;
 		}	
 	//设置分页
 	if($_POST['numPerPage']==""){
@@ -27,6 +30,8 @@ if($do==""){
 	
 	//查询
 	$sql2="SELECT * FROM rv_buy where 1=1 ".$search."order by id desc LIMIT ".$pageNum.",".$numPerPage;
+
+	
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
 	foreach($list as &$k){

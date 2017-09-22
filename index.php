@@ -13,7 +13,7 @@
 	//配置数据库
 	$Config['dsn']="mysql:dbname=dyz;host=127.0.0.1;charset=utf8";     //数据库主机名
 	$Config['name']="root";		    //数据库用户名
-	$Config['password']="abc..123##@)5"; 				//数据库密码
+	$Config['password']="root"; 				//数据库密码
 	//$Config['db']="mysql:dbname=test;";   			//数据库名称
 	//引入类库及公共方法
 	define("CORE",true); 	    //根目录    dirname(string path)返回路径中的目录部分
