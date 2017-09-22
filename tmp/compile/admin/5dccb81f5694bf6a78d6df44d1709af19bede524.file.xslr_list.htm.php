@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-09-22 16:56:18
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-22 18:05:19
          compiled from ".\tpl\admin\xslr_list.htm" */ ?>
-<?php /*%%SmartyHeaderCode:13859c228e4da2b79-13798442%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2695959c4d4375a0dd0-61659154%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5dccb81f5694bf6a78d6df44d1709af19bede524' => 
     array (
       0 => '.\\tpl\\admin\\xslr_list.htm',
-      1 => 1506070575,
+      1 => 1506074679,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '13859c228e4da2b79-13798442',
+  'nocache_hash' => '2695959c4d4375a0dd0-61659154',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_59c228e4ddfc09_57267442',
+  'unifunc' => 'content_59c4d4375dde66_49179316',
   'variables' => 
   array (
     'username' => 0,
@@ -27,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59c228e4ddfc09_57267442')) {function content_59c228e4ddfc09_57267442($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=xslr">
+<?php if ($_valid && !is_callable('content_59c4d4375dde66_49179316')) {function content_59c4d4375dde66_49179316($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=xslr">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
@@ -41,7 +41,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<table class="searchContent">
 				<tr>
 					<td>
-						购买者姓名:<input type="text" name="name" size="10" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+						销售人姓名:<input type="text" name="name" size="10" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 "/>
 					</td>
 					<td>
