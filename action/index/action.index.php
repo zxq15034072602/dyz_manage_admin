@@ -1,7 +1,9 @@
 <?php
 if(!defined('CORE'))exit("error!"); 
+
 //首页	
 if($do==""){
+
 	$win=array("xitong"=>PHP_OS,"yuming"=>$_SERVER['SERVER_NAME'],"PHP"=>PHP_VERSION,"mysql"=>0,"yinqing"=>$_SERVER['SERVER_SOFTWARE'],"duankou"=>$_SERVER['SERVER_PORT'],"time"=>date('Y-m-d h:i:s',time()));
 	$ipInfos = GetIpLookup($_SERVER["REMOTE_ADDR"]);
 	if(!isLogin()){exit($lang_cn['rabc_is_login']);} //判断是否登录

@@ -30,18 +30,26 @@ if($do==""){
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
 	foreach($list as &$k){
+        
 		$sql="select * from rv_user where 1=1 and id=?";
 		$db->p_e($sql,array($k['uid']));
 		$k['user']=$db->fetchRow();
-		
-		$sql="select * from rv_goods where 1=1 and id=?";
-		$db->p_e($sql,array($k['gid']));
-		$k['goods']=$db->fetchRow();
 
 		$sql="select * from rv_mendian where 1=1 and id=?";
 		$db->p_e($sql, array($k['mid']));
 		$k["store"] = $db->fetchRow();	
+		
+		$sql="select * from rv_buy_goods where buy_id=?";
+		$db->p_e($sql, array($k['id']));
+		$k['goods']=$db->fetchAll();
+		foreach($k['goods'] as $kk=>$vv){
+		    $k['count']+=$vv['count'];	    
+		    $sql="select * from rv_goods where 1=1 and id=?";
+		    $db->p_e($sql,array($vv['goods_id']));
+		    $k['goods']=$db->fetchRow();
+		}
 	}
+
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('list',$list);
@@ -68,9 +76,15 @@ if($do==""){
 		$db->p_e($sql,array($k['uid']));
 		$k['user']=$db->fetchRow();
 		
-		$sql="select * from rv_goods where 1=1 and id=?";
-		$db->p_e($sql,array($k['gid']));
-		$k['goods']=$db->fetchRow();	
+	    $sql="select * from rv_buy_goods where buy_id=?";
+		$db->p_e($sql, array($k['id']));
+		$k['goods']=$db->fetchAll();
+		foreach($k['goods'] as $kk=>$vv){
+		    $k['count']+=$vv['count'];	    
+		    $sql="select * from rv_goods where 1=1 and id=?";
+		    $db->p_e($sql,array($vv['goods_id']));
+		    $k['goods']=$db->fetchRow();
+		}
 	}
 	$time=date(time());
 	header("Content-Type: application/vnd.ms-excel;charset=gbk");   
@@ -86,6 +100,7 @@ if($do==""){
 			echo "<th width='200'>电话</th>";
 			echo "<th width='80'>数量</th>";
 			echo "<th width='80'>单价</th>";
+			echo "<th width='80'>自定实际金额</th>";
 			echo "<th width='80'>总价</th>";
 			echo "<th width='160'>时间</th>";
 			echo "</tr>";
@@ -98,9 +113,10 @@ if($do==""){
 			echo "<td width='80'>".$v['sex1']."</td>";
 			echo "<td width='80'>".$v['age']."</td>";
 			echo "<td width='200'>".$v['tel']."</td>";
-			echo "<td width='80'>".$v['shuliang']."</td>";
+			echo "<td width='80'>".$v['count']."</td>";
 			echo "<td width='80'>".$v['goods']['money']."/".$v['goods']['dw']."</td>";
-			echo "<td width='80'>".$v['goods']['money']*$v['shuliang']."</td>";
+			echo "<td width='80'>".$v['sale_price']."（元）</td>";
+			echo "<td width='80'>".$v['total_price']."（元）</td>";
 			echo "<td width='160'>".$v['addtime']."</td>";
 			echo "</tr>";
 		}
