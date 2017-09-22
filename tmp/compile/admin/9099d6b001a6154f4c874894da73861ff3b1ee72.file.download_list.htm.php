@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-16 16:55:48
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-21 10:53:18
          compiled from ".\tpl\admin\download_list.htm" */ ?>
-<?php /*%%SmartyHeaderCode:22936591c00969864e2-33842624%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2423859c3299ed53994-76622162%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,20 +11,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '22936591c00969864e2-33842624',
+  'nocache_hash' => '2423859c3299ed53994-76622162',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_591c00969864e5_68349816',
   'variables' => 
   array (
     'list' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c3299ed8d540_78899093',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_591c00969864e5_68349816')) {function content_591c00969864e5_68349816($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_59c3299ed8d540_78899093')) {function content_59c3299ed8d540_78899093($_smarty_tpl) {?>
 <div class="page">
 	<div class="pageHeader">
 		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=goods" method="post">

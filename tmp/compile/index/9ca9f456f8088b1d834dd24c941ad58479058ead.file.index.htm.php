@@ -1,30 +1,22 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.12, created on 2017-09-07 14:18:28
-=======
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-14 19:10:14
->>>>>>> upstream/master
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:36:41
          compiled from ".\tpl\index\index.htm" */ ?>
-<?php /*%%SmartyHeaderCode:16943589d17e74f1a22-22646345%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1979659c2280a26d661-70650387%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9ca9f456f8088b1d834dd24c941ad58479058ead' => 
     array (
       0 => '.\\tpl\\index\\index.htm',
-<<<<<<< HEAD
-      1 => 1504765102,
-=======
-      1 => 1502709012,
->>>>>>> upstream/master
+      1 => 1505896599,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '16943589d17e74f1a22-22646345',
+  'nocache_hash' => '1979659c2280a26d661-70650387',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_589d17e75246a5_64738520',
+  'unifunc' => 'content_59c2280a3cf5c0_78136186',
   'variables' => 
   array (
     'cfg' => 0,
@@ -33,7 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_589d17e75246a5_64738520')) {function content_589d17e75246a5_64738520($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_59c2280a3cf5c0_78136186')) {function content_59c2280a3cf5c0_78136186($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -228,29 +220,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 									<li><a href="index.php?action=verify&dir=admin&do=store_list1" target="navTab" rel="role">经销商申请审核</a></li>
 									<li><a href="index.php?action=verify&dir=admin&do=store_list2" target="navTab" rel="role">加盟商申请审核</a></li>
 									<li><a href="index.php?action=verify&dir=admin&do=store_list3" target="navTab" rel="role">总部人员申请审核</a></li>
-								</ul>
-							</li>
-							<?php }?>
-							<?php if (in_array('admin_menu_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
-							<li><a>菜单</a>								
-								<ul>
-									<li><a href="index.php?action=menu&dir=admin&do=list" target="navTab" rel="role">广告管理</a></li>
-								</ul>
-							</li>
-							<?php }?>
-							<?php if (in_array('admin_file_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
-							<li><a>文件管理</a>								
-								<ul>
-									<li><a href="index.php?action=file&dir=admin&do=list" target="navTab" rel="role">文件上传</a></li>
-								</ul>
-							</li>
-							<?php }?>
-							<?php if (in_array('admin_data_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
-							<li><a>资料模块</a>								
-								<ul>
-									<li><a href="index.php?action=product&dir=admin&do=list" target="navTab" rel="role">产品资料</a></li>
-									<li><a href="index.php?action=video&dir=admin&do=list" target="navTab" rel="role">营销秘籍视频</a></li>
-									<li><a href="index.php?action=case&dir=admin&do=list" target="navTab" rel="role">康复案例</a></li>
 								</ul>
 							</li>
 							<?php }?>

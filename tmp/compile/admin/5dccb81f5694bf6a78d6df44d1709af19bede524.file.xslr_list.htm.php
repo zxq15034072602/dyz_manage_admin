@@ -1,30 +1,22 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-07 10:20:59
-=======
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-04 14:25:59
->>>>>>> upstream/master
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-21 16:21:35
          compiled from ".\tpl\admin\xslr_list.htm" */ ?>
-<?php /*%%SmartyHeaderCode:1781158c5f2b9dbcff3-94245584%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:109159c228fe43ccf5-94901663%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5dccb81f5694bf6a78d6df44d1709af19bede524' => 
     array (
       0 => '.\\tpl\\admin\\xslr_list.htm',
-<<<<<<< HEAD
-      1 => 1501579411,
-=======
-      1 => 1501582296,
->>>>>>> upstream/master
+      1 => 1505982093,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1781158c5f2b9dbcff3-94245584',
+  'nocache_hash' => '109159c228fe43ccf5-94901663',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_58c5f2b9dfa092_54015178',
+  'unifunc' => 'content_59c228fe4cb7a0_04095414',
   'variables' => 
   array (
     'username' => 0,
@@ -35,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58c5f2b9dfa092_54015178')) {function content_58c5f2b9dfa092_54015178($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=xslr">
+<?php if ($_valid && !is_callable('content_59c228fe4cb7a0_04095414')) {function content_59c228fe4cb7a0_04095414($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=xslr">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
@@ -63,12 +55,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">
-<<<<<<< HEAD
-				<li><a class="icon" href="?dir=admin&action=xslr&do=daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出</span></a></li> 
-=======
 				<li><a class="icon" href="?dir=admin&action=xslr&do=daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出</span></a></li>
-				 <li class=""><a class="edit" href="?&dir=admin&action=xslr&do=show_i_verify&vid={id}" target="dialog" mask="true"><span>查看</span></a></li>
->>>>>>> upstream/master
+				<li class=""><a class="edit" href="?&dir=admin&action=xslr&do=show_i_verify&vid={id}" target="dialog" mask="true"><span>查看</span></a></li>
+				<li><a class="edit" href="?dir=admin&action=xslr&do=edit&vid={id}" target="dialog" mask="true"><span>修改</span></a></li>
 				<li class="line">line</li>
 			</ul>
 		</div>

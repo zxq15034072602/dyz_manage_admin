@@ -108,11 +108,8 @@ if($do==""){
 	exit;
 }elseif ($do == "show_i_verify") { // 查看录入审核信息
     $vid = $_REQUEST['vid'];
-
-    $sql ="select b.id,b.uid,b.mid,b.addtime,b.endtime,u.name,b.status,b.total_price,b.sale_price,GROUP_CONCAT(bg.goods_id) as goods_id from rv_buy as b,rv_buy_goods as bg,rv_user as u where b.id=bg.buy_id and b.uid=u.id and b.id=?";
-    $db->p_e($sql, array(
-        $vid
-    ));
+    $sql ="select b.id,b.uid,b.mid,b.addtime,b.endtime,u.name,b.status,b.total_price,b.sale_price,GROUP_CONCAT(bg.goods_id) as goods_id from rv_buy as b,rv_buy_goods as bg,rv_user as u where b.id=bg.buy_id and b.uid=u.id and b.id=$vid";    
+    $db->p_e($sql,array());
     $verify_info = $db->fetchRow();
     if($verify_info){
         $sql="select * from rv_buy_goods as bg, rv_goods as g where bg.goods_id=g.id and bg.goods_id and buy_id=?";
@@ -126,6 +123,51 @@ if($do==""){
     $smt->assign("flag", "show_i_verify");
     $smt->display('xslr_show.htm');
     exit();
+}
+//修改销售录入
+if($do=='edit'){
+    $vid=$_REQUEST['vid'];
+    $sql="select * from rv_buy where id=$vid";
+    $db->p_e($sql, array());
+    $sales=$db->fetchRow();
+    $sql="select name from rv_user where id=?";
+    $db->p_e($sql, array($sales['uid']));
+    $sales['uname']=$db->fetchRow()['name'];
+    $sql="select name from rv_mendian where id=?";
+    $db->p_e($sql, array($sales['mid']));
+    $sales['mdname']=$db->fetchRow()['name'];
+    $sql="select a.*,b.name,b.money from rv_buy_goods as a left join rv_goods as b on a.goods_id=b.id where a.buy_id=? and a.goods_type=0";
+    $db->p_e($sql, array($sales['id']));
+    $sales['goods']=$db->fetchAll();
+    $smt=new Smarty();
+    smarty_cfg($smt);
+    $smt->assign('sales',$sales);
+    $smt->display('sales_edit.htm');
+    exit();
+}elseif($do=='update'){
+    $id=$_POST['id'];
+    $time=date("Y-m-d H:i:s",time());
+    if($_POST){
+        foreach($_POST['id'] as $key=>$val){
+            $goods[$key]['id']=$_POST['id'][$key];
+            $goods[$key]['goods_id']=$_POST['goods_id'][$key];
+            $goods[$key]['count']=$_POST['count'][$key];
+        }
+        $arr=array($_POST['username'],$_POST['sex'],$_POST['age'],$_POST['tel'],$time,$_POST['address'],$_POST['sale_price'],$_POST['total_price'],$_POST['vid'],$_POST['uid'],$_POST['mid']);
+        $sql="update rv_buy set username=?,sex=?,age=?,tel=?,addtime=?,address=?,sale_price=?,total_price=? where 1=1 and id=? and uid=? and mid=? limit 1";
+        if($db->p_e($sql, $arr)){
+            foreach($goods as $k=>$v){
+                $arr=array($v['goods_id'],$v['count'],$v['id']);
+                $sql="update rv_buy_goods set goods_id=?,count=? where id=? limit 1";
+                $list.=$db->p_e($sql, $arr);
+            }
+            if($list){
+                echo close($msg,"xslr_update");
+            }else{
+                echo  error($msg);
+            }
+        }     
+    }   
 }
 
 if($do=='mendian'){

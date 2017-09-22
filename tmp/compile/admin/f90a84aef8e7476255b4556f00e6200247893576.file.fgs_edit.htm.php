@@ -1,29 +1,29 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-02-10 15:05:34
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:57:40
          compiled from ".\tpl\admin\fgs_edit.htm" */ ?>
-<?php /*%%SmartyHeaderCode:5708589d6633917c52-66071495%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2483159c22d84156726-12367552%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f90a84aef8e7476255b4556f00e6200247893576' => 
     array (
       0 => '.\\tpl\\admin\\fgs_edit.htm',
-      1 => 1486710330,
+      1 => 1500600483,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5708589d6633917c52-66071495',
+  'nocache_hash' => '2483159c22d84156726-12367552',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_589d6633954ce7_76404925',
   'variables' => 
   array (
     'row' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c22d84184f57_68353160',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_589d6633954ce7_76404925')) {function content_589d6633954ce7_76404925($_smarty_tpl) {?><div class="page">
+<?php if ($_valid && !is_callable('content_59c22d84184f57_68353160')) {function content_59c22d84184f57_68353160($_smarty_tpl) {?><div class="page">
 	<div class="pageContent">
 		<form method="post" action="?dir=admin&action=fgs&do=updata" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 			<input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>

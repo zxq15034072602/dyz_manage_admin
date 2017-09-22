@@ -208,6 +208,7 @@ if($do == "tg"){
 }
 if($do == "tg_zb"){//总部人员审核
 	//If_rabc(); //检测权限
+	
 	$sql="UPDATE rv_verify set status=1,updatetime=now() where id=? limit 1";
 	if($db->p_e($sql,array($id))){
 	    $sql="select * from rv_user_jingxiao_jiameng where uid=?";
