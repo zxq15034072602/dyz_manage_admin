@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-01 16:49:40
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 17:00:13
          compiled from ".\tpl\admin\xslr_show.htm" */ ?>
-<?php /*%%SmartyHeaderCode:145459804078971e93-58490919%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:703759c22e1d74e635-66792665%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,20 +11,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '145459804078971e93-58490919',
+  'nocache_hash' => '703759c22e1d74e635-66792665',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_598040789aef23_34243285',
   'variables' => 
   array (
     'verify_info' => 0,
     'good' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c22e1d78b6c8_83513267',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_598040789aef23_34243285')) {function content_598040789aef23_34243285($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'E:\\dyz.duyiwang.cn\\lib\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_59c22e1d78b6c8_83513267')) {function content_59c22e1d78b6c8_83513267($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'E:\\dyz.duyiwang.cn\\lib\\plugins\\modifier.truncate.php';
 ?>   
 <div class="review_con_zn">
     <p class="review_title_zn">

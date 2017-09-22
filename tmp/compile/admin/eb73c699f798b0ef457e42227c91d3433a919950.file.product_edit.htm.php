@@ -1,40 +1,20 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-16 17:47:33
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:52:03
          compiled from ".\tpl\admin\product_edit.htm" */ ?>
-<?php /*%%SmartyHeaderCode:2806059940dcd1c65a6-82108635%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-=======
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-16 18:06:43
-         compiled from ".\tpl\admin\product_edit.htm" */ ?>
-<?php /*%%SmartyHeaderCode:3605994189272fa12-24870376%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
->>>>>>> upstream/master
+<?php /*%%SmartyHeaderCode:2208659c22c33ab1201-73036603%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'eb73c699f798b0ef457e42227c91d3433a919950' => 
     array (
       0 => '.\\tpl\\admin\\product_edit.htm',
-<<<<<<< HEAD
-      1 => 1502876849,
+      1 => 1505895234,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2806059940dcd1c65a6-82108635',
-=======
-      1 => 1502877992,
-      2 => 'file',
-    ),
-  ),
-  'nocache_hash' => '3605994189272fa12-24870376',
->>>>>>> upstream/master
+  'nocache_hash' => '2208659c22c33ab1201-73036603',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-<<<<<<< HEAD
-  'unifunc' => 'content_59940dcd23efd3_96441898',
-=======
-  'unifunc' => 'content_5994189276caa1_23561341',
->>>>>>> upstream/master
   'variables' => 
   array (
     'row' => 0,
@@ -42,12 +22,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'roww' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c22c33ab1200_49805624',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<<<<<<< HEAD
-<?php if ($_valid && !is_callable('content_59940dcd23efd3_96441898')) {function content_59940dcd23efd3_96441898($_smarty_tpl) {?><link rel="stylesheet" href="kindeditor/themes/default/default.css" />
-=======
-<?php if ($_valid && !is_callable('content_5994189276caa1_23561341')) {function content_5994189276caa1_23561341($_smarty_tpl) {?><link rel="stylesheet" href="kindeditor/themes/default/default.css" />
->>>>>>> upstream/master
+<?php if ($_valid && !is_callable('content_59c22c33ab1200_49805624')) {function content_59c22c33ab1200_49805624($_smarty_tpl) {?><link rel="stylesheet" href="kindeditor/themes/default/default.css" />
 	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
 	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
 	<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
@@ -137,11 +115,8 @@ $_smarty_tpl->tpl_vars['roww']->_loop = true;
 					<dd><input type="file" name="good_img" class="" multiple id="files" onchange="javascript:setImagePreviews();"/>
 					<p id="preview">
 					        <?php if ($_smarty_tpl->tpl_vars['row']->value['good_img']){?>
-<<<<<<< HEAD
-					     	<img id="img" src="http://192.168.1.138/dyz.duyiwang.cn<?php echo $_smarty_tpl->tpl_vars['row']->value['good_img'];?>
-=======
+
 					     	<img id="img" src="<?php echo $_smarty_tpl->tpl_vars['row']->value['good_img'];?>
->>>>>>> upstream/master
 " style="width:70px;height:70px;padding-right:15px"/>
 					     	<input type="hidden" name="good_img" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['good_img'];?>
 "/>

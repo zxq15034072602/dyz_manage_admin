@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-30 17:45:49
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:40:48
          compiled from ".\tpl\admin\xslr_goods_week_show.htm" */ ?>
-<?php /*%%SmartyHeaderCode:2950459a67c8d317763-20524570%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1877359c2299063a577-77467625%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c21f031f40a72fcaa660d75d40eaf4cf2d69a53a' => 
     array (
       0 => '.\\tpl\\admin\\xslr_goods_week_show.htm',
-      1 => 1504086275,
+      1 => 1505895234,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2950459a67c8d317763-20524570',
+  'nocache_hash' => '1877359c2299063a577-77467625',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_59a67c8d36aab5_63754485',
   'variables' => 
   array (
     'username' => 0,
@@ -27,8 +25,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c22990677604_29349977',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59a67c8d36aab5_63754485')) {function content_59a67c8d36aab5_63754485($_smarty_tpl) {?><div class="page">
+<?php if ($_valid && !is_callable('content_59c22990677604_29349977')) {function content_59c22990677604_29349977($_smarty_tpl) {?><div class="page">
 	<div class="pageHeader">
 		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=xslr" method="post">
 		<div class="searchBar">
@@ -60,7 +60,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<th align="center">排名</th>
 					<th align="center">产品名</th>
 					<th align="center">销售数量</th>
-					<th align="center">单价</th>
+					<th align="center">单价（元）</th>
+					<th align="center">销售额（元）</th>
 				</tr>
 			</thead>
 			<tbody>		
@@ -77,8 +78,11 @@ $_smarty_tpl->tpl_vars['week']->_loop = true;
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['week']->value['gname'];?>
 </td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['week']->value['sum'];?>
-</td>
+ (<?php echo $_smarty_tpl->tpl_vars['week']->value['dw'];?>
+)</td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['week']->value['money'];?>
+</td>
+					<td align="center"><?php echo $_smarty_tpl->tpl_vars['week']->value['total'];?>
 </td>
 				</tr>
 				<?php } ?>	

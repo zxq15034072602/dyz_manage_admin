@@ -52,8 +52,7 @@ if($do=="add"){
     }
     $upfilename=array_filter($_FILES['filename']['name'],delEmpty);
     //配置上传目录
-    $dirname="e:/dyz_manage/file/".date("Y-m-d");
-   // $dirname="E:/dyz_manage_admin/file/".date("Y-m");
+     $dirname="E:/dyz.duyiwamg.cn/file/".date("Y-m-d");
     //$dirname="F:/wamp/www/dyz_manage_admin/file/".date("Y-m");
     $path="/file/".date("Y-m")."/";
     if(!is_dir($dirname)){

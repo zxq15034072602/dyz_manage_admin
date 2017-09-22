@@ -1,40 +1,20 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-16 11:53:10
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:33:18
          compiled from ".\tpl\admin\video_type.htm" */ ?>
-<?php /*%%SmartyHeaderCode:16357598fabae7b5260-96034697%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-=======
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-17 11:10:32
-         compiled from ".\tpl\admin\video_type.htm" */ ?>
-<?php /*%%SmartyHeaderCode:252525991856dce8792-76499514%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
->>>>>>> upstream/master
+<?php /*%%SmartyHeaderCode:3029059c227cea532e8-39439569%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'e80047a77d0177c3e779a02558aaf529b590a474' => 
     array (
       0 => '.\\tpl\\admin\\video_type.htm',
-<<<<<<< HEAD
-      1 => 1502855584,
-      2 => 'file',
-    ),
-  ),
-  'nocache_hash' => '16357598fabae7b5260-96034697',
-=======
       1 => 1502939354,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '252525991856dce8792-76499514',
->>>>>>> upstream/master
+  'nocache_hash' => '3029059c227cea532e8-39439569',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-<<<<<<< HEAD
-  'unifunc' => 'content_598fabae850cb5_42848674',
-=======
-  'unifunc' => 'content_5991856dd25820_91206190',
->>>>>>> upstream/master
   'variables' => 
   array (
     'username' => 0,
@@ -44,12 +24,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c227cea90373_56463250',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<<<<<<< HEAD
-<?php if ($_valid && !is_callable('content_598fabae850cb5_42848674')) {function content_598fabae850cb5_42848674($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
-=======
-<?php if ($_valid && !is_callable('content_5991856dd25820_91206190')) {function content_5991856dd25820_91206190($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
->>>>>>> upstream/master
+<?php if ($_valid && !is_callable('content_59c227cea90373_56463250')) {function content_59c227cea90373_56463250($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>

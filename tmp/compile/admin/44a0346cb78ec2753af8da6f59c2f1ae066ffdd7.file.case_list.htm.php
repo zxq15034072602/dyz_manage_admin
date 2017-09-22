@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-17 09:02:36
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:33:19
          compiled from ".\tpl\admin\case_list.htm" */ ?>
-<?php /*%%SmartyHeaderCode:2973598c1f67507d13-61482677%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-=======
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-28 09:09:29
-         compiled from ".\tpl\admin\case_list.htm" */ ?>
-<?php /*%%SmartyHeaderCode:85415991856ee93b83-32465827%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
->>>>>>> upstream/master
+<?php /*%%SmartyHeaderCode:1304059c227cf08cbb4-82562883%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -17,20 +11,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-<<<<<<< HEAD
-  'nocache_hash' => '2973598c1f67507d13-61482677',
-=======
-  'nocache_hash' => '85415991856ee93b83-32465827',
->>>>>>> upstream/master
+  'nocache_hash' => '1304059c227cf08cbb4-82562883',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-<<<<<<< HEAD
-  'unifunc' => 'content_598c1f6754fd22_15657247',
-=======
-  'unifunc' => 'content_5991856eed0c19_64331646',
->>>>>>> upstream/master
   'variables' => 
   array (
     'username' => 0,
@@ -40,12 +24,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c227cf0c9c49_08073604',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<<<<<<< HEAD
-<?php if ($_valid && !is_callable('content_598c1f6754fd22_15657247')) {function content_598c1f6754fd22_15657247($_smarty_tpl) {?>
-=======
-<?php if ($_valid && !is_callable('content_5991856eed0c19_64331646')) {function content_5991856eed0c19_64331646($_smarty_tpl) {?>
->>>>>>> upstream/master
+<?php if ($_valid && !is_callable('content_59c227cf0c9c49_08073604')) {function content_59c227cf0c9c49_08073604($_smarty_tpl) {?>
 <div class="page">
 	<div class="pageHeader">
 	<input type="hidden" name="pageNum" value="1" />

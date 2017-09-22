@@ -1,35 +1,34 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-09-18 10:38:40
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:40:46
          compiled from ".\tpl\admin\xslr_goods_day_show.htm" */ ?>
-<?php /*%%SmartyHeaderCode:2425959a67c8aa74bf4-85013721%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2440859c2298e63a642-73942223%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '1abdbd4c4076c393d7e7e83a76f529b82aebf30e' => 
     array (
       0 => '.\\tpl\\admin\\xslr_goods_day_show.htm',
-      1 => 1505695109,
+      1 => 1505895234,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2425959a67c8aa74bf4-85013721',
+  'nocache_hash' => '2440859c2298e63a642-73942223',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_59a67c8aac7355_65895971',
   'variables' => 
   array (
     'username' => 0,
     'g_day_list' => 0,
     'key' => 0,
     'day' => 0,
-    'row' => 0,
     'total' => 0,
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c2298e63a647_60014428',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59a67c8aac7355_65895971')) {function content_59a67c8aac7355_65895971($_smarty_tpl) {?><div class="page">
+<?php if ($_valid && !is_callable('content_59c2298e63a647_60014428')) {function content_59c2298e63a647_60014428($_smarty_tpl) {?><div class="page">
 	<div class="pageHeader">
 		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=xslr" method="post">
 		<div class="searchBar">
@@ -79,7 +78,7 @@ $_smarty_tpl->tpl_vars['day']->_loop = true;
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['day']->value['gname'];?>
 </td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['day']->value['sum'];?>
- (<?php echo $_smarty_tpl->tpl_vars['row']->value['dw'];?>
+ (<?php echo $_smarty_tpl->tpl_vars['day']->value['dw'];?>
 )</td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['day']->value['money'];?>
 </td>

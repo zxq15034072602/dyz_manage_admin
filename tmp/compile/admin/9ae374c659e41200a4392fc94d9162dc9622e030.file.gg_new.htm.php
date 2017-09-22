@@ -1,47 +1,25 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-14 11:01:35
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:41:27
          compiled from ".\tpl\admin\gg_new.htm" */ ?>
-<?php /*%%SmartyHeaderCode:122955971b6dd21c196-67365681%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-=======
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-09 09:53:25
-         compiled from ".\tpl\admin\gg_new.htm" */ ?>
-<?php /*%%SmartyHeaderCode:18507598a6b1522de49-49181686%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
->>>>>>> upstream/master
+<?php /*%%SmartyHeaderCode:2694459c229b7006763-77910843%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9ae374c659e41200a4392fc94d9162dc9622e030' => 
     array (
       0 => '.\\tpl\\admin\\gg_new.htm',
-<<<<<<< HEAD
-      1 => 1502419110,
+      1 => 1505895234,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '122955971b6dd21c196-67365681',
-  'function' => 
-  array (
-  ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5971b6dd24fca2_31812842',
-  'has_nocache_code' => false,
-),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5971b6dd24fca2_31812842')) {function content_5971b6dd24fca2_31812842($_smarty_tpl) {?>	<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
-=======
-      1 => 1500877394,
-      2 => 'file',
-    ),
-  ),
-  'nocache_hash' => '18507598a6b1522de49-49181686',
+  'nocache_hash' => '2694459c229b7006763-77910843',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_598a6b1522de48_81997613',
+  'unifunc' => 'content_59c229b7006762_65106472',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_598a6b1522de48_81997613')) {function content_598a6b1522de48_81997613($_smarty_tpl) {?>	<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
->>>>>>> upstream/master
+<?php if ($_valid && !is_callable('content_59c229b7006762_65106472')) {function content_59c229b7006762_65106472($_smarty_tpl) {?>	<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
 	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
 	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
 	<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
@@ -53,6 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				uploadJson : 'kindeditor/php/upload_json.php',
 				fileManagerJson : 'kindeditor/php/file_manager_json.php',
 				allowFileManager : true,
+				//afterBlur: function () { this.sync(); },
 				afterCreate : function() {
 					var self = this;
 					K.ctrl(document, 13, function() {

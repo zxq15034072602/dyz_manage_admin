@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-16 18:00:43
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:33:18
          compiled from ".\tpl\admin\product_list.htm" */ ?>
-<?php /*%%SmartyHeaderCode:24627598bff289d2793-07747162%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-=======
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-16 18:03:19
-         compiled from ".\tpl\admin\product_list.htm" */ ?>
-<?php /*%%SmartyHeaderCode:194735991856c917e92-21419787%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
->>>>>>> upstream/master
+<?php /*%%SmartyHeaderCode:1951659c227ce275084-74468936%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -17,20 +11,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-<<<<<<< HEAD
-  'nocache_hash' => '24627598bff289d2793-07747162',
-=======
-  'nocache_hash' => '194735991856c917e92-21419787',
->>>>>>> upstream/master
+  'nocache_hash' => '1951659c227ce275084-74468936',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-<<<<<<< HEAD
-  'unifunc' => 'content_598bff28a1e0d4_92782514',
-=======
-  'unifunc' => 'content_5991856c917e97_46781758',
->>>>>>> upstream/master
   'variables' => 
   array (
     'list' => 0,
@@ -39,12 +23,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c227ce2b2114_76696310',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<<<<<<< HEAD
-<?php if ($_valid && !is_callable('content_598bff28a1e0d4_92782514')) {function content_598bff28a1e0d4_92782514($_smarty_tpl) {?>
-=======
-<?php if ($_valid && !is_callable('content_5991856c917e97_46781758')) {function content_5991856c917e97_46781758($_smarty_tpl) {?>
->>>>>>> upstream/master
+<?php if ($_valid && !is_callable('content_59c227ce2b2114_76696310')) {function content_59c227ce2b2114_76696310($_smarty_tpl) {?>
 
 <div class="page">
 	<div class="pageHeader">

@@ -1,40 +1,20 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-17 12:00:54
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:55:04
          compiled from ".\tpl\admin\case_detail.htm" */ ?>
-<?php /*%%SmartyHeaderCode:20185598c42d4025f92-74950004%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-=======
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-28 09:43:28
-         compiled from ".\tpl\admin\case_detail.htm" */ ?>
-<?php /*%%SmartyHeaderCode:22733599187377e6bc4-02980600%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
->>>>>>> upstream/master
+<?php /*%%SmartyHeaderCode:3153659c22ce88c4529-67095526%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '8bef2cee2c7098df7812df8a2b5689a4d27f110a' => 
     array (
       0 => '.\\tpl\\admin\\case_detail.htm',
-<<<<<<< HEAD
-      1 => 1502942442,
+      1 => 1505895234,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '20185598c42d4025f92-74950004',
-=======
-      1 => 1503884593,
-      2 => 'file',
-    ),
-  ),
-  'nocache_hash' => '22733599187377e6bc4-02980600',
->>>>>>> upstream/master
+  'nocache_hash' => '3153659c22ce88c4529-67095526',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-<<<<<<< HEAD
-  'unifunc' => 'content_598c42d40610d5_71225100',
-=======
-  'unifunc' => 'content_599187377e6bc0_57590718',
->>>>>>> upstream/master
   'variables' => 
   array (
     'case' => 0,
@@ -47,12 +27,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'str_img_names' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c22ce89015b4_61118428',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<<<<<<< HEAD
-<?php if ($_valid && !is_callable('content_598c42d40610d5_71225100')) {function content_598c42d40610d5_71225100($_smarty_tpl) {?><div class="page">
-=======
-<?php if ($_valid && !is_callable('content_599187377e6bc0_57590718')) {function content_599187377e6bc0_57590718($_smarty_tpl) {?><div class="page">
->>>>>>> upstream/master
+<?php if ($_valid && !is_callable('content_59c22ce89015b4_61118428')) {function content_59c22ce89015b4_61118428($_smarty_tpl) {?><div class="page">
 	<div class="pageContent">
 		<form method="post" action="?dir=admin&action=case&do=update" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
 			<div class="pageFormContent" layoutH="56">
@@ -104,13 +82,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['img']->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars['img']->_loop = true;
  $_smarty_tpl->tpl_vars['i']->value = $_smarty_tpl->tpl_vars['img']->key;
 ?>
-					     	<img id="img_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 <<<<<<< HEAD
+					     	<img id="img_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " src="http://192.168.1.138/dyz.duyiwang.cn/img/<?php echo $_smarty_tpl->tpl_vars['img']->value;?>
-=======
-" src="./img/<?php echo $_smarty_tpl->tpl_vars['img']->value;?>
->>>>>>> upstream/master
 " style="width:70px;height:70px;padding-right:15px"/>
+=======
+					     	<img id="img_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" src="./img/<?php echo $_smarty_tpl->tpl_vars['img']->value;?>
+" style="width:70px;height:70px;padding-right:15px"/>
+>>>>>>> upstream/master
 					     	<input type="hidden" name="img_names[]" value="<?php echo $_smarty_tpl->tpl_vars['img']->value;?>
 "/>
 					     <?php } ?>

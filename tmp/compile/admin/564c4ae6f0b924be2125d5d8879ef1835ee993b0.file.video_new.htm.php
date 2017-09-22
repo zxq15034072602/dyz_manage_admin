@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-13 09:49:15
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:52:24
          compiled from ".\tpl\admin\video_new.htm" */ ?>
-<?php /*%%SmartyHeaderCode:200598fae56b84e48-05709852%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-=======
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-14 19:16:51
-         compiled from ".\tpl\admin\video_new.htm" */ ?>
-<?php /*%%SmartyHeaderCode:20872599186a3b00315-07304022%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
->>>>>>> upstream/master
+<?php /*%%SmartyHeaderCode:3061459c22c48403a09-32126525%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -17,27 +11,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-<<<<<<< HEAD
-  'nocache_hash' => '200598fae56b84e48-05709852',
-  'function' => 
-  array (
-  ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_598fae56ba2cb8_97143285',
-  'has_nocache_code' => false,
-),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_598fae56ba2cb8_97143285')) {function content_598fae56ba2cb8_97143285($_smarty_tpl) {?><div class="page">
-=======
-  'nocache_hash' => '20872599186a3b00315-07304022',
+  'nocache_hash' => '3061459c22c48403a09-32126525',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_599186a3b00317_38884292',
+  'unifunc' => 'content_59c22c48403a05_32595394',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_599186a3b00317_38884292')) {function content_599186a3b00317_38884292($_smarty_tpl) {?><div class="page">
->>>>>>> upstream/master
+<?php if ($_valid && !is_callable('content_59c22c48403a05_32595394')) {function content_59c22c48403a05_32595394($_smarty_tpl) {?><div class="page">
 	<div class="pageContent">
 		<form method="post" enctype="multipart/form-data"  action="?dir=admin&action=video&do=video_add" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
 			<div class="pageFormContent" layoutH="56">

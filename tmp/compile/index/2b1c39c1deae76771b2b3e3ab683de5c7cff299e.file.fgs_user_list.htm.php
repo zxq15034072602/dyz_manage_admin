@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-08-10 14:10:49
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-20 16:38:18
          compiled from ".\tpl\index\fgs_user_list.htm" */ ?>
-<?php /*%%SmartyHeaderCode:2870358afa208c0a192-51332386%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2484359c228fa7ac4c4-62857184%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '2b1c39c1deae76771b2b3e3ab683de5c7cff299e' => 
     array (
       0 => '.\\tpl\\index\\fgs_user_list.htm',
-      1 => 1500600483,
+      1 => 1498288022,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2870358afa208c0a192-51332386',
+  'nocache_hash' => '2484359c228fa7ac4c4-62857184',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_58afa208c52944_36273342',
   'variables' => 
   array (
     'role' => 0,
@@ -27,8 +25,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59c228fa7e9557_55880358',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58afa208c52944_36273342')) {function content_58afa208c52944_36273342($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?action=fgsuser">
+<?php if ($_valid && !is_callable('content_59c228fa7e9557_55880358')) {function content_59c228fa7e9557_55880358($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?action=fgsuser">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
 	<input type="hidden" name="username" value="<?php echo $_REQUEST['username'];?>
