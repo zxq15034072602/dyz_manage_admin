@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-09-22 11:14:17
+<?php /* Smarty version Smarty-3.1.12, created on 2017-09-22 16:56:18
          compiled from ".\tpl\admin\xslr_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:13859c228e4da2b79-13798442%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5dccb81f5694bf6a78d6df44d1709af19bede524' => 
     array (
       0 => '.\\tpl\\admin\\xslr_list.htm',
-      1 => 1506049774,
+      1 => 1506070575,
       2 => 'file',
     ),
   ),
@@ -75,6 +75,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<th align="center">住址</th>
 					<th align="center">数量</th>
 					<th align="center">单价</th>
+					<th align="center">自定实际金额</th>
 					<th align="center">总价</th>
 					<th align="center">时间</th>
 					<th align="center">状态</th>
@@ -106,12 +107,14 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 </td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['address'];?>
 </td>
-					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['shuliang'];?>
+					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['count'];?>
 </td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['goods']['money'];?>
 /<?php echo $_smarty_tpl->tpl_vars['row']->value['goods']['dw'];?>
 </td>
-					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['goods']['money']*$_smarty_tpl->tpl_vars['row']->value['shuliang'];?>
+					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['sale_price'];?>
+元</td>
+					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['total_price'];?>
 元</td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['addtime'];?>
 </td>
