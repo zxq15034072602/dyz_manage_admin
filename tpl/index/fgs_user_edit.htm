@@ -2,6 +2,7 @@
 	<div class="pageContent">
 		<form method="post" action="?action=fgsuser&do=updata" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 			<input type="hidden" name="id" value="<{$row.id}>" />
+			<input type="hidden" name="zz" value="<{$row.zz}>" />			
 			<div class="pageFormContent" layoutH="56">
 				<dl>
 					<dt>用户名：</dt>
@@ -24,13 +25,17 @@
 					<dd><{$select_role_cn}></dd>
 				</dl>
 				<dl>
-					<dt>所属分公司：</dt>
-					<select name="zz" id="zz"> 
-						<option value="<{$fgs.id}>"><{$fgs.name}></option>
-						<{foreach from=$fgs_list item=fgsrow}>
-						<option value="<{$fgsrow.id}>"><{$fgsrow.name}></option>
-						<{/foreach}>
-					</select>
+					<dt>所有门店：</dt>
+					
+				<ul>
+					<{foreach from=$fgs item=md}>
+					<li><input type="checkbox" name="mid[]" value="<{$md.id}>" checked="checked"/><{$md.name}></li>
+					<{/foreach}>
+					<{foreach from=$fgs_list item=fgsrow}>
+					<li><input type="checkbox" name="mid[]" value="<{$fgsrow.id}>" /><{$fgsrow.name}></li>
+					<{/foreach}>
+				</ul>
+					
 				</dl>
 				<dl>
 					<dt>发 布：</dt>

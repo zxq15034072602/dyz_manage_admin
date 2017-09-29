@@ -37,9 +37,9 @@ if($do==""){
 		$db->p_e($sql,array($k['uid']));
 		$k['user']=$db->fetchRow();
 		
-		$sql="select * from rv_goods where 1=1 and id=?";
-		$db->p_e($sql,array($k['gid']));
-		$k['goods']=$db->fetchRow();
+		$sql="select * from rv_mendian where 1=1 and id=?";
+        $db->p_e($sql, array($k['mid']));
+        $k["store"] = $db->fetchRow();
 
 		$sql="select * from rv_buy_goods where buy_id=?";
         $db->p_e($sql, array($k['id']));
