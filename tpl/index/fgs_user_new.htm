@@ -24,13 +24,14 @@
 					<dd><{$select_role_cn}></dd>
 				</dl>
 				<dl>
-					<dt>所属分公司：</dt>
-					<select name="fgs">
+					<dt>所有门店：</dt>
+					<ul>
 						<{foreach from=$fgs item=row}>
-						<option value="<{$row.id}>"><{$row.name}></option>
+						<li><input type="checkbox" name="mid[]" value="<{$row.id}>" /><{$row.name}></li>
 						<{/foreach}>
-					</select>
+					</ul>
 				</dl>
+
 			</div>
 			<div class="formBar">
 				<ul>

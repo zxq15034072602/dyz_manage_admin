@@ -35,18 +35,19 @@
 				<li class="line">line</li>
 			</ul>
 		</div>
-		<table class="list" layouth="90" style="width:800px">
+		<table class="list" layouth="90" style="width:1200px">
 			<thead>
 				<tr>
 					<th align="center">ID</th>
 					<th align="center">用户名</th>
 					<th align="center">密码</th>
 					<th align="center">手机</th>
-					<th align="center">所属分公司</th>
+					<th align="center">所有门店</th>
 					<th align="center">创建时间</th>
 					<th align="center">更新时间</th>
 					<th align="center">状态</th>
 					<th align="center">姓名</th>
+					<th align="center">身份</th>
 				</tr>
 			</thead>
 			<tbody>			
@@ -56,11 +57,12 @@
 					<td><{$row.username}></td>
 					<td><{$row.password}></td>
 					<td><{$row.mobile}></td>
-					<td><{$row.fgsname}></td>
+					<td><{$row.mdname}></td>
 					<td><{$row.created_at}></td>
 					<td><{$row.updated_at}></td>
 					<td><{if $row.status==1}><a href="index.php?action=fgsuser&do=qy&id=<{$row.id}>" target="ajaxTodo">启用</a><{elseif $row.status==0}><a href="index.php?action=fgsuser&do=jy&id=<{$row.id}>" target="ajaxTodo" title="确定要起用帐户吗?">停用</a><{/if}></td>
 					<td><{$row.name}></td>
+					<td><{if $row.roleid==2}>经销商<{else}>加盟商<{/if}></td>
 				</tr>			
 			<{/foreach}>
 			</tbody>
