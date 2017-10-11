@@ -1,10 +1,11 @@
 <?php
 if(!defined('CORE'))exit("error!"); 
-//分公司用户列表	
+//经销商用户列表	
 if($do=="fgs_user"){
 	If_rabc(); //检测权限
 	$type=$_REQUEST[type]??0;
-	$sqlcount ="SELECT count(*) FROM rv_user where 1=1 and status!=2 and roleid in (2,4)";
+	$roleid=$_REQUEST[roleid]??0;
+	$sqlcount ="SELECT count(*) FROM rv_user where 1=1 and status!=2 and roleid=2";
 	if($_POST['username']){
 		$search .= "and username like ? ";
 		$arr[]="%".$_POST['username']."%";
@@ -21,7 +22,7 @@ if($do=="fgs_user"){
 	$total=$db->fetch_count();//总条数
 	
 	//查询
-	$sql2="SELECT * FROM rv_user where 1=1 ".$search." and status!=2  and type in ($type ,3) and roleid in (2,4) order by id desc LIMIT ".$pageNum.",".$numPerPage;
+    $sql2="SELECT * FROM rv_user where 1=1 ".$search." and status!=2  and type in ($type ,3) and roleid=2 order by id desc LIMIT ".$pageNum.",".$numPerPage;	     
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();	
 	foreach($list as &$k){
@@ -38,12 +39,14 @@ if($do=="fgs_user"){
 	        $k['mdname'].=$name['name']."，";
 	    }
 	    $k['mdname']=rtrim($k['mdname'],"，");
+	    $k['mdname']=explode("，", $k['mdname']);
 	}
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('list',$list);
 	$smt->assign('total',$total);
 	$smt->assign('role',$role);
+	$smt->assign('roleid',$roleid);
 	$smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
 	$smt->assign('pageNum',$_POST[pageNum]); //当前页数
 	$smt->assign('title',"用户列表");
@@ -51,6 +54,60 @@ if($do=="fgs_user"){
 	$smt->display('fgs_user_list.htm');
 	exit;
 	
+}
+
+//加盟商用户列表
+if($do=='jms_user'){
+    $type=$_REQUEST[type]??0;
+    $roleid=$_REQUEST[roleid]??0;
+    $sqlcount ="SELECT count(*) FROM rv_user where 1=1 and status!=2 and roleid=4";
+    if($_POST['username']){
+        $search .= "and username like ? ";
+        $arr[]="%".$_POST['username']."%";
+    }
+    //设置分页
+    if($_POST[numPerPage]==""){
+        $numPerPage="20";
+    }else{
+        $numPerPage=$_POST[numPerPage];
+    }
+    if($_POST[pageNum]==""||$_POST[pageNum]=="0" ){$pageNum="0";}else{$pageNum=($_POST[pageNum]-1)*$numPerPage;}
+    $sql1=$sqlcount;
+    $db->p_e($sql1,$arr);
+    $total=$db->fetch_count();//总条数
+    
+    //查询
+    $sql2="SELECT * FROM rv_user where 1=1 ".$search." and status!=2  and type in ($type ,3) and roleid=4 order by id desc LIMIT ".$pageNum.",".$numPerPage;
+    $db->p_e($sql2,$arr);
+    $list=$db->fetchAll();
+    foreach($list as &$k){
+        $sql="select mid from rv_user_jingxiao_jiameng where 1=1 and id=?";
+        $db->p_e($sql, array($k['zz']));
+        $k['mid']=$db->fetchRow()['mid'];
+         
+        $k['midArr']=explode(",", $k['mid']);
+    
+        foreach($k['midArr'] as $kk=>$vv){
+            $sql="select name from rv_mendian where id=$vv";
+            $db->p_e($sql, array());
+            $name=$db->fetchRow();
+            $k['mdname'].=$name['name']."，";
+        }
+        $k['mdname']=rtrim($k['mdname'],"，");
+        $k['mdname']=explode("，", $k['mdname']);
+    }
+    //模版
+    $smt = new smarty();smarty_cfg($smt);
+    $smt->assign('list',$list);
+    $smt->assign('total',$total);
+    $smt->assign('role',$role);
+    $smt->assign('roleid',$roleid);
+    $smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
+    $smt->assign('pageNum',$_POST[pageNum]); //当前页数
+    $smt->assign('title',"用户列表");
+    $smt->assign('type',$type);
+    $smt->display('fgs_user_list.htm');
+    exit;
 }
 
 //新建	

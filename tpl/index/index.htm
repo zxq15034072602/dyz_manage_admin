@@ -155,14 +155,20 @@
 								<{/if}>
 								<{if in_array('index_fgsuser_fgs_user',$role1)}>
 								<ul>
-									<li><a href="index.php?action=fgsuser&do=fgs_user" target="navTab" rel="fgsuser">分公司用户列表</a></li>
+									<li><a href="index.php?action=fgsuser&do=fgs_user" target="navTab" rel="fgsuser">经销商列表</a></li>
 								</ul>
 								<{/if}>
+								<ul>
+									<li><a href="index.php?action=fgsuser&do=jms_user" target="navTab" rel="fgsuser">加盟商列表</a></li>
+								</ul>
 								<{if in_array('index_mduser_md_user',$role1)}>
 								<ul>
 									<li><a href="index.php?action=mduser&do=md_user" target="navTab" rel="mduser">门店用户列表</a></li>
 								</ul>
 								<{/if}>
+								<ul>
+									<li><a href="index.php?action=mduser&do=dc_user" target="navTab" rel="mduser">导出用户信息</a></li>
+								</ul>
 							</li>
 							<{if in_array('index_role_',$role1)}>
 							<li><a>角色管理</a>

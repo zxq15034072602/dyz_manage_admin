@@ -47,6 +47,148 @@ if($do=="md_user"){
 	
 }
 
+//所有用户列表
+if($do=='dc_user'){
+    $type=$_REQUEST[type]??0;
+    $sqlcount ="SELECT count(*) FROM rv_user where 1=1 and status!=2";
+    if($_POST['mdusername']){
+        $search .= "and name like ? ";
+        $arr[]="%".$_POST['mdusername']."%";
+    }
+    if($_POST['mduser_name']){
+        $search .= "and username like ? ";
+        $arr[]="%".$_POST['mduser_name']."%";
+    }
+    //设置分页
+    if($_POST[numPerPage]==""){
+        $numPerPage="20";
+    }else{
+        $numPerPage=$_POST[numPerPage];
+    }
+    if($_POST[pageNum]==""||$_POST[pageNum]=="0" ){$pageNum="0";}else{$pageNum=($_POST[pageNum]-1)*$numPerPage;}
+    $sql1=$sqlcount.$search;
+    $db->p_e($sql1,$arr);
+    $total=$db->fetch_count();//总条数
+    
+    $sql="select u.*,m.name as mdname from rv_user as u left join rv_mendian as m on u.zz=m.id where u.id>200 and u.type=$type order by id desc LIMIT ".$pageNum.",".$numPerPage;
+    $db->p_e($sql, array());
+    $list=$db->fetchAll();
+    
+    $smt=new Smarty();
+    smarty_cfg($smt);
+    $smt->assign('list',$list);
+    $smt->assign('total',$total);
+    $smt->assign('type',$type);
+    $smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
+    $smt->assign('pageNum',$_POST[pageNum]); //当前页数
+    $smt->display('all_user_list.htm');
+    exit();
+}
+
+//导出所有用户
+if($do=='daochu'){   
+    $sql="select u.*,m.name as mdname from rv_user as u left join rv_mendian as m on u.zz=m.id where u.id>200 order by id desc";
+    $db->p_e($sql, array());
+    $list=$db->fetchAll();   
+    foreach($list as &$k){
+        if($k['sex']==1){
+            $k['sex1']='男';
+        }elseif($k['sex']==2){
+            $k['sex1']='女';
+        }else{
+            $k['sex1']='保密';
+        }
+        if($k['roleid']==1){
+            $k['roleid1']='总部人员';
+        }elseif($k['roleid']==2){
+            $k['roleid1']='经销商';
+        }elseif($k['roleid']==3){
+            $k['roleid1']='店长';
+        }elseif($k['roleid']==4){
+            $k['roleid1']='加盟商';
+        }elseif($k['roleid']==5){
+            $k['roleid1']='店员';
+        }elseif($k['roleid']==6){
+            $k['roleid1']='董事长';
+        }elseif($k['roleid']==7){
+            $k['roleid1']='总经理';
+        }
+    }
+    
+    $time=date(time());
+    header("Content-Type: application/vnd.ms-excel;charset=gbk");
+    header("Content-Disposition: attachment; filename=".$time.".xls");
+    echo "<table border='1'>";
+    echo "<tr>";
+    echo "<th colspan='8'>所有注册用户信息表</th>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<th width='50'>序号</th>";
+    echo "<th width='80'>用户ID</th>";
+    echo "<th width='100'>用户名</th>";
+    echo "<th width='80'>姓名</th>";
+    echo "<th width='80'>性别</th>";
+    echo "<th width='80'>职位</th>";
+    echo "<th width='120'>手机号</th>";
+    echo "<th width='200'>所属门店</th>";  
+    echo "</tr>";
+    foreach($list as $k=>$v){
+        echo "<tr>";       
+        echo "<td width='50'>".($k+1)."</td>";
+        echo "<td width='80'>".$v['id']."</td>";
+        echo "<td width='80'>".$v['username']."</td>";
+        echo "<td width='80'>".$v['name']."</td>";
+        echo "<td width='80'>".$v['sex1']."</td>";
+        echo "<td width='80'>".$v['roleid1']."</td>";
+        echo "<td width='120'>".$v['mobile']."</td>";
+        echo "<td width='200'>".$v['mdname']."</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+    exit;   
+}
+
+//导出没有店长信息
+if($do=='md_daochu'){
+    $sql="select a.*,b.name as fgsname from rv_mendian as a left join rv_fengongsi as b on a.fid=b.id where a.person_id=0 and a.status=1";
+    $db->p_e($sql, array());
+    $list=$db->fetchAll();
+    $result =   array();
+    foreach($list as $k=>$v){
+        $result[$v['fgsname']][]    =   $v;
+    }
+    $time=date(time());
+    header("Content-Type: application/vnd.ms-excel;charset=gbk");
+    header("Content-Disposition: attachment; filename=".$time.".xls");
+    echo "<table border='1'>";
+    echo "<tr>";
+    echo "<th colspan='5'>没有店长门店信息表</th>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<th width='50'>序号</th>";
+    echo "<th width='80'>门店ID</th>";
+    echo "<th width='200'>门店名</th>";
+    echo "<th width='120'>电话</th>";
+    echo "<th width='300'>地址</th>";
+    echo "</tr>";
+    foreach($result as $k=>$v){
+        echo "<tr>";
+        echo "<th colspan='5'>$k</th>";
+        echo "</tr>";
+        foreach ($v as $kk=>$vv){
+        echo "<tr>";        
+        echo "<td width='50'>".($kk+1)."</td>";
+        echo "<td width='80'>".$vv['id']."</td>";
+        echo "<td width='200'>".$vv['name']."</td>";
+        echo "<td width='120'>".$vv['tel']."</td>";
+        echo "<td width='300'>".$vv['address']."</td>";
+        echo "</tr>";
+        }
+    }
+    echo "</table>";
+    exit;
+}
+
 //新建	
 if($do=="new"){	
 	If_rabc(); //检测权限

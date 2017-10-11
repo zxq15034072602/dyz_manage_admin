@@ -1,19 +1,18 @@
-<form id="pagerForm" method="post" action="index.php?action=fgsuser">
+<form id="pagerForm" method="post" action="index.php?action=mduser&do=dc_user">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
-	<input type="hidden" name="username" value="<{$smarty.request.username}>"/>
+	<input type="hidden" name="mdusername" value="<{$smarty.request.mdusername}>"/>
 	<input type="hidden" name="role" value="<{$role}>"/>
 </form>
 
 <div class="page">
 	<div class="pageHeader">
-		<form onsubmit="return navTabSearch(this);" action="index.php?action=fgsuser&do=fgs_user" method="post">
+		<form onsubmit="return navTabSearch(this);" action="index.php?action=mduser&do=dc_user" method="post">
 		<div class="searchBar">
 			<table class="searchContent">
 				<tr>
 					<td>
-						用户名:<input type="text" name="username" size="10" value="<{$smarty.request.username}>"/>
-						门店所属：<select name="type" >
+					    门店所属：<select name="type" >
 								<option value='0' <{if $type ==0}>selected<{/if}>>独一张</option>
 								<option value='1' <{if $type ==1}>selected<{/if}>>食维健</option>
 						</select>
@@ -29,25 +28,24 @@
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">				
-				<li><a class="add" href="?action=fgsuser&do=new&type=<{$type}>" target="dialog" mask="true"><span>添加</span></a></li>
-				<li><a class="edit" href="?action=fgsuser&do=edit&id={id}&type=<{$type}>" target="dialog" mask="true"><span>修改</span></a></li>
-				<li><a class="delete" href="?action=fgsuser&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>
+				<li><a class="icon" href="?action=mduser&do=daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出所有用户信息</span></a></li>
+				<li><a class="icon" href="?action=mduser&do=md_daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出没有店长门店</span></a></li>
 				<li class="line">line</li>
 			</ul>
 		</div>
-		<table class="list" layouth="90" style="width:1200px">
+		<table class="list" layouth="90" style="width:1400px">
 			<thead>
 				<tr>
 					<th align="center">ID</th>
 					<th align="center">用户名</th>
+					<th align="center">手机号</th>
 					<th align="center">密码</th>
-					<th align="center">手机</th>
-					<th align="center">所有门店</th>
+					<th align="center">所属门店</th>
+					<th align="center">职位</th>
 					<th align="center">创建时间</th>
 					<th align="center">更新时间</th>
 					<th align="center">状态</th>
 					<th align="center">姓名</th>
-					<th align="center">身份</th>
 				</tr>
 			</thead>
 			<tbody>			
@@ -55,21 +53,14 @@
 				<tr target="id" rel="<{$row.id}>" >
 					<td><{$row.id}></td>
 					<td><{$row.username}></td>
-					<td><{$row.password}></td>
 					<td><{$row.mobile}></td>
-					<td>
-						<ul>
-							<{foreach from=$row.mdname item=md key=k}>
-							<li style="line-height: 31px;height:21px"><{$k+1}>、 &nbsp;<{$md}></li>
-							<br/>
-							<{/foreach}>
-						</ul>
-					</td>
+					<td><{$row.password}></td>
+					<td><{$row.mdname}></td>
+					<td><{if $row.roleid ==3}>店长<{elseif $row.roleid ==5}>店员<{elseif $row.roleid==1}>总部人员<{elseif $row.roleid==2}>经销商<{elseif $row.roleid==4}>加盟商<{elseif $row.roleid==6}>董事长<{elseif $row.roleid==7}>总经理<{/if}></td>
 					<td><{$row.created_at}></td>
 					<td><{$row.updated_at}></td>
-					<td><{if $row.status==1}><a href="index.php?action=fgsuser&do=qy&id=<{$row.id}>" target="ajaxTodo">启用</a><{elseif $row.status==0}><a href="index.php?action=fgsuser&do=jy&id=<{$row.id}>" target="ajaxTodo" title="确定要起用帐户吗?">停用</a><{/if}></td>
+					<td><{if $row.status==1}><a href="index.php?action=mduser&do=qy&id=<{$row.id}>" target="ajaxTodo">启用</a><{elseif $row.status==0}><a href="index.php?action=mduser&do=jy&id=<{$row.id}>" target="ajaxTodo" title="确定要起用帐户吗?">停用</a><{/if}></td>
 					<td><{$row.name}></td>
-					<td><{if $row.roleid==2}>经销商<{else}>加盟商<{/if}></td>
 				</tr>			
 			<{/foreach}>
 			</tbody>

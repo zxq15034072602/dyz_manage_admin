@@ -194,7 +194,7 @@ if($do == "tg"){
         	$db->p_e($sql,array($_REQUEST[mid]));
         	$sql="UPDATE rv_user set zz=?,updated_at=now(),roleid=3 where id=? limit 1";
 	        if($db->p_e($sql,array($_REQUEST[mid],$_REQUEST[uid]))){
-	        	$cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!重新进入app即可","store_id"=>$_REQUEST[mid],"roleid"=>3);
+	        	$cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>3);
 	        	$cont=json_encode($cont);
 	            to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
 	        	echo success($msg);
@@ -218,7 +218,7 @@ if($do == "tg_zb"){//总部人员审核
 	        if($db->p_e($sql, array($_REQUEST[uid]))){
 	            $sql="UPDATE rv_user set zz=?,updated_at=now(),roleid=1 where id=? limit 1";
 	            if($db->p_e($sql,array($_REQUEST[mid],$_REQUEST[uid]))){
-	                $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!重新进入app即可","store_id"=>$_REQUEST[mid],"roleid"=>3);
+	                $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过","store_id"=>$_REQUEST[mid],"roleid"=>3);
 	                $cont=json_encode($cont);
 	                to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
 	                echo success($msg);
@@ -227,7 +227,7 @@ if($do == "tg_zb"){//总部人员审核
 	    }else{
 	        $sql="UPDATE rv_user set zz=?,updated_at=now(),roleid=1 where id=? limit 1";
 	        if($db->p_e($sql,array($_REQUEST[mid],$_REQUEST[uid]))){
-	            $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!重新进入app即可","store_id"=>$_REQUEST[mid],"roleid"=>3);
+	            $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>3);
 	            $cont=json_encode($cont);
 	            to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
 	            echo success($msg);
@@ -253,7 +253,7 @@ if($do=='tg_jx'){//经销商审核通过操作
             ))){
                 $sql="update rv_user set zz=?,updated_at=now(),roleid=2 where id=? limit 1";
                 if($db->p_e($sql,array($arr['id'],$_REQUEST[uid]))){
-                    $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!重新进入app即可","store_id"=>$_REQUEST[mid],"roleid"=>3);
+                    $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>3);
                     $cont=json_encode($cont);
                     to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
                     echo success($msg);
@@ -268,7 +268,7 @@ if($do=='tg_jx'){//经销商审核通过操作
            if($last_id){
                $sql="update rv_user set zz=?,updated_at=now(),roleid=2 where id=? limit 1";
                if($db->p_e($sql,array($last_id,$_REQUEST[uid]))){
-                   $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!重新进入app即可","store_id"=>$_REQUEST[mid],"roleid"=>3);
+                   $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>3);
                    $cont=json_encode($cont);
                    to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
                    echo success($msg);
@@ -295,7 +295,7 @@ if($do=='tg_jm'){//加盟商审核通过操作
             ))){
                 $sql="update rv_user set zz=?,updated_at=now(),roleid=4 where id=? limit 1";
                 if($db->p_e($sql,array($arr['id'],$_REQUEST[uid]))){
-                    $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!重新进入app即可","store_id"=>$_REQUEST[mid],"roleid"=>3);
+                    $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>3);
                     $cont=json_encode($cont);
                     to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
                     echo success($msg);
@@ -310,7 +310,7 @@ if($do=='tg_jm'){//加盟商审核通过操作
            if($last_id){
                $sql="update rv_user set zz=?,updated_at=now(),roleid=4 where id=? limit 1";
                if($db->p_e($sql,array($last_id,$_REQUEST[uid]))){
-                   $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!重新进入app即可","store_id"=>$_REQUEST[mid],"roleid"=>3);
+                   $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>3);
                    $cont=json_encode($cont);
                    to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
                    echo success($msg);
