@@ -86,6 +86,9 @@ if($do==""){
             $db->p_e($sql,array($vv['goods_id']));
             $k['goods']=$db->fetchRow();
         }	
+       	$sql="select name from rv_mendian where id=?";
+		$db->p_e($sql, array($k['mid']));
+		$k['mdname']=$db->fetchRow()['name'];
 	}
 	$time=date(time());
 	header("Content-Type: application/vnd.ms-excel;charset=gbk");   
@@ -94,6 +97,7 @@ if($do==""){
 			echo "<tr>";
 			echo "<th width='30'>ID</th>";
 			echo "<th width='80'>销售人姓名</th>";
+			echo "<th width='120'>所属门店</th>";
 			echo "<th width='120'>销售商品</th>";
 			echo "<th width='80'>姓名</th>";
 			echo "<th width='80'>姓别</th>";
@@ -109,6 +113,7 @@ if($do==""){
 			echo "<tr>";
 			echo "<td width='30'>".$v['id']."</td>";
 			echo "<td width='80'>".$v['user']['name']."</td>";
+			echo "<td width='80'>".$v['mdname']."</td>";
 			echo "<td width='120'>".$v['goods']['name']."</td>";
 			echo "<td width='80'>".$v['username']."</td>";
 			echo "<td width='80'>".$v['sex1']."</td>";

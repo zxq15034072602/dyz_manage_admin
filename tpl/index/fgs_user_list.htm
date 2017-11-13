@@ -43,6 +43,7 @@
 					<th align="center">密码</th>
 					<th align="center">手机</th>
 					<th align="center">所有门店</th>
+					<th align="center">所属区域</th>
 					<th align="center">创建时间</th>
 					<th align="center">更新时间</th>
 					<th align="center">状态</th>
@@ -65,6 +66,7 @@
 							<{/foreach}>
 						</ul>
 					</td>
+					<td><{$row.city_name}></td>
 					<td><{$row.created_at}></td>
 					<td><{$row.updated_at}></td>
 					<td><{if $row.status==1}><a href="index.php?action=fgsuser&do=qy&id=<{$row.id}>" target="ajaxTodo">启用</a><{elseif $row.status==0}><a href="index.php?action=fgsuser&do=jy&id=<{$row.id}>" target="ajaxTodo" title="确定要起用帐户吗?">停用</a><{/if}></td>

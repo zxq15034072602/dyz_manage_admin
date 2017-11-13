@@ -31,6 +31,7 @@
 					<th align="center">ID</th>
 					<th align="center">申请人</th>
 					<th align="center">所选门店</th>
+					<th align="center">所属区域</th>
 					<th align="center">申请时间</th>
 					<th align="center">是否通过</th>
 					<th align="center">状态</th>
@@ -42,11 +43,12 @@
 					<td align="center"><{$row.id}></td>
 					<td align="center"><{$row.name}></td>
 					<td align="center"><{$row.mdname}></td>
+					<td align="center"><{$row.region}></td>
 					<td align="center"><{$row.addtime}></td>
 					<td align="center">
 					    <{if $row.status == 0}>
-						<a href="index.php?dir=admin&action=verify&do=tg_jm&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>" target="ajaxTodo">通过</a>
-						<a href="index.php?dir=admin&action=verify&do=jj&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>" target="ajaxTodo">拒绝</a>
+						<a href="index.php?dir=admin&action=verify&do=tg_jm&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>&cityid=<{$row.city.cityid}>&areaid=<{$row.areaid}>" target="ajaxTodo">通过</a>
+						<a href="index.php?dir=admin&action=verify&do=jj&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>&cityid=<{$row.city.cityid}>&areaid=<{$row.areaid}>" target="ajaxTodo">拒绝</a>
 						<{else}>
 						<{if $row.status == 0}>未审核<{elseif $row.status ==1}>已审核<{else}>已拒绝<{/if}>
 						<{/if}>
