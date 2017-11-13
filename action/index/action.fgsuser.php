@@ -1,10 +1,11 @@
 <?php
 if(!defined('CORE'))exit("error!"); 
-//分公司用户列表	
-if($do=="fgs_user"){
+//经销商用户列表	
+if($do=="fgs_user"){	
 	If_rabc(); //检测权限
 	$type=$_REQUEST[type]??0;
-	$sqlcount ="SELECT count(*) FROM rv_user where 1=1 and status!=2 and roleid in (2,4)";
+	$roleid=$_REQUEST[roleid]??0;
+	$sqlcount ="SELECT count(*) FROM rv_user where 1=1 and status!=2 and roleid=2";
 	if($_POST['username']){
 		$search .= "and username like ? ";
 		$arr[]="%".$_POST['username']."%";
@@ -21,16 +22,18 @@ if($do=="fgs_user"){
 	$total=$db->fetch_count();//总条数
 	
 	//查询
-	$sql2="SELECT * FROM rv_user where 1=1 ".$search." and status!=2  and type in ($type ,3) and roleid in (2,4) order by id desc LIMIT ".$pageNum.",".$numPerPage;
+    $sql2="SELECT * FROM rv_user where 1=1 ".$search." and status!=2  and type in ($type ,3) and roleid=2 order by id desc LIMIT ".$pageNum.",".$numPerPage;	     
 	$db->p_e($sql2,$arr);
-	$list=$db->fetchAll();	
+	$list=$db->fetchAll();
 	foreach($list as &$k){
-	    $sql="select mid from rv_user_jingxiao_jiameng where 1=1 and id=?";
+	    $sql="select mid,cityid from rv_user_jingxiao_jiameng where 1=1 and id=?";
 	    $db->p_e($sql, array($k['zz']));
-	    $k['mid']=$db->fetchRow()['mid'];
+	    $k['md']=$db->fetchRow();
+	    $sql="select * from rv_city where cityid=?";
+	    $db->p_e($sql, array($k['md']['cityid']));
+	    $k['city_name']=$db->fetchRow()['city'];
 	    
-	    $k['midArr']=explode(",", $k['mid']);
-
+	    $k['midArr']=explode(",", $k['md']['mid']);
 	    foreach($k['midArr'] as $kk=>$vv){
 	        $sql="select name from rv_mendian where id=$vv";
 	        $db->p_e($sql, array());
@@ -38,12 +41,14 @@ if($do=="fgs_user"){
 	        $k['mdname'].=$name['name']."，";
 	    }
 	    $k['mdname']=rtrim($k['mdname'],"，");
+	    $k['mdname']=explode("，", $k['mdname']);
 	}
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('list',$list);
 	$smt->assign('total',$total);
 	$smt->assign('role',$role);
+	$smt->assign('roleid',$roleid);
 	$smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
 	$smt->assign('pageNum',$_POST[pageNum]); //当前页数
 	$smt->assign('title',"用户列表");
@@ -51,6 +56,63 @@ if($do=="fgs_user"){
 	$smt->display('fgs_user_list.htm');
 	exit;
 	
+}
+
+//加盟商用户列表
+if($do=='jms_user'){
+    $type=$_REQUEST[type]??0;
+    $roleid=$_REQUEST[roleid]??0;
+    $sqlcount ="SELECT count(*) FROM rv_user where 1=1 and status!=2 and roleid=4";
+    if($_POST['username']){
+        $search .= "and username like ? ";
+        $arr[]="%".$_POST['username']."%";
+    }
+    //设置分页
+    if($_POST[numPerPage]==""){
+        $numPerPage="20";
+    }else{
+        $numPerPage=$_POST[numPerPage];
+    }
+    if($_POST[pageNum]==""||$_POST[pageNum]=="0" ){$pageNum="0";}else{$pageNum=($_POST[pageNum]-1)*$numPerPage;}
+    $sql1=$sqlcount;
+    $db->p_e($sql1,$arr);
+    $total=$db->fetch_count();//总条数
+    
+    //查询
+    $sql2="SELECT * FROM rv_user where 1=1 ".$search." and status!=2  and type in ($type ,3) and roleid=4 order by id desc LIMIT ".$pageNum.",".$numPerPage;
+    $db->p_e($sql2,$arr);
+    $list=$db->fetchAll();
+    foreach($list as &$k){
+        $sql="select mid,cityid from rv_user_jingxiao_jiameng where 1=1 and id=?";
+        $db->p_e($sql, array($k['zz']));
+        $k['md']=$db->fetchRow();
+        $sql="select * from rv_city where cityid=?";
+        $db->p_e($sql, array($k['md']['cityid']));
+        $k['city_name']=$db->fetchRow()['city'];
+        
+        $k['midArr']=explode(",", $k['md']['mid']);
+    
+        foreach($k['midArr'] as $kk=>$vv){
+            $sql="select name from rv_mendian where id=$vv";
+            $db->p_e($sql, array());
+            $name=$db->fetchRow();
+            $k['mdname'].=$name['name']."，";
+        }
+        $k['mdname']=rtrim($k['mdname'],"，");
+        $k['mdname']=explode("，", $k['mdname']);
+    }
+    //模版
+    $smt = new smarty();smarty_cfg($smt);
+    $smt->assign('list',$list);
+    $smt->assign('total',$total);
+    $smt->assign('role',$role);
+    $smt->assign('roleid',$roleid);
+    $smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
+    $smt->assign('pageNum',$_POST[pageNum]); //当前页数
+    $smt->assign('title',"用户列表");
+    $smt->assign('type',$type);
+    $smt->display('fgs_user_list1.htm');
+    exit;
 }
 
 //新建	
@@ -74,6 +136,8 @@ if($do=="new"){
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('select_role_cn',select($role_cn,"roleid","","选择角色","required"));
 	$smt->assign('title',"新建用户");
+	$provinces=get_province();
+	$smt->assign("provinces",$provinces);//获取省份
 	$smt->assign('fgs',$fgs);
 	$smt->assign('type',$type);
 	$smt->display('fgs_user_new.htm');
@@ -97,9 +161,11 @@ if($do=="edit"){
 	    $role_cn[$list[$key][id]]=$list[$key][title];
 	}
 	
-	$sql="select * from rv_user_jingxiao_jiameng where 1=1 and id=?";
+	$sql="select a.*,b.fatherid from rv_user_jingxiao_jiameng as a left join rv_city as b on a.cityid=b.cityid where 1=1 and a.id=?";
 	$db->p_e($sql, array($row['zz']));
 	$fgs=$db->fetchRow();
+	$provinceid=$fgs['fatherid'];
+	$cityid=$fgs['cityid'];
 	$arr=explode(",", $fgs['mid']);
 	$fgs=array();
 	foreach($arr as $k=>$v){
@@ -126,6 +192,10 @@ if($do=="edit"){
 	$smt->assign('row',$row);
 	$smt->assign('role',$role);
 	$smt->assign('fgs',$fgs);
+	$smt->assign("provinceid",$provinceid);
+	$provinces=get_province();
+	$smt->assign("provinces",$provinces);//获取省份
+	$smt->assign("cityid",$cityid);
 	$smt->assign('fgs_list',$fgs_list);
 	$smt->assign('title',"编辑用户");
 	$smt->display('fgs_user_edit.htm');
@@ -157,7 +227,8 @@ if($do=="add"){
 	if($last_id){
 	    $zz=$db->insert(0, 2, "rv_user_jingxiao_jiameng", array(
 	        "uid='$last_id'",
-	        "mid='$_POST[mid]'"
+	        "mid='$_POST[mid]'",
+	        "cityid='$_REQUEST[selCities]'"
 	    ));
 	    if($zz){
 	        $db->update(0, 1, "rv_user", array(
@@ -186,7 +257,8 @@ if($do=="updata"){
 	$sql="UPDATE rv_user SET ".$pasql." username=?,zz=?,mobile=?,roleid=?,updated_at=now(),userid=?,name=? WHERE id=? LIMIT 1";
 	if($db->p_e($sql,$arr)){
 	    $lastid=$db->update(0, 1, "rv_user_jingxiao_jiameng", array(
-	        "mid='$_POST[mid]'"
+	        "mid='$_POST[mid]'",
+	        "cityid='$_REQUEST[selCities]'"
 	    ),array(
 	        "uid='$id'"
 	    ));

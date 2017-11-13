@@ -7,7 +7,7 @@
 
 <div class="page">
 	<div class="pageHeader">
-		<form onsubmit="return navTabSearch(this);" action="index.php?action=fgsuser&do=fgs_user" method="post">
+		<form onsubmit="return navTabSearch(this);" action="index.php?action=fgsuser&do=jms_user" method="post">
 		<div class="searchBar">
 			<table class="searchContent">
 				<tr>
@@ -61,7 +61,7 @@
 					<td>
 						<ul>
 							<{foreach from=$row.mdname item=md key=k}>
-							<li style="line-height: 31px;height:21px"><{$k+1}>、 &nbsp;<{$md}></li>
+							<li style="line-height:31px;height:21px;"><{$k+1}>、 &nbsp;<{$md}></li>
 							<br/>
 							<{/foreach}>
 						</ul>

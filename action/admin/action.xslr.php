@@ -90,6 +90,9 @@ if($do==""){
 		    $db->p_e($sql,array($vv['goods_id']));
 		    $k['goods']=$db->fetchRow();
 		}
+		$sql="select name from rv_mendian where id=?";
+		$db->p_e($sql, array($k['mid']));
+		$k['mbname']=$db->fetchRow()['name'];
 	}
 	$time=date(time());
 	header("Content-Type: application/vnd.ms-excel;charset=gbk");   
@@ -98,6 +101,7 @@ if($do==""){
 			echo "<tr>";
 			echo "<th width='30'>ID</th>";
 			echo "<th width='80'>销售人姓名</th>";
+			echo "<th width='120'>所属门店</th>";
 			echo "<th width='120'>销售商品</th>";
 			echo "<th width='80'>姓名</th>";
 			echo "<th width='80'>姓别</th>";
@@ -113,6 +117,7 @@ if($do==""){
 			echo "<tr>";
 			echo "<td width='30'>".$v['id']."</td>";
 			echo "<td width='80'>".$v['user']['name']."</td>";
+			echo "<td width='80'>".$v['mdname']."</td>";
 			echo "<td width='120'>".$v['goods']['name']."</td>";
 			echo "<td width='80'>".$v['username']."</td>";
 			echo "<td width='80'>".$v['sex1']."</td>";
@@ -137,7 +142,6 @@ if($do==""){
         $db->p_e($sql, array($verify_info[id]));
         $verify_info['goods']=$db->fetchAll();
     }
-    
     $smt = new Smarty();
     smarty_cfg($smt);
     $smt->assign("verify_info", $verify_info);
@@ -159,7 +163,7 @@ if($do=='edit'){
     $sales['mdname']=$db->fetchRow()['name'];
     $sql="select a.*,b.name,b.money from rv_buy_goods as a left join rv_goods as b on a.goods_id=b.id where a.buy_id=? and a.goods_type=0";
     $db->p_e($sql, array($sales['id']));
-    $sales['goods']=$db->fetchAll();
+    $sales['goods']=$db->fetchAll();  
     $smt=new Smarty();
     smarty_cfg($smt);
     $smt->assign('sales',$sales);

@@ -1,9 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.12, created on 2017-11-03 09:43:28
+         compiled from ".\tpl\index\index.htm" */ ?>
+<?php /*%%SmartyHeaderCode:1791159cee4debc3818-32011333%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '9ca9f456f8088b1d834dd24c941ad58479058ead' => 
+    array (
+      0 => '.\\tpl\\index\\index.htm',
+      1 => 1509673396,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1791159cee4debc3818-32011333',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59cee4deec29c2_88731479',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'role1' => 0,
+    'win' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_59cee4deec29c2_88731479')) {function content_59cee4deec29c2_88731479($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
-<title><{$cfg.webname}></title>
+<title><?php echo $_smarty_tpl->tpl_vars['cfg']->value['webname'];?>
+</title>
 <link href="./themes/default/style.css" rel="stylesheet" type="text/css" />
 <link href="./themes/css/core.css" rel="stylesheet" type="text/css" />
 <link href="./themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
@@ -72,7 +100,8 @@
 		<div id="header">
 			<div class="headerNav">
 				<ul class="nav">
-					<li><a href="#">用户:<{$smarty.session.dys.username}></a></li>
+					<li><a href="#">用户:<?php echo $_SESSION['dys']['username'];?>
+</a></li>
 					<li><a href="index.php?action=user&do=editpass" target="dialog" mask="true">修改密码</a></li>
 					<li><a href="index.php?action=user&do=logout">退出</a></li>
 				</ul>
@@ -94,41 +123,41 @@
 					</div>
 					<div class="accordionContent">
 						<ul class="tree treeFolder ">
-							<{if in_array('admin_zongbu_',$role1)}>
+							<?php if (in_array('admin_zongbu_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>总部部门管理</a>
 								<ul>
 									<li><a href="index.php?dir=admin&action=zongbu" target="navTab" rel="zongbu_list">总部部门列表</a></li>
 								</ul>
 							</li>
-							<{/if}>
-							<{if in_array('admin_fgs_',$role1)}>
+							<?php }?>
+							<?php if (in_array('admin_fgs_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>分公司管理</a>
 								<ul>
 									<li><a href="index.php?dir=admin&action=fgs" target="navTab" rel="fgs_list">分公司列表</a></li>
 								</ul>
 							</li>
-							<{/if}>
-							<{if in_array('admin_md_',$role1)}>
+							<?php }?>
+							<?php if (in_array('admin_md_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>门店管理</a>
 								<ul>
 									<li><a href="index.php?dir=admin&action=md" target="navTab" rel="md_list">门店列表</a></li>
 								</ul>
 							</li>
-							<{/if}>
-							<{if in_array('admin_goods_',$role1)}>
+							<?php }?>
+							<?php if (in_array('admin_goods_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>商品管理</a>
 								<ul>
 									<li><a href="index.php?dir=admin&action=goods" target="navTab" rel="goods_list">商品列表</a></li>
 								</ul>
 							</li>
-							<{/if}>
-							<{if in_array('admin_pp_',$role1)}>
+							<?php }?>
+							<?php if (in_array('admin_pp_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>商品分类管理</a>
 								<ul>
 									<li><a href="index.php?dir=admin&action=pp" target="navTab" rel="pp_list">url列表</a></li>
 								</ul>
 							</li>
-							<{/if}>
+							<?php }?>
 							<li><a>销售录入记录管理</a>
 								<ul>
 									<li><a href="index.php?dir=admin&action=xslr" target="navTab" rel="xslr_list">销售录入列表</a></li>
@@ -140,56 +169,56 @@
 									<li><a href="index.php?dir=admin&action=xslr&do=goods" target="navTab" rel="xslr_list">按产品销售排行</a></li>
 								</ul>
 							</li>
-							<{if in_array('admin_gg_',$role1)}>
+							<?php if (in_array('admin_gg_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>公告管理</a>
 								<ul>
 									<li><a href="index.php?dir=admin&action=gg" target="navTab" rel="gg_list">公告列表</a></li>
 								</ul>
 							</li>
-							<{/if}>
+							<?php }?>
 							<li><a>用户管理</a>
-								<{if in_array('index_user_',$role1)}>
+								<?php if (in_array('index_user_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 								<ul>
 									<li><a href="index.php?action=user" target="navTab" rel="user">超级管理员列表</a></li>
 								</ul>
-								<{/if}>
-								<{if in_array('index_fgsuser_fgs_user',$role1)}>
+								<?php }?>
+								<?php if (in_array('index_fgsuser_fgs_user',$_smarty_tpl->tpl_vars['role1']->value)){?>
 								<ul>
 									<li><a href="index.php?action=fgsuser&do=fgs_user" target="navTab" rel="fgsuser">经销商列表</a></li>
 								</ul>
-								<{/if}>
+								<?php }?>
 								<ul>
 									<li><a href="index.php?action=fgsuser&do=jms_user" target="navTab" rel="fgsuser">加盟商列表</a></li>
 								</ul>
-								<{if in_array('index_mduser_md_user',$role1)}>
+								<?php if (in_array('index_mduser_md_user',$_smarty_tpl->tpl_vars['role1']->value)){?>
 								<ul>
 									<li><a href="index.php?action=mduser&do=md_user" target="navTab" rel="mduser">门店用户列表</a></li>
 								</ul>
-								<{/if}>
+								<?php }?>
 								<ul>
 									<li><a href="index.php?action=mduser&do=dc_user" target="navTab" rel="mduser">导出用户信息</a></li>
 								</ul>
 							</li>
-							<{if in_array('index_role_',$role1)}>
+							<?php if (in_array('index_role_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>角色管理</a>
 								<ul>
 									<li><a href="index.php?action=role" target="navTab" rel="role">角色列表</a></li>
 								</ul>
 							</li>
-							<{/if}>
+							<?php }?>
 							<li><a>大区下载管理</a>
 								<ul>
 									<li><a href="index.php?action=download&dir=admin&do=list" target="navTab" rel="role">下载统计</a></li>
 								</ul>
 							</li>
-							<{if in_array('admin_feedback_list',$role1)}>
+							<?php if (in_array('admin_feedback_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>app用户反馈</a>
 								<ul>
 									<li><a href="index.php?action=feedback&dir=admin&do=list" target="navTab" rel="role">用户反馈</a></li>
 								</ul>
 							</li>
-							<{/if}>
-							<{if in_array('admin_verify_store_list',$role1)}>
+							<?php }?>
+							<?php if (in_array('admin_verify_store_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>审核工作</a>
 								
 								<ul>
@@ -200,22 +229,22 @@
 									<li><a href="index.php?action=verify&dir=admin&do=store_list4" target="navTab" rel="role">店员申请审核</a></li>
 								</ul>
 							</li>
-							<{/if}>
-							<{if in_array('admin_menu_list',$role1)}>
+							<?php }?>
+							<?php if (in_array('admin_menu_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>菜单</a>								
 								<ul>
 									<li><a href="index.php?action=menu&dir=admin&do=list" target="navTab" rel="role">广告管理</a></li>
 								</ul>
 							</li>
-							<{/if}>
-							<{if in_array('admin_file_list',$role1)}>
+							<?php }?>
+							<?php if (in_array('admin_file_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>文件管理</a>								
 								<ul>
 									<li><a href="index.php?action=file&dir=admin&do=list" target="navTab" rel="role">文件上传</a></li>
 								</ul>
 							</li>
-							<{/if}>
-							<{if in_array('admin_data_list',$role1)}>
+							<?php }?>
+							<?php if (in_array('admin_data_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>资料模块</a>								
 								<ul>
 									<li><a href="index.php?action=product&dir=admin&do=list" target="navTab" rel="role">产品资料</a></li>
@@ -223,7 +252,7 @@
 									<li><a href="index.php?action=case&dir=admin&do=list" target="navTab" rel="role">康复案例</a></li>
 								</ul>
 							</li>
-							<{/if}>
+							<?php }?>
 						</ul>
 					</div>
 				</div>
@@ -247,8 +276,10 @@
 				<div class="navTab-panel tabsPageContent layoutBox">
 					<div class="page unitBox">
 						<div class="accountInfo">
-							<p><span><{$cfg.webname}></span></p>
-							<img src="./themes/img/sun.png"/><span style="font-size:20px;"> Hello,<{$smarty.session.dys.username}> 欢迎使用网络信息管理系统</span>
+							<p><span><?php echo $_smarty_tpl->tpl_vars['cfg']->value['webname'];?>
+</span></p>
+							<img src="./themes/img/sun.png"/><span style="font-size:20px;"> Hello,<?php echo $_SESSION['dys']['username'];?>
+ 欢迎使用网络信息管理系统</span>
 						</div>
 						<div class="pageFormContent" layoutH="80">
 							<!--<img src="./themes/img/imac.png"/><span style="font-size:20px;"> 
@@ -262,12 +293,17 @@
 							</div>
 							<div class="tab-content">
 								<ul>
-								<li>操作系统：<span><{$win.xitong}></span></li>
-								<li>网站域名：<span><{$win.yuming}></span></li>
-								<li>PHP 版本:	<span><{$win.PHP}></span></li>
+								<li>操作系统：<span><?php echo $_smarty_tpl->tpl_vars['win']->value['xitong'];?>
+</span></li>
+								<li>网站域名：<span><?php echo $_smarty_tpl->tpl_vars['win']->value['yuming'];?>
+</span></li>
+								<li>PHP 版本:	<span><?php echo $_smarty_tpl->tpl_vars['win']->value['PHP'];?>
+</span></li>
 								<li>Mysql 版本：<span>5.7.12</span></li>
-								<li>服务器web端口：<span><{$win.duankou}></span></li>
-								<li>服务器时间：<span><{$win.time}></span></li>
+								<li>服务器web端口：<span><?php echo $_smarty_tpl->tpl_vars['win']->value['duankou'];?>
+</span></li>
+								<li>服务器时间：<span><?php echo $_smarty_tpl->tpl_vars['win']->value['time'];?>
+</span></li>
 								</ul>
 							</div>
 						</div>
@@ -281,4 +317,4 @@
 
 	<div id="footer">Copyright &copy; 2016&nbsp;后台管理系统</div>
 </body>
-</html>
+</html><?php }} ?>

@@ -17,6 +17,19 @@
 								<option value='0' <{if $type ==0}>selected<{/if}>>独一张</option>
 								<option value='1' <{if $type ==1}>selected<{/if}>>食维健</option>
 						</select>
+						&nbsp;
+						区域检索：<select name="province" id="province" onchange="region.changed(this,'selCities',2)">
+							    <option value="0">请选择</option>
+								<{foreach from=$provinces item=row}>
+								<option value="<{$row.provinceid}>"><{$row.province}></option>
+								<{/foreach}>
+							</select>
+							<select name="selCities" id="selCities" onchange="region.changed(this,'selarea',3)" style="width:100px;margin-left: 5px">
+							    <option value="0">请选择</option>							
+							</select>
+							<select name="selarea" id="selarea"  style="width:100px;margin-left: 5px">
+							    <option value="0">请选择</option>						
+							</select>
 					</td>
 					<td>
 						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
@@ -33,6 +46,8 @@
 				<li><a class="add" href="?dir=admin&action=md&do=new&type=<{$type}>" target="dialog" mask="true"><span>添加</span></a></li>
 				<li><a class="edit" href="?dir=admin&action=md&do=edit&id={id}&type=<{$type}>" target="dialog" mask="true"><span>修改</span></a></li>
 				<li><a class="delete" href="?dir=admin&action=md&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>
+				<li><a class="icon" href="?dir=admin&action=md&do=md_daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出有销售录入的门店</span></a></li>
+				<li><a class="icon" href="?dir=admin&action=md&do=md_daochu1" target="dwzExport" title="实要导出这些记录吗?"><span>导出没有销售录入的门店</span></a></li>
 				<li class="line">line</li>
 			</ul>
 		</div>

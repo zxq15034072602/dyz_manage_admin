@@ -1,4 +1,4 @@
-<form id="pagerForm" method="post" action="index.php?dir=admin&action=verify&do=store_list1">
+<form id="pagerForm" method="post" action="index.php?dir=admin&action=verify&do=store_list4">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<{$name}>" />
@@ -6,7 +6,7 @@
 
 <div class="page">
 	<div class="pageHeader">
-		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=verify&do=store_list1" method="post">
+		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=verify&do=store_list4" method="post">
 		<div class="searchBar">
 			<table class="searchContent">
 				<tr>
@@ -31,7 +31,6 @@
 					<th align="center">ID</th>
 					<th align="center">申请人</th>
 					<th align="center">所选门店</th>
-					<th align="center">所属区域</th>
 					<th align="center">申请时间</th>
 					<th align="center">是否通过</th>
 					<th align="center">状态</th>
@@ -43,12 +42,11 @@
 					<td align="center"><{$row.id}></td>
 					<td align="center"><{$row.name}></td>
 					<td align="center"><{$row.mdname}></td>
-					<td align="center"><{$row.region}></td>
 					<td align="center"><{$row.addtime}></td>
 					<td align="center">
 					    <{if $row.status == 0}>
-						<a href="index.php?dir=admin&action=verify&do=tg_jx&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>&cityid=<{$row.cityid}>&areaid=<{$row.areaid}>" target="ajaxTodo">通过</a>
-						<a href="index.php?dir=admin&action=verify&do=jj&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>&cityid=<{$row.cityid}>&areaid=<{$row.areaid}>" target="ajaxTodo">拒绝</a>
+						<a href="index.php?dir=admin&action=verify&do=tg_dy&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>" target="ajaxTodo">通过</a>
+						<a href="index.php?dir=admin&action=verify&do=jj&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>" target="ajaxTodo">拒绝</a>
 						<{else}>
 						<{if $row.status == 0}>未审核<{elseif $row.status ==1}>已审核<{else}>已拒绝<{/if}>
 						<{/if}>

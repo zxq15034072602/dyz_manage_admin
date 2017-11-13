@@ -11,7 +11,15 @@ if($do==""){
 	if($_POST['name']){
 		$search .= " and name like ? ";
 		$arr[]="%".$_POST['name']."%";
-		}	
+	}	
+	if($_REQUEST[selCities]){
+	    $search.=" and cityid=? ";
+	    $arr[]=$_REQUEST[selCities];
+	}
+	if($_REQUEST[selarea]){
+	    $search.=" and areaid=? ";
+	    $arr[]=$_REQUEST[selarea];
+	}
 	//设置分页
 	if($_POST['numPerPage']==""){
 		$numPerPage="20";
@@ -46,6 +54,8 @@ if($do==""){
 	$smt->assign('list',$list);
 	$smt->assign('total',$total);
 	$smt->assign('name',$_POST['name']);
+	$provinces=get_province();
+	$smt->assign("provinces",$provinces);//获取省份
 	$smt->assign('type',$type);
 	$smt->assign('pageNum',$_POST['pageNum']);
 	$smt->display('md_list.htm');
@@ -190,6 +200,98 @@ if($do=="updata"){
 	}else{echo  error($msg);}
 	exit;
 }
+
+//导出有销售录入的门店
+if($do=='md_daochu'){
+    $sql="select b.* from rv_buy as a left join rv_mendian as b on a.mid=b.id where b.status=1 GROUP BY b.id";
+    $db->p_e($sql, array());
+    $list=$db->fetchAll();
+    $result =   array();
+    foreach($list as $k=>$v){
+        $result[$v['fgsname']][]    =   $v;
+    }
+    $time=date(time());
+    header("Content-Type: application/vnd.ms-excel;charset=gbk");
+    header("Content-Disposition: attachment; filename=".$time.".xls");
+    echo "<table border='1'>";
+    echo "<tr>";
+    echo "<th colspan='5'>没有店长门店信息表</th>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<th width='50'>序号</th>";
+    echo "<th width='80'>门店ID</th>";
+    echo "<th width='200'>门店名</th>";
+    echo "<th width='120'>电话</th>";
+    echo "<th width='300'>地址</th>";
+    echo "</tr>";
+    foreach($result as $k=>$v){
+        echo "<tr>";
+        echo "<th colspan='5'>$k</th>";
+        echo "</tr>";
+        foreach ($v as $kk=>$vv){
+            echo "<tr>";
+            echo "<td width='50'>".($kk+1)."</td>";
+            echo "<td width='80'>".$vv['id']."</td>";
+            echo "<td width='200'>".$vv['name']."</td>";
+            echo "<td width='120'>".$vv['tel']."</td>";
+            echo "<td width='300'>".$vv['address']."</td>";
+            echo "</tr>";
+        }
+    }
+    echo "</table>";
+    exit;
+}
+//导出没有销售录入的门店
+if($do=='md_daochu1'){
+    $sql="select * from rv_mendian where status=1 and type=0";
+    $db->p_e($sql, array());
+    $md=$db->fetchAll();
+    
+    $sql="select b.* from rv_buy as a left join rv_mendian as b on a.mid=b.id where b.status=1 GROUP BY b.id";
+    $db->p_e($sql, array());
+    $list=$db->fetchAll();
+    
+    foreach($md as $k=>$v){
+        if(!in_array($v, $list)){
+            $row[]=$v;
+        }
+    }
+    $result =   array();
+    foreach($row as $k=>$v){
+        $result[$v['fgsname']][]    =   $v;
+    }
+    $time=date(time());
+    header("Content-Type: application/vnd.ms-excel;charset=gbk");
+    header("Content-Disposition: attachment; filename=".$time.".xls");
+    echo "<table border='1'>";
+    echo "<tr>";
+    echo "<th colspan='5'>没有店长门店信息表</th>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<th width='50'>序号</th>";
+    echo "<th width='80'>门店ID</th>";
+    echo "<th width='200'>门店名</th>";
+    echo "<th width='120'>电话</th>";
+    echo "<th width='300'>地址</th>";
+    echo "</tr>";
+    foreach($result as $k=>$v){
+        echo "<tr>";
+        echo "<th colspan='5'>$k</th>";
+        echo "</tr>";
+        foreach ($v as $kk=>$vv){
+            echo "<tr>";
+            echo "<td width='50'>".($kk+1)."</td>";
+            echo "<td width='80'>".$vv['id']."</td>";
+            echo "<td width='200'>".$vv['name']."</td>";
+            echo "<td width='120'>".$vv['tel']."</td>";
+            echo "<td width='300'>".$vv['address']."</td>";
+            echo "</tr>";
+        }
+    }
+    echo "</table>";
+    exit;
+}
+
 
 
 //删除

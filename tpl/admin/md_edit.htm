@@ -95,8 +95,7 @@
 $(function(){
 	var province=$("#province").val();
 	if(province){
-		region.loadCities(province,"selCities",<{$row.cityid}>);
-		region.loadarea(<{$row.cityid}>,"selarea",<{$row.areaid}>)
+		region.loadCities(province,"selCities",<{$fgs.cityid}>);
 	}
 });
 

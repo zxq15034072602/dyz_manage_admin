@@ -1,42 +1,56 @@
-   
-<div class="review_con_zn">
-    <p class="review_title_zn">
-        <span class="review_title_man">录入人员</span>
-        <span class="review_man"><{$verify_info.name}></span>
-    </p>
-    <div class="review_con">
-        <p class="review_con_title">审批内容</p>
-        <div class="review_con_box">
-            <ul class="product_con_zn">
-                <{foreach from=$verify_info.goods item=good}>
-                 <{if $good.goods_type == 0}>
-                <li class="product_list_zn">
-                    <span><{$good.name|truncate:7:""}></span>
-                    <span>数量<{$good.count}></span>
-                    <span>总价￥<{$good.count*$good.money}></span>
-                </li>
-                <{/if}>
-                <{/foreach}>
-            </ul>
-           
-            <p class="present_zn">赠品:</p>
-            <ul class="present_con_zn">
-                 <{foreach from=$verify_info.goods item=good}>
-                 <{if $good.goods_type == 1}>
-                <li class="product_list_zn">
-                    <span><{$good.name|truncate:7:""}></span>
-                    <span>数量<{$good.count}></span>
-                    <span></span>
-                </li>
-                <{/if}>
-                <{/foreach}>
-            </ul>
-            
-            <p class="real_price_zn"><span>实际收款额：</span><span>￥<{$verify_info.sale_price}></span></p>
-        </div>
-    </div>
-    <p class="time_zn">
-        <span class="review_title_man">录入时间</span>
-        <span class="review_man"><{$verify_info.addtime}></span>
-    </p>
-</div>
+<div class="page">
+	<div class="pageContent">
+		<form method="post" enctype="multipart/form-data"  action="?dir=admin&action=xslr&do=update" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>录入人员：</dt>
+					<dd><{$verify_info.name}></dd>
+				</dl>
+				<dl>
+					<dt>销售产品：</dt>
+					<dd>
+						<ul>
+			               <{foreach from=$verify_info.goods item=good}>
+			                <{if $good.goods_type == 0}>
+			               <li>
+			                   <span><{$good.name|truncate:7:""}></span><br/>
+			                   <span>数量<{$good.count}></span><br/>
+			                   <span>总价￥<{$good.count*$good.money}></span>
+			                   <br/>
+			               </li>
+			               <br/>
+			               <{/if}>
+			               <{/foreach}>
+			               
+			           	</ul>					
+					</dd>
+				</dl>
+				<dl>
+					<dt>赠品：</dt>
+					<dd>
+						 <ul>
+			                <{foreach from=$verify_info.goods item=good}>			                 
+		                 	<{if $good.goods_type == 1}>
+				                <li>
+				                    <span><{$good.name}></span>
+				                    <span>数量<{$good.count}></span>
+				                    <span></span>
+				                </li>
+				                <br/>
+			                <{/if}>
+			                <{/foreach}>
+			            </ul>				
+					</dd>
+				</dl>
+				<dl>
+					<dt>实际收款额：</dt>
+					<dd>￥<{$verify_info.sale_price}></dd>
+				</dl>
+				<dl>
+					<dt>录入时间：</dt>
+					<dd><{$verify_info.addtime}></dd>
+				</dl>					
+			</div>
+		</form>
+	</div>
+</div> 
