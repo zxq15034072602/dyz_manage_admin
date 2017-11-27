@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-07 09:14:47
+<?php /* Smarty version Smarty-3.1.12, created on 2017-11-23 09:21:08
          compiled from ".\tpl\admin\md_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:1516459decc9a064c11-78384051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bb9a56fc883ea8fa2a2a4fe7def5aefbb52b9d31' => 
     array (
       0 => '.\\tpl\\admin\\md_list.htm',
-      1 => 1510017278,
+      1 => 1511400062,
       2 => 'file',
     ),
   ),
@@ -53,7 +53,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<option value='1' <?php if ($_smarty_tpl->tpl_vars['type']->value==1){?>selected<?php }?>>食维健</option>
 						</select>
 						&nbsp;
-						区域检索：<select name="province" id="province" onchange="region.changed(this,'selCities',2)">
+						区域检索：<select name="province" id="province" onchange="region.changed(this,'selCities1',2)">
 							    <option value="0">请选择</option>
 								<?php  $_smarty_tpl->tpl_vars['row'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['row']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['provinces']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -65,10 +65,10 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 </option>
 								<?php } ?>
 							</select>
-							<select name="selCities" id="selCities" onchange="region.changed(this,'selarea',3)" style="width:100px;margin-left: 5px">
+							<select name="selCities" id="selCities1" onchange="region.changed(this,'selarea1',3)" style="width:100px;margin-left: 5px">
 							    <option value="0">请选择</option>							
 							</select>
-							<select name="selarea" id="selarea"  style="width:100px;margin-left: 5px">
+							<select name="selarea" id="selarea1"  style="width:100px;margin-left: 5px">
 							    <option value="0">请选择</option>						
 							</select>
 					</td>

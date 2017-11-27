@@ -197,6 +197,7 @@ if($do=='edit'){
 
 
 if($do=='mendian'){
+    If_rabc(); //检测权限
     $search='';
     $arr=array();   
     if($_POST['province']){
@@ -467,6 +468,7 @@ if($do=='daochu_mendian_year'){
 }
 
 if($do=='goods'){//按照产品排行排序
+    If_rabc(); //检测权限
     $search='';
     $arr=array();
     if($_POST['name']){

@@ -49,6 +49,7 @@ if($do=="md_user"){
 
 //所有用户列表
 if($do=='dc_user'){
+	If_rabc(); //检测权限
     $type=$_REQUEST[type]??0;
     $sqlcount ="SELECT count(*) FROM rv_user where 1=1 and status!=2";
     if($_POST['mdusername']){

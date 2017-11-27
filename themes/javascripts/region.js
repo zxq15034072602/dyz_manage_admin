@@ -12,11 +12,12 @@ region.loadRegions = function(parent,target,type,selected)
     		  select.empty();
     		  var option=$("<option value='0'>请选择</option>");
     		  select.append(option);
+
     		  $.each(res.cities,function(i,v){
     			  if(selected==v.cityid){
     				  var option=$('<option value='+v.cityid+' selected>'+v.city+'</option>');
     			  }else{
-    				  var option=$('<option value='+v.cityid+'>'+v.city+'</option>');
+    				  var option=$('<option value="'+v.cityid+'">'+v.city+'</option>');
     			  }
     			  select.append(option);
     		  });
@@ -73,7 +74,6 @@ region.loadarea = function(city, selName,selected)
 region.changed = function(obj,selName,type)
 {
   var parent = obj.options[obj.selectedIndex].value;
-
   region.loadRegions(parent,selName,type,0);
 }
 
