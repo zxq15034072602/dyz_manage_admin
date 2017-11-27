@@ -129,6 +129,7 @@ if($do==""){
 	echo "</table>";
 	exit;
 }elseif ($do == "show_i_verify") { // 查看录入审核信息
+    
     $vid = $_REQUEST['vid'];
 
     $sql ="select b.id,b.uid,b.mid,b.addtime,b.endtime,u.name,b.status,b.total_price,b.sale_price,GROUP_CONCAT(bg.goods_id) as goods_id from rv_buy as b,rv_buy_goods as bg,rv_user as u where b.id=bg.buy_id and b.uid=u.id and b.id=?";
@@ -197,6 +198,7 @@ if($do=='edit'){
 
 
 if($do=='mendian'){
+    If_rabc(); //检测权限
     $search='';
     $arr=array();   
     if($_POST['province']){
@@ -467,6 +469,7 @@ if($do=='daochu_mendian_year'){
 }
 
 if($do=='goods'){//按照产品排行排序
+    If_rabc(); //检测权限
     $search='';
     $arr=array();
     if($_POST['name']){

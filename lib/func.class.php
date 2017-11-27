@@ -231,6 +231,9 @@ $action_cn=array(
     "verify" =>array(
         "admin_verify_store_list"=>"店长申请审核",
     ),
+    "order"=>array(
+        "admin_order_list"=>"订单列表页",
+    ),
     
 );
 	foreach(Array('_GET','_POST','_COOKIE') as $_request){

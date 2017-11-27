@@ -224,6 +224,13 @@
 								</ul>
 							</li>
 							<{/if}>
+							<{if in_array('admin_order_list',$role1)}>
+							<li><a>进货订单</a>								
+								<ul>
+									<li><a href="index.php?action=order&dir=admin&do=list" target="navTab" rel="role">订单列表</a></li>
+								</ul>
+							</li>
+							<{/if}>
 
 						</ul>
 					</div>

@@ -60,6 +60,7 @@ if($do=="fgs_user"){
 
 //加盟商用户列表
 if($do=='jms_user'){
+    If_rabc(); //检测权限
     $type=$_REQUEST[type]??0;
     $roleid=$_REQUEST[roleid]??0;
     $sqlcount ="SELECT count(*) FROM rv_user where 1=1 and status!=2 and roleid=4";

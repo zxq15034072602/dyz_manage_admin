@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-03 10:00:37
+<?php /* Smarty version Smarty-3.1.12, created on 2017-11-23 15:39:43
          compiled from ".\tpl\index\index.htm" */ ?>
 <?php /*%%SmartyHeaderCode:2459959dde825db31c9-44905419%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9ca9f456f8088b1d834dd24c941ad58479058ead' => 
     array (
       0 => '.\\tpl\\index\\index.htm',
-      1 => 1509674418,
+      1 => 1511422779,
       2 => 'file',
     ),
   ),
@@ -250,6 +250,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 									<li><a href="index.php?action=product&dir=admin&do=list" target="navTab" rel="role">产品资料</a></li>
 									<li><a href="index.php?action=video&dir=admin&do=list" target="navTab" rel="role">营销秘籍视频</a></li>
 									<li><a href="index.php?action=case&dir=admin&do=list" target="navTab" rel="role">康复案例</a></li>
+								</ul>
+							</li>
+							<?php }?>
+							<?php if (in_array('admin_order_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
+							<li><a>进货订单</a>								
+								<ul>
+									<li><a href="index.php?action=order&dir=admin&do=list" target="navTab" rel="role">订单列表</a></li>
 								</ul>
 							</li>
 							<?php }?>

@@ -1,0 +1,87 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?dir=admin&action=order&do=updata" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">
+			<input type="hidden" name="id" value="<{$order_info.id}>" />
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>用户id：</dt>
+					<dd><{$order_info.uid}></dd>
+				</dl>
+				<dl>
+					<dt>姓名：</dt>
+					<dd><{$order_info.name}></dd>
+				</dl>
+				<dl>
+					<dt>身份：</dt>
+					<dd><{$order_info.roleid}></dd>
+				</dl>
+				<dl>
+					<dt>电话：</dt>
+					<dd><{$order_info.mobile}></dd>
+				</dl>
+				<dl>
+					<dt>收货地址：</dt>
+					<dd><{$order_info.address}></dd>
+				</dl>
+				<dl>
+					<dt>总价：</dt>
+					<dd><{$order_info.price}></dd>
+				</dl>
+				<dl>
+					<dt>物流单号：</dt>
+					<dd><{$order_info.order_number}></dd>
+				</dl>
+				<dl>
+					<dt>操作人：</dt>
+					<dd><{$order_info.userid}></dd>
+				</dl>
+				<dl>
+					<dt>订单开始时间：</dt>
+					<dd><{$order_info.starttime}></dd>
+				</dl>
+				<dl>
+					<dt>订单结束时间：</dt>
+					<dd><{$order_info.endtime}></dd>
+				</dl>
+				<dl>
+					<dt>订单状态：</dt>
+					<dd><{$order_info.status}></dd>
+				</dl>
+				<dl>
+					<dt>付款凭证：</dt>
+					<dd><img id="img" src="<{$order_info.voucher_image}>" style="width:70px;height:70px;padding-right:15px"/></dd>
+				</dl>
+				<dl></dl>
+				<dl>
+					<dt>订货详情：</dt>
+					<dd>
+						<{foreach $order_info['store'] item=store}>
+						<h3><{$store.name}>：</h3>
+							<table border='1' width='200px' height="50px">
+								<tr>
+									<th align="center">产品名</th>
+									<th align="center">数量</th>
+									<th align="center">价格</th>
+								</tr>
+								<{foreach $store['goods_info'] item=goods}>
+									<tr>
+										<td align="center"><{$goods.name}></td>
+										<td align="center"><{$goods.count}></td>
+										<td align="center"><{$goods.goods_price}>（元）</td>
+									</tr>				
+								<{/foreach}>
+							</table>
+							<br/>
+						<{/foreach}>
+					</dd>
+				</dl>
+				
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

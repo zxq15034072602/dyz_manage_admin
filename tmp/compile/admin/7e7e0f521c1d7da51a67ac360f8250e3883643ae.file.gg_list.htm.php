@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-10-12 11:41:14
+<?php /* Smarty version Smarty-3.1.12, created on 2017-11-14 15:54:57
          compiled from ".\tpl\admin\gg_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:201059dee45a364252-96631497%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e7e0f521c1d7da51a67ac360f8250e3883643ae' => 
     array (
       0 => '.\\tpl\\admin\\gg_list.htm',
-      1 => 1500624601,
+      1 => 1510640881,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59dee45a3a12e7_12736099',
   'variables' => 
   array (
     'name' => 0,
@@ -25,8 +27,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_59dee45a3a12e7_12736099',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59dee45a3a12e7_12736099')) {function content_59dee45a3a12e7_12736099($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=gg">
 	<input type="hidden" name="pageNum" value="1" />

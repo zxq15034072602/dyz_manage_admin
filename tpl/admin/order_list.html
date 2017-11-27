@@ -1,0 +1,81 @@
+<form id="pagerForm" method="post" action="index.php?dir=admin&action=xslr">
+	<input type="hidden" name="pageNum" value="1" />
+    <input type="hidden" name="numPerPage" value="20" />
+    <input type="hidden" name="name" value="<{$username}>" />
+</form>
+
+<div class="page">
+	<div class="pageHeader">
+		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=order&do=list" method="post">
+		<div class="searchBar">
+			<table class="searchContent">
+				<tr>
+					<td>
+						手机号:<input type="text" name="mobile" size="10" value="<{$mobile}>"/>
+					</td>
+					<td>
+						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</form>
+	</div>
+	<div class="pageContent">
+		<div class="panelBar">
+			<ul class="toolBar">
+				<li><a class="icon" href="?dir=admin&action=order&do=daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出</span></a></li>
+				 <li class=""><a class="edit" href="?&dir=admin&action=order&do=show_order&id={id}" target="dialog" mask="true"><span>查看</span></a></li>
+				 <li><a class="edit" href="?dir=admin&action=order&do=edit&id={id}" target="dialog" mask="true"><span>添加订单号</span></a></li>
+				 <li><a class="delete" href="?dir=admin&action=order&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>
+				<li class="line">line</li>
+			</ul>
+		</div>
+		<table class="list" layouth="90" style="width:1600px">
+			<thead>
+				<tr>
+					<th align="center">ID</th>
+					<th align="center">用户id</th>
+					<th align="center">姓名</th>
+					<th align="center">电话</th>
+					<th align="center">身份</th>
+					<th align="center">收货地址</th>
+					<th align="center">总价</th>
+					<th align="center">物流单号</th>
+					<th align="center">订单状态</th>
+					<th align="center">订单生成时间</th>
+					<th align="center">订单完成时间</th>
+					<th align="center">操作人</th>
+					<th align="center">是否发货</th>
+				</tr>
+			</thead>
+			<tbody>			
+			<{foreach from=$order_info item=order}>
+				<tr target="id" rel="<{$order.id}>" >
+					<td align="center"><{$order.id}></td>
+					<td align="center"><{$order.uid}></td>
+					<td align="center"><{$order.name}></td>
+					<td align="center"><{$order.mobile}></td>
+					<td align="center"><{$order.identity}></td>
+					<td align="center"><{$order.address}></td>
+					<td align="center"><{$order.price}></td>
+					<td align="center"><{$order.order_number}></td>
+					<td align="center"><{$order.order_status}></td>
+					<td align="center"><{$order.starttime}></td>
+					<td align="center"><{$order.endtime}></td>
+					<td align="center"><{$order.operator}></td>
+					<td align="center"><{if $order.status ==2}>已发货<{elseif $order.status ==1}>已完成<{else}>未发货<{/if}></td>
+				</tr>			
+			<{/foreach}>
+			</tbody>
+		</table>
+		<div class="panelBar">
+			<div class="pages">
+				<span>共<{$total}>条</span>
+			</div>
+			
+			<div class="pagination" targetType="navTab" totalCount="<{$total}>" numPerPage="20" pageNumShown="10" currentPage="<{$pageNum}>"></div>
+
+		</div>
+	</div>
+</div>
