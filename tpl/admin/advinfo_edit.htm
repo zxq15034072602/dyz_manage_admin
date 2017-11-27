@@ -22,8 +22,8 @@
 					     <p id="preview">
 					     <{foreach from=$img_names item=img key=i}>
 
-					     	<img id="img_<{$i}>" src="/img/<{$img}>" style="width:70px;height:70px;padding-right:15px"/>
-
+					     	<img id="img_<{$i}>" src="http://192.168.1.138/dyz.duyiwang.cn/img/<{$img}>" style="width:70px;height:70px;padding-right:15px"/>
+					     	<!-- <img id="img_<{$i}>" src="/img/<{$img}>" style="width:70px;height:70px;padding-right:15px"/> -->
 					     	<input type="hidden" name="img_names[]" value="<{$img}>"/>
 					     <{/foreach}>
 					     </p>

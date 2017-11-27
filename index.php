@@ -43,6 +43,5 @@
 	}else{
 		echo "404!";
 	}
-
 	exit;
 	

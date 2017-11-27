@@ -7,11 +7,11 @@ if($do==""){
 	$arr=array();
 	$sqlcount ="SELECT count(*) FROM rv_buy where 1=1 ";
 	if($_POST['name']){
-		$sql="select id from rv_user where name='$_POST[name]'";
-        $db->p_e($sql, array());
-        $uid=$db->fetchRow()['id'];
-        $search .= "and uid = ? ";
-        $arr[]=$uid;
+	    $sql="select id from rv_user where name='$_POST[name]'";
+	    $db->p_e($sql, array());
+	    $uid=$db->fetchRow()['id'];
+		$search .= "and uid = ? ";
+		$arr[]=$uid;
 		}	
 	//设置分页
 	if($_POST['numPerPage']==""){
@@ -30,27 +30,31 @@ if($do==""){
 	
 	//查询
 	$sql2="SELECT * FROM rv_buy where 1=1 ".$search."order by id desc LIMIT ".$pageNum.",".$numPerPage;
+
+	
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
 	foreach($list as &$k){
+        
 		$sql="select * from rv_user where 1=1 and id=?";
 		$db->p_e($sql,array($k['uid']));
 		$k['user']=$db->fetchRow();
-		
-		$sql="select * from rv_mendian where 1=1 and id=?";
-        $db->p_e($sql, array($k['mid']));
-        $k["store"] = $db->fetchRow();
 
+		$sql="select * from rv_mendian where 1=1 and id=?";
+		$db->p_e($sql, array($k['mid']));
+		$k["store"] = $db->fetchRow();	
+		
 		$sql="select * from rv_buy_goods where buy_id=?";
-        $db->p_e($sql, array($k['id']));
-        $k['goods']=$db->fetchAll();
-        foreach($k['goods'] as $kk=>$vv){
-            $k['count']+=$vv['count'];      
-            $sql="select * from rv_goods where 1=1 and id=?";
-            $db->p_e($sql,array($vv['goods_id']));
-            $k['goods']=$db->fetchRow();
-        }
+		$db->p_e($sql, array($k['id']));
+		$k['goods']=$db->fetchAll();
+		foreach($k['goods'] as $kk=>$vv){
+		    $k['count']+=$vv['count'];	    
+		    $sql="select * from rv_goods where 1=1 and id=?";
+		    $db->p_e($sql,array($vv['goods_id']));
+		    $k['goods']=$db->fetchRow();
+		}
 	}
+
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('list',$list);
@@ -77,18 +81,18 @@ if($do==""){
 		$db->p_e($sql,array($k['uid']));
 		$k['user']=$db->fetchRow();
 		
-		$sql="select * from rv_buy_goods where buy_id=?";
-        $db->p_e($sql, array($k['id']));
-        $k['goods']=$db->fetchAll();
-        foreach($k['goods'] as $kk=>$vv){
-            $k['count']+=$vv['count'];      
-            $sql="select * from rv_goods where 1=1 and id=?";
-            $db->p_e($sql,array($vv['goods_id']));
-            $k['goods']=$db->fetchRow();
-        }	
-       	$sql="select name from rv_mendian where id=?";
+	    $sql="select * from rv_buy_goods where buy_id=?";
+		$db->p_e($sql, array($k['id']));
+		$k['goods']=$db->fetchAll();
+		foreach($k['goods'] as $kk=>$vv){
+		    $k['count']+=$vv['count'];	    
+		    $sql="select * from rv_goods where 1=1 and id=?";
+		    $db->p_e($sql,array($vv['goods_id']));
+		    $k['goods']=$db->fetchRow();
+		}
+		$sql="select name from rv_mendian where id=?";
 		$db->p_e($sql, array($k['mid']));
-		$k['mdname']=$db->fetchRow()['name'];
+		$k['mbname']=$db->fetchRow()['name'];
 	}
 	$time=date(time());
 	header("Content-Type: application/vnd.ms-excel;charset=gbk");   
@@ -104,9 +108,9 @@ if($do==""){
 			echo "<th width='80'>年龄</th>";
 			echo "<th width='200'>电话</th>";
 			echo "<th width='80'>数量</th>";
-            echo "<th width='80'>单价</th>";
-            echo "<th width='80'>自定实际金额</th>";
-            echo "<th width='80'>总价</th>";
+			echo "<th width='80'>单价</th>";
+			echo "<th width='80'>自定实际金额</th>";
+			echo "<th width='80'>总价</th>";
 			echo "<th width='160'>时间</th>";
 			echo "</tr>";
 		foreach($list as $v){
@@ -120,9 +124,9 @@ if($do==""){
 			echo "<td width='80'>".$v['age']."</td>";
 			echo "<td width='200'>".$v['tel']."</td>";
 			echo "<td width='80'>".$v['count']."</td>";
-            echo "<td width='80'>".$v['goods']['money']."/".$v['goods']['dw']."</td>";
-            echo "<td width='80'>".$v['sale_price']."（元）</td>";
-            echo "<td width='80'>".$v['total_price']."（元）</td>";
+			echo "<td width='80'>".$v['goods']['money']."/".$v['goods']['dw']."</td>";
+			echo "<td width='80'>".$v['sale_price']."（元）</td>";
+			echo "<td width='80'>".$v['total_price']."（元）</td>";
 			echo "<td width='160'>".$v['addtime']."</td>";
 			echo "</tr>";
 		}
@@ -131,18 +135,14 @@ if($do==""){
 }elseif ($do == "show_i_verify") { // 查看录入审核信息
     
     $vid = $_REQUEST['vid'];
-
-    $sql ="select b.id,b.uid,b.mid,b.addtime,b.endtime,u.name,b.status,b.total_price,b.sale_price,GROUP_CONCAT(bg.goods_id) as goods_id from rv_buy as b,rv_buy_goods as bg,rv_user as u where b.id=bg.buy_id and b.uid=u.id and b.id=?";
-    $db->p_e($sql, array(
-        $vid
-    ));
+    $sql ="select b.id,b.uid,b.mid,b.addtime,b.endtime,u.name,b.status,b.total_price,b.sale_price,GROUP_CONCAT(bg.goods_id) as goods_id from rv_buy as b,rv_buy_goods as bg,rv_user as u where b.id=bg.buy_id and b.uid=u.id and b.id=$vid";    
+    $db->p_e($sql,array());
     $verify_info = $db->fetchRow();
     if($verify_info){
         $sql="select * from rv_buy_goods as bg, rv_goods as g where bg.goods_id=g.id and bg.goods_id and buy_id=?";
         $db->p_e($sql, array($verify_info[id]));
         $verify_info['goods']=$db->fetchAll();
     }
-    
     $smt = new Smarty();
     smarty_cfg($smt);
     $smt->assign("verify_info", $verify_info);
@@ -164,7 +164,7 @@ if($do=='edit'){
     $sales['mdname']=$db->fetchRow()['name'];
     $sql="select a.*,b.name,b.money from rv_buy_goods as a left join rv_goods as b on a.goods_id=b.id where a.buy_id=? and a.goods_type=0";
     $db->p_e($sql, array($sales['id']));
-    $sales['goods']=$db->fetchAll();
+    $sales['goods']=$db->fetchAll();  
     $smt=new Smarty();
     smarty_cfg($smt);
     $smt->assign('sales',$sales);
@@ -195,7 +195,6 @@ if($do=='edit'){
         }     
     }   
 }
-
 
 if($do=='mendian'){
     If_rabc(); //检测权限

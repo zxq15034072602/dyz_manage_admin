@@ -208,7 +208,7 @@ $action_cn=array(
 	
 	'xslr'=>array(
 		"admin_xslr_"=>"销售录入列表",
-		"admin_xslr_daochu"=>"销售录入导出"
+		"admin_xslr_daochu"=>"销售录入导出",
 	),
 	
 	'gg'=>array(

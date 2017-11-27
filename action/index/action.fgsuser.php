@@ -24,7 +24,7 @@ if($do=="fgs_user"){
 	//查询
     $sql2="SELECT * FROM rv_user where 1=1 ".$search." and status!=2  and type in ($type ,3) and roleid=2 order by id desc LIMIT ".$pageNum.",".$numPerPage;	     
 	$db->p_e($sql2,$arr);
-	$list=$db->fetchAll();	
+	$list=$db->fetchAll();
 	foreach($list as &$k){
 	    $sql="select mid,cityid from rv_user_jingxiao_jiameng where 1=1 and id=?";
 	    $db->p_e($sql, array($k['zz']));
