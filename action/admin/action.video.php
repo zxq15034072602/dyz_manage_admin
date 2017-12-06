@@ -134,7 +134,7 @@ if($do=='video_list_new'){
 }
 if($do=='video_list_add'){
     If_rabc(); //检测权限
-    $sql="insert into rv_video_list (vid,title,teacher,url) VALUES (?,?,?,?)";
+    $sql="insert into rv_video_list (vid,title,teacher,video_url) VALUES (?,?,?,?)";
     $arr1=array($_POST['vid'],$_POST['title'],$_POST['teacher'],$_POST['url']);
     if($db->p_e($sql,$arr1)){echo close($msg,"video_list");}else{echo  error($msg);}
     exit;
@@ -283,6 +283,7 @@ if($do=='editarticlelist'){
         $id
     ));
     $row=$db->fetchRow();
+    $row['content']=htmlspecialchars_decode($row['content']);
     $smt=new Smarty();
     smarty_cfg($smt);
     $smt->assign('row',$row);

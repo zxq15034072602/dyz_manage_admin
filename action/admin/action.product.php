@@ -77,6 +77,7 @@ if($do=='edit'){
     $sql="SELECT a.id,a.name,a.money,a.dw,a.fatherid,b.id as ppid,a.is_recommend,a.good_img,a.description,a.good_url,a.title,a.content,b.name as ppname from rv_goods as a left join rv_type as b on a.fatherid=b.id where 1=1 and a.id=?";
 	$db->p_e($sql,array($id));
 	$row=$db->fetchRow();
+    $row['content']=htmlspecialchars_decode($row['content']);
 	$sql="select * from rv_type where 1=1";
 	$db->p_e($sql,array());
 	$pp=$db->fetchAll();
