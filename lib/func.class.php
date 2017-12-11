@@ -208,7 +208,7 @@ $action_cn=array(
 	
 	'xslr'=>array(
 		"admin_xslr_"=>"销售录入列表",
-		"admin_xslr_daochu"=>"销售录入导出",
+		"admin_xslr_daochu"=>"销售录入导出"
 	),
 	
 	'gg'=>array(
@@ -230,9 +230,6 @@ $action_cn=array(
     ),
     "verify" =>array(
         "admin_verify_store_list"=>"店长申请审核",
-    ),
-    "order"=>array(
-        "admin_order_list"=>"订单列表页",
     ),
     
 );

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-12-06 14:25:10
+<?php /* Smarty version Smarty-3.1.12, created on 2017-12-07 08:47:28
          compiled from ".\tpl\admin\product_new.htm" */ ?>
 <?php /*%%SmartyHeaderCode:207445a20fe10215584-02642393%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '023b01411186ad9472332b247c0f869ef5a41c9a' => 
     array (
       0 => '.\\tpl\\admin\\product_new.htm',
-      1 => 1512541369,
+      1 => 1512607606,
       2 => 'file',
     ),
   ),
@@ -25,11 +25,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5a20fe102495c7_94358094')) {function content_5a20fe102495c7_94358094($_smarty_tpl) {?>
-	<script type="text/javascript" charset="utf-8" src="http://app.duyiwang.cn/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="http://app.duyiwang.cn/ueditor/ueditor.all.min.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="http://192.168.1.106/dyz_manage_admin/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://192.168.1.106/dyz_manage_admin/ueditor/ueditor.all.min.js"> </script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-    <script type="text/javascript" charset="utf-8" src="http://app.duyiwang.cn/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://192.168.1.106/dyz_manage_admin/ueditor/lang/zh-cn/zh-cn.js"></script>
 <div class="page">
 	<div class="pageContent">
 		<form method="post" action="?dir=admin&action=product&do=add" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
