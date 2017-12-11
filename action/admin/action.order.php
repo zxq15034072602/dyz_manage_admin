@@ -35,6 +35,12 @@ if($do=='list'){
             $v['identity']='经销商';
         }elseif($v['roleid']==4){
             $v['identity']='加盟商';
+        }elseif($v['roleid']==1){
+            $v['identity']='总部人员';            
+        }elseif($v['roleid']==6){
+            $v['identity']='董事长'; 
+        }elseif($v['roleid']==7){
+            $v['identity']='总经理';
         }
         //操作员
         if($v['userid']){
@@ -65,7 +71,6 @@ if($do=='list'){
             $v['order_number']='还未发货';
         }
     }
-    
     $smt=new Smarty();
     smarty_cfg($smt);
     $smt->assign('order_info',$order_info);
@@ -162,7 +167,7 @@ if($do=='show_order'){
     $order_info['store']=$db->fetchAll();
     
     foreach($order_info['store'] as &$v){
-        $sql="select a.*,b.name,b.money,a.dw from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id  where a.fid=?";
+        $sql="select a.*,b.name,b.money,b.purchase_dw from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id  where a.fid=?";
         $db->p_e($sql, array($v['id']));
         $v['goods_info']=$db->fetchAll();
     }
@@ -199,7 +204,6 @@ if($do=='updata'){
         echo  error($msg);
         exit();
     }
-   
     exit;
 }
 
@@ -245,7 +249,7 @@ if($do=='daochu'){//导出
        $db->p_e($sql, array($k['id']));
        $k['store']=$db->fetchAll();
        foreach($k['store'] as &$val){
-           $sql="select a.*,b.name,b.dw from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id where a.fid=?";
+           $sql="select a.*,b.name,b.purchase_dw from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id where a.fid=?";
            $db->p_e($sql, array($val['id']));
            $val['goods']=$db->fetchAll();
        }
@@ -293,7 +297,7 @@ if($do=='daochu'){//导出
                         $str2.="
                         <tr>
                             <td align='center'>".$vvv[name]."</td>
-                            <td align='center'>".$vvv[count]."/".$vvv[dw]."</td>
+                            <td align='center'>".$vvv[count]."/".$vvv[purchase_dw]."</td>
                             <td align='center'>".$vvv[goods_price]."</td>
                         </tr>";
                         
@@ -324,4 +328,3 @@ if($do=='del'){//删除订单
     }
     echo error("删除失败！");exit;
 }
-

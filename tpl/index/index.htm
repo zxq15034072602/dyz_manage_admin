@@ -151,6 +151,7 @@
 								</ul>
 							</li>
 							<{/if}>
+							<{if in_array('index_user_',$role1)}>
 							<li><a>用户管理</a>
 								<{if in_array('index_user_',$role1)}>
 								<ul>
@@ -174,6 +175,7 @@
 									<li><a href="index.php?action=mduser&do=dc_user" target="navTab" rel="mduser">导出用户信息</a></li>
 								</ul>
 							</li>
+							<{/if}>
 							<{if in_array('index_role_',$role1)}>
 							<li><a>角色管理</a>
 								<ul>
@@ -181,11 +183,13 @@
 								</ul>
 							</li>
 							<{/if}>
+							<{if in_array('admin_download_list',$role1)}>
 							<li><a>大区下载管理</a>
 								<ul>
 									<li><a href="index.php?action=download&dir=admin&do=list" target="navTab" rel="role">下载统计</a></li>
 								</ul>
 							</li>
+							<{/if}>
 							<{if in_array('admin_feedback_list',$role1)}>
 							<li><a>app用户反馈</a>
 								<ul>
@@ -235,8 +239,6 @@
 								</ul>
 							</li>
 							<{/if}>
-							
-
 						</ul>
 					</div>
 				</div>

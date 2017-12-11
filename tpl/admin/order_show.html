@@ -66,7 +66,7 @@
 								<{foreach $store['goods_info'] item=goods}>
 									<tr>
 										<td align="center"><{$goods.name}></td>
-										<td align="center"><{$goods.count}>/<{$goods.dw}></td>
+										<td align="center"><{$goods.count}>/<{$goods.purchase_dw}></td>
 										<td align="center"><{$goods.goods_price}>（元）</td>
 									</tr>				
 								<{/foreach}>
@@ -90,6 +90,3 @@
 		</form>
 	</div>
 </div>
-<script>
-	
-</script>

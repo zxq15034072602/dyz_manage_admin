@@ -48,7 +48,7 @@
 					<td align="center">
 					    <{if $row.status == 0}>
 						<a href="index.php?dir=admin&action=verify&do=tg_jx&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>&cityid=<{$row.cityid}>&areaid=<{$row.areaid}>" target="ajaxTodo">通过</a>
-						<a href="index.php?dir=admin&action=verify&do=jj&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>&cityid=<{$row.cityid}>&areaid=<{$row.areaid}>" target="ajaxTodo">拒绝</a>
+						<a href="index.php?dir=admin&action=verify&do=jj&id=<{$row.id}>&uid=<{$row.uid}>&mid=<{$row.mid}>&cityid=<{$row.city.cityid}>&areaid=<{$row.areaid}>" target="ajaxTodo">拒绝</a>
 						<{else}>
 						<{if $row.status == 0}>未审核<{elseif $row.status ==1}>已审核<{else}>已拒绝<{/if}>
 						<{/if}>

@@ -37,6 +37,7 @@
 					<th align="center">商品名称</th>
 					<th align="center">所属品牌</th>
 					<th align="center">单价</th>
+					<th align="center">进货价</th>
 					<th align="center">是否推荐</th>
 					
 				</tr>
@@ -48,6 +49,7 @@
 					<td align="center"><{$row.name}></td>
 					<td align="center"><{$row.pp}></td>
 					<td align="center"><{$row.money}>/<{$row.dw}></td>
+					<td align="center"><{$row.purchase_price}>/<{$row.dw}></td>
 					<td align="center"><{if $row.is_recommend eq 0}>否<{else}>是<{/if}></td>
 					
 				</tr>			

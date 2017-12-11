@@ -1,4 +1,4 @@
-<form id="pagerForm" method="post" action="index.php?action=fgsuser">
+<form id="pagerForm" method="post" action="index.php?action=fgsuser&do=fgs_user">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
 	<input type="hidden" name="username" value="<{$smarty.request.username}>"/>
@@ -32,6 +32,7 @@
 				<li><a class="add" href="?action=fgsuser&do=new&type=<{$type}>" target="dialog" mask="true"><span>添加</span></a></li>
 				<li><a class="edit" href="?action=fgsuser&do=edit&id={id}&type=<{$type}>" target="dialog" mask="true"><span>修改</span></a></li>
 				<li><a class="delete" href="?action=fgsuser&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>
+				<li><a class="icon" href="?dir=index&action=fgsuser&do=daochu_jingxiao" target="dwzExport" title="实要导出这些记录吗?"><span>导出经销商信息</span></a></li>
 				<li class="line">line</li>
 			</ul>
 		</div>
