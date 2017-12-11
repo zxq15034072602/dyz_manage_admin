@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-23 09:21:08
+<?php /* Smarty version Smarty-3.1.12, created on 2017-12-09 14:49:58
          compiled from ".\tpl\admin\md_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:1516459decc9a064c11-78384051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bb9a56fc883ea8fa2a2a4fe7def5aefbb52b9d31' => 
     array (
       0 => '.\\tpl\\admin\\md_list.htm',
-      1 => 1511400062,
+      1 => 1512802132,
       2 => 'file',
     ),
   ),
@@ -90,6 +90,7 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 " target="dialog" mask="true"><span>修改</span></a></li>
 				<li><a class="delete" href="?dir=admin&action=md&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>
 				<li class="line">line</li>
+				<li><a class="icon" href="?dir=admin&action=md&do=md_daochu2" target="dwzExport" title="实要导出这些记录吗?"><span>导出所有门店</span></a></li>
 				<li><a class="icon" href="?dir=admin&action=md&do=md_daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出有销售录入的门店</span></a></li>
 				<li><a class="icon" href="?dir=admin&action=md&do=md_daochu1" target="dwzExport" title="实要导出这些记录吗?"><span>导出没有销售录入的门店</span></a></li>
 			</ul>

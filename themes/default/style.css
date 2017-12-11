@@ -179,7 +179,7 @@ body, #splitBar { background:#e5edef;}
 
 /* Pages dialog */
 .dialog .pageHeader, .dialog .pageContent { border-color:#b8d0d6;}
-.dialog .pageContent .pageFormContent { border-color:#b8d0d6; background:#FFF;}
+.dialog .pageContent .pageFormContent { border-color:#b8d0d6; background:#FFF;display: flex;flex-direction: column;}
 
 /* Pages default */
 .page .pageHeader, .pageForm .formBar { border-color:#b8d0d6; background:#ebf0f5 url(../default/images/pageHeader_bg.png) repeat-x;}

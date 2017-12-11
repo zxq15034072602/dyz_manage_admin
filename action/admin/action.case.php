@@ -38,7 +38,7 @@ if($do=='list'){
 if($do=="new"){ 
     If_rabc(); //检测权限
     //门店
-    $sql="select * from rv_mendian";
+    $sql="select * from rv_mendian where status=1 and type=0";
     $db->p_e($sql, array());
     $md=$db->fetchAll();
     //产品
@@ -94,6 +94,8 @@ if($do=='edit'){//编辑案例详情页
     if($case['case_img']){
         $img_names=explode(",", $case['case_img']);//获取图片数组
     }
+    $case['content']=htmlspecialchars_decode($case['content']);
+    $case['process']=htmlspecialchars_decode($case['process']);
     //门店
     $sql="select * from rv_mendian";
     $db->p_e($sql, array());

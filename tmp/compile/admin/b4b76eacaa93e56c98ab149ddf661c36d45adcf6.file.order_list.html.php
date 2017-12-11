@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-27 17:30:39
+<?php /* Smarty version Smarty-3.1.12, created on 2017-11-29 17:04:23
          compiled from ".\tpl\admin\order_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:50825a1bdb3f797df1-40166763%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b4b76eacaa93e56c98ab149ddf661c36d45adcf6' => 
     array (
       0 => '.\\tpl\\admin\\order_list.html',
-      1 => 1511748535,
+      1 => 1511946258,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_5a1bdb3f7d4e81_24726544',
   'variables' => 
   array (
     'username' => 0,
@@ -25,10 +27,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5a1bdb3f7d4e81_24726544',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5a1bdb3f7d4e81_24726544')) {function content_5a1bdb3f7d4e81_24726544($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=xslr">
+<?php if ($_valid && !is_callable('content_5a1bdb3f7d4e81_24726544')) {function content_5a1bdb3f7d4e81_24726544($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=order&do=list">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
@@ -72,7 +72,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<th align="center">电话</th>
 					<th align="center">身份</th>
 					<th align="center">收货地址</th>
-					<th align="center">总价</th>
+					<th align="center">总价（元）</th>
 					<th align="center">物流单号</th>
 					<th align="center">订单状态</th>
 					<th align="center">订单生成时间</th>

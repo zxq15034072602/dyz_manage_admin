@@ -87,7 +87,7 @@ if($do=='dc_user'){
 }
 
 //导出所有用户
-if($do=='daochu'){   
+if($do=='daochu'){  
     $sql="select u.*,m.name as mdname from rv_user as u left join rv_mendian as m on u.zz=m.id where u.id>200 order by id desc";
     $db->p_e($sql, array());
     $list=$db->fetchAll();   

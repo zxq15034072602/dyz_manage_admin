@@ -58,6 +58,64 @@ if($do=="fgs_user"){
 	
 }
 
+//导出经销商
+if($do=='daochu_jingxiao'){
+    //查询
+    $sql2="SELECT * FROM rv_user where 1=1  and status=1 and roleid=2 order by id desc ";
+    $db->p_e($sql2,array());
+    $list=$db->fetchAll();
+    foreach($list as &$k){
+        $sql="select mid,cityid from rv_user_jingxiao_jiameng where 1=1 and id=?";
+        $db->p_e($sql, array($k['zz']));
+        $k['md']=$db->fetchRow();
+        $sql="select * from rv_city where cityid=?";
+        $db->p_e($sql, array($k['md']['cityid']));
+        $k['city_name']=$db->fetchRow()['city'];
+         
+        $k['midArr']=explode(",", $k['md']['mid']);
+        foreach($k['midArr'] as $kk=>$vv){
+            $sql="select name from rv_mendian where id=$vv";
+            $db->p_e($sql, array());
+            $name=$db->fetchRow();
+            $k['mdname'].=$name['name']."，";
+        }
+        $k['mdname']=rtrim($k['mdname'],"，");
+        $k['mdname']=explode("，", $k['mdname']);
+    }
+    $time=date(time());
+    header("Content-Type: application/vnd.ms-excel;charset=gbk");
+    header("Content-Disposition: attachment; filename=".$time.".xls");
+    echo "<table border='1'>";
+    echo "<tr>";
+    echo "<th colspan='7'>经销商信息表</th>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<th width='50'>序号</th>";
+    echo "<th width='80'>用户ID</th>";
+    echo "<th width='120'>用户名</th>";
+    echo "<th width='120'>姓名</th>";
+    echo "<th width='120'>电话</th>";
+    echo "<th width='300'>所有门店</th>";
+    echo "<th width='120'>所属区域</th>";
+    echo "</tr>";
+    foreach($list as $key=>$val){
+            echo "<tr>";
+            echo "<td width='50'>".($key+1)."</td>";
+            echo "<td width='80'>".$val['id']."</td>";
+            echo "<td width='120'>".$val['username']."</td>";
+            echo "<td width='120'>".$val['name']."</td>";
+            echo "<td width='120'>".$val['mobile']."</td>";
+            echo "<td width='300'><ul>";
+               foreach ($val['mdname'] as $keys=>$vals){
+               	echo   "<li style='line-height: 31px;height:21px'>".($keys+1)."、 &nbsp;".$vals."</li>";
+                }
+           echo "</ul></td>";
+           echo "<td width='120'>".$val['city_name']."</td>";
+           echo "</tr>";
+    }
+    echo "</table>";
+}
+
 //加盟商用户列表
 if($do=='jms_user'){
 	If_rabc(); //检测权限
@@ -114,6 +172,64 @@ if($do=='jms_user'){
     $smt->assign('type',$type);
     $smt->display('fgs_user_list1.htm');
     exit;
+}
+
+//导出加盟商
+if($do=='daochu_jiameng'){
+      //查询
+    $sql2="SELECT * FROM rv_user where 1=1  and status=1 and roleid=4 order by id desc ";
+    $db->p_e($sql2,array());
+    $list=$db->fetchAll();
+    foreach($list as &$k){
+        $sql="select mid,cityid from rv_user_jingxiao_jiameng where 1=1 and id=?";
+        $db->p_e($sql, array($k['zz']));
+        $k['md']=$db->fetchRow();
+        $sql="select * from rv_city where cityid=?";
+        $db->p_e($sql, array($k['md']['cityid']));
+        $k['city_name']=$db->fetchRow()['city'];
+         
+        $k['midArr']=explode(",", $k['md']['mid']);
+        foreach($k['midArr'] as $kk=>$vv){
+            $sql="select name from rv_mendian where id=$vv";
+            $db->p_e($sql, array());
+            $name=$db->fetchRow();
+            $k['mdname'].=$name['name']."，";
+        }
+        $k['mdname']=rtrim($k['mdname'],"，");
+        $k['mdname']=explode("，", $k['mdname']);
+    }
+    $time=date(time());
+    header("Content-Type: application/vnd.ms-excel;charset=gbk");
+    header("Content-Disposition: attachment; filename=".$time.".xls");
+    echo "<table border='1'>";
+    echo "<tr>";
+    echo "<th colspan='7'>经销商信息表</th>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<th width='50'>序号</th>";
+    echo "<th width='80'>用户ID</th>";
+    echo "<th width='120'>用户名</th>";
+    echo "<th width='120'>姓名</th>";
+    echo "<th width='120'>电话</th>";
+    echo "<th width='300'>所有门店</th>";
+    echo "<th width='120'>所属区域</th>";
+    echo "</tr>";
+    foreach($list as $key=>$val){
+            echo "<tr>";
+            echo "<td width='50'>".($key+1)."</td>";
+            echo "<td width='80'>".$val['id']."</td>";
+            echo "<td width='120'>".$val['username']."</td>";
+            echo "<td width='120'>".$val['name']."</td>";
+            echo "<td width='120'>".$val['mobile']."</td>";
+            echo "<td width='300'><ul>";
+               foreach ($val['mdname'] as $keys=>$vals){
+               	echo   "<li style='line-height: 31px;height:21px'>".($keys+1)."、 &nbsp;".$vals."</li>";
+                }
+           echo "</ul></td>";
+           echo "<td width='120'>".$val['city_name']."</td>";
+           echo "</tr>";
+    }
+    echo "</table>";
 }
 
 //新建	

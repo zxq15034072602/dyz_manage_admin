@@ -5,12 +5,12 @@ if($do =='store_list'){ //所属门店审核
 
     $search='';
 	$arr=array();
-	$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=1";
 
 	if($_POST['name']){
 		$search .= " and u.name like ? ";
 		$arr[]="%".$_POST['name']."%";
-		}	
+	}	
+	$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=1".$search ;
 	//设置分页
 	if($_POST['numPerPage']==""){
 		$numPerPage="20";
@@ -45,12 +45,12 @@ if($do =='store_list1'){ //经销商所属门店审核
 
     $search='';
 	$arr=array();
-	$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=2";
 
 	if($_POST['name']){
 		$search .= " and u.name like ? ";
 		$arr[]="%".$_POST['name']."%";
-		}	
+	}
+		$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=2".$search;	
 	//设置分页
 	if($_POST['numPerPage']==""){
 		$numPerPage="20";
@@ -118,12 +118,12 @@ if($do =='store_list2'){ //加盟商所属门店审核
 
     $search='';
 	$arr=array();
-	$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=3";
 
 	if($_POST['name']){
 		$search .= " and u.name like ? ";
 		$arr[]="%".$_POST['name']."%";
-		}	
+	}	
+	$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=3".$search;
 	//设置分页
 	if($_POST['numPerPage']==""){
 		$numPerPage="20";
@@ -194,12 +194,13 @@ if($do =='store_list3'){ //总部人员所属门店审核
     If_rabc(); //检测权限
     $search='';
 	$arr=array();
-	$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=4";
+
 
 	if($_POST['name']){
 		$search .= " and u.name like ? ";
 		$arr[]="%".$_POST['name']."%";
-		}	
+	}	
+	$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=4".$search;
 	//设置分页
 	if($_POST['numPerPage']==""){
 		$numPerPage="20";
@@ -231,14 +232,14 @@ if($do =='store_list3'){ //总部人员所属门店审核
 	exit;
 }
 if($do =='store_list4'){ //店员所属门店审核
+   
     $search='';
-	$arr=array();
-	$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=0";
-
+	$arr1=array();
 	if($_POST['name']){
 		$search .= " and u.name like ? ";
-		$arr[]="%".$_POST['name']."%";
-		}	
+		$arr1[]="%".$_POST['name']."%";
+	}	
+	$sqlcount ="SELECT count(*) FROM rv_verify as v,rv_user as u where 1=1 and v.uid=u.id and v.type=0".$search;
 	//设置分页
 	if($_POST['numPerPage']==""){
 		$numPerPage="20";
@@ -252,12 +253,12 @@ if($do =='store_list4'){ //店员所属门店审核
 	}
 	$sql1=$sqlcount ;
 
-	$db->p_e($sql1,$arr);
+	$db->p_e($sql1,$arr1);
 	$total=$db->fetch_count();//总条数
 	//查询
 	
 	$sql2="select v.id,u.name,v.addtime,v.status,v.uid,v.mid,m.name as mdname from (rv_verify as v left join rv_user as u on v.uid=u.id)left join rv_mendian as m on v.mid=m.id where 1=1 and v.type=0 ".$search." order by v.addtime desc LIMIT ".$pageNum.",".$numPerPage;
-	$db->p_e($sql2,$arr);
+	$db->p_e($sql2,$arr1);
 	$list=$db->fetchAll();
 
 	//模版

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-13 11:24:32
+<?php /* Smarty version Smarty-3.1.12, created on 2017-12-08 11:03:12
          compiled from ".\tpl\admin\verify_list1.html" */ ?>
 <?php /*%%SmartyHeaderCode:908559dde9177f43a8-59634742%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b0ea8a290edece80a5bacd54a4125d8a8f1b91e' => 
     array (
       0 => '.\\tpl\\admin\\verify_list1.html',
-      1 => 1510543468,
+      1 => 1512702186,
       2 => 'file',
     ),
   ),
@@ -97,7 +97,7 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 						<a href="index.php?dir=admin&action=verify&do=jj&id=<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
 &uid=<?php echo $_smarty_tpl->tpl_vars['row']->value['uid'];?>
 &mid=<?php echo $_smarty_tpl->tpl_vars['row']->value['mid'];?>
-&cityid=<?php echo $_smarty_tpl->tpl_vars['row']->value['cityid'];?>
+&cityid=<?php echo $_smarty_tpl->tpl_vars['row']->value['city']['cityid'];?>
 &areaid=<?php echo $_smarty_tpl->tpl_vars['row']->value['areaid'];?>
 " target="ajaxTodo">拒绝</a>
 						<?php }else{ ?>

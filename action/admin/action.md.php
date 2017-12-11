@@ -220,6 +220,39 @@ if($do=="del"){
 	exit;
 }
 
+//导出门店
+if($do=='md_daochu2'){
+    $sql="select * from rv_mendian where status=1 and type=0";
+    $db->p_e($sql, array());
+    $md=$db->fetchAll();
+
+    $time=date(time());
+    header("Content-Type: application/vnd.ms-excel;charset=gbk");
+    header("Content-Disposition: attachment; filename=".$time.".xls");
+    echo "<table border='1'>";
+    echo "<tr>";
+    echo "<th colspan='5'>所有门店信息表</th>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<th width='50'>序号</th>";
+    echo "<th width='80'>门店ID</th>";
+    echo "<th width='200'>门店名</th>";
+    echo "<th width='120'>电话</th>";
+    echo "<th width='300'>地址</th>";
+    echo "</tr>";
+    foreach($md as $k=>$v){
+        echo "<tr>";
+        echo "<td width='50'>".($k+1)."</td>";
+        echo "<td width='80'>".$v['id']."</td>";
+        echo "<td width='200'>".$v['name']."</td>";
+        echo "<td width='120'>".$v['tel']."</td>";
+        echo "<td width='300'>".$v['address']."</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+    exit;
+}
+
 //导出有销售录入的门店
 if($do=='md_daochu'){
     $sql="select b.* from rv_buy as a left join rv_mendian as b on a.mid=b.id where b.status=1 GROUP BY b.id";

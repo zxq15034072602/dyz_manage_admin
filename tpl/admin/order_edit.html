@@ -25,7 +25,7 @@
 				</dl>
 				<dl>
 					<dt>物流单号：</dt>
-					<dd><input type="text" name="order_number" size="30" value="<{$order_info.order_number}>"/></dd>
+					<dd><textarea rows="3" cols="62" name="order_number" ><{$order_info.order_number}></textarea></dd>
 				</dl>
 				<dl>
 					<dt>订单时间：</dt>
@@ -33,7 +33,7 @@
 				</dl>
 				<dl>
 					<dt>付款凭证：</dt>
-					<dd><img id="img" src="<{$order_info.voucher_image}>" style="width:70px;height:70px;padding-right:15px"/></dd>
+					<dd><a href="<{$order_info.voucher_image}>"><img id="img" src="<{$order_info.voucher_image}>" style="width:70px;height:70px;padding-right:15px"/></a></dd>
 				</dl>
 				<dl></dl>
 				<dl>
@@ -50,7 +50,7 @@
 								<{foreach $store['goods_info'] item=goods}>
 									<tr>
 										<td align="center"><{$goods.name}></td>
-										<td align="center"><{$goods.count}></td>
+										<td align="center"><{$goods.count}>/<{$goods.purchase_dw}></td>
 										<td align="center"><{$goods.goods_price}>（元）</td>
 									</tr>				
 								<{/foreach}>
@@ -59,7 +59,12 @@
 						<{/foreach}>
 					</dd>
 				</dl>
-				
+				<dl>
+					<dt>备注：</dt>
+					<dd>
+					<textarea rows="5" cols="62" name="beizhu" ><{$order_info.beizhu}></textarea>
+					</dd>
+				</dl>
 			</div>
 			<div class="formBar">
 				<ul>

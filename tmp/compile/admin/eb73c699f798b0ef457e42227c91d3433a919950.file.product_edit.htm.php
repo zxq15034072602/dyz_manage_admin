@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-21 17:46:06
+<?php /* Smarty version Smarty-3.1.12, created on 2017-12-06 14:47:52
          compiled from ".\tpl\admin\product_edit.htm" */ ?>
 <?php /*%%SmartyHeaderCode:327375a13f5de14f945-69086328%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eb73c699f798b0ef457e42227c91d3433a919950' => 
     array (
       0 => '.\\tpl\\admin\\product_edit.htm',
-      1 => 1505895234,
+      1 => 1512542865,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_5a13f5de1c9a66_02904180',
   'variables' => 
   array (
     'row' => 0,
@@ -22,38 +24,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'roww' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5a13f5de1c9a66_02904180',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5a13f5de1c9a66_02904180')) {function content_5a13f5de1c9a66_02904180($_smarty_tpl) {?><link rel="stylesheet" href="kindeditor/themes/default/default.css" />
-	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
-	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
-	<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
-	<script charset="utf-8" src="kindeditor/plugins/code/prettify.js"></script>
-	<script>
-		KindEditor.ready(function(K) {
-			var editor1 = K.create('textarea[name="content"]', {
-				cssPath : 'kindeditor/plugins/code/prettify.css',
-				uploadJson : 'kindeditor/php/upload_json.php',
-				fileManagerJson : 'kindeditor/php/file_manager_json.php',
-				allowFileManager : true,
-				afterBlur: function () { this.sync(); },
-				afterCreate : function() {
-					var self = this;
-					K.ctrl(document, 13, function() {
-						self.sync();
-						K('form[name=example]')[0].submit();
-					});
-					K.ctrl(self.edit.doc, 13, function() {
-						self.sync();
-						K('form[name=example]')[0].submit();
-					});
-				}
-
-			});
-			prettyPrint();
-		});
-	</script>
+<?php if ($_valid && !is_callable('content_5a13f5de1c9a66_02904180')) {function content_5a13f5de1c9a66_02904180($_smarty_tpl) {?>
+	<script type="text/javascript" charset="utf-8" src="http://app.duyiwang.cn/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://app.duyiwang.cn/ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="http://app.duyiwang.cn/ueditor/lang/zh-cn/zh-cn.js"></script>
 <div class="page">
 	<div class="pageContent">
 		<form method="post" action="?dir=admin&action=product&do=update" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
@@ -132,18 +109,13 @@ $_smarty_tpl->tpl_vars['roww']->_loop = true;
 					<dd><input type="text" name="title" class="" size="60" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['title'];?>
 "/></dd>
 				</dl>
-				<br/><br/><br/><br/><br/><br/>
-				<p>产品详情内容</p>
-				<br/><br/><br/><br/>
-				<br/><br/><br/><br/>
-				<br/><br/><br/><br/>
-				<br/><br/><br/><br/>
-				<br/><br/><br/><br/>
-				<br/><br/><br/><br/>
-				<br/><br/><br/><br/>
-				<br/><br/><br/><br/>
-				<textarea name="content" placeholder="请输入产品详情" style="width:700px;height:200px;visibility:hidden;float:left;"><?php echo $_smarty_tpl->tpl_vars['row']->value['content'];?>
-</textarea>			
+	
+				<dl>
+					<dt>产品详情内容：</dt>
+					<br/><br/><br/>
+					<dd><script id="editor" name="content" type="text/plain" style="width:1024px;height:500px;"><?php echo $_smarty_tpl->tpl_vars['row']->value['content'];?>
+</script></dd>
+				</dl>		
 			</div>
 			<div class="formBar">
 				<ul>
@@ -152,4 +124,10 @@ $_smarty_tpl->tpl_vars['roww']->_loop = true;
 			</div>
 		</form>
 	</div>
-</div><?php }} ?>
+</div>
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+</script><?php }} ?>

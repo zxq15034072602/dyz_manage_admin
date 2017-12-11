@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-27 17:30:49
+<?php /* Smarty version Smarty-3.1.12, created on 2017-12-05 09:10:59
          compiled from ".\tpl\admin\order_show.html" */ ?>
 <?php /*%%SmartyHeaderCode:17585a1bdb49906567-14428480%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bda6c8257a975e4152f20547f62312677ae76781' => 
     array (
       0 => '.\\tpl\\admin\\order_show.html',
-      1 => 1511768171,
+      1 => 1512435619,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_5a1bdb499435f0_40762208',
   'variables' => 
   array (
     'order_info' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'goods' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5a1bdb499435f0_40762208',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5a1bdb499435f0_40762208')) {function content_5a1bdb499435f0_40762208($_smarty_tpl) {?><div class="page">
 	<div class="pageContent">
@@ -88,8 +88,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</dl>
 				<dl>
 					<dt>付款凭证：</dt>
-					<dd><img id="img" src="<?php echo $_smarty_tpl->tpl_vars['order_info']->value['voucher_image'];?>
-" style="width:70px;height:70px;padding-right:15px"/></dd>
+					<dd><a href="<?php echo $_smarty_tpl->tpl_vars['order_info']->value['voucher_image'];?>
+"><img id="img" src="<?php echo $_smarty_tpl->tpl_vars['order_info']->value['voucher_image'];?>
+" style="width:70px;height:70px;padding-right:15px"/></a></dd>
 				</dl>
 				<dl></dl>
 				<dl>
@@ -117,6 +118,7 @@ $_smarty_tpl->tpl_vars['goods']->_loop = true;
 										<td align="center"><?php echo $_smarty_tpl->tpl_vars['goods']->value['name'];?>
 </td>
 										<td align="center"><?php echo $_smarty_tpl->tpl_vars['goods']->value['count'];?>
+/<?php echo $_smarty_tpl->tpl_vars['goods']->value['purchase_dw'];?>
 </td>
 										<td align="center"><?php echo $_smarty_tpl->tpl_vars['goods']->value['goods_price'];?>
 （元）</td>
@@ -127,7 +129,13 @@ $_smarty_tpl->tpl_vars['goods']->_loop = true;
 						<?php } ?>
 					</dd>
 				</dl>
-				
+				<dl>
+					<dt>备注：</dt>
+					<dd>
+					<textarea rows="5" cols="62" name="beizhu" ><?php echo $_smarty_tpl->tpl_vars['order_info']->value['beizhu'];?>
+</textarea>
+					</dd>
+				</dl>
 			</div>
 			<div class="formBar">
 				<ul>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-10-31 11:16:08
+<?php /* Smarty version Smarty-3.1.12, created on 2017-12-09 16:26:37
          compiled from ".\tpl\index\fgs_user_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:1987359deb97d440326-05441019%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2b1c39c1deae76771b2b3e3ab683de5c7cff299e' => 
     array (
       0 => '.\\tpl\\index\\fgs_user_list.htm',
-      1 => 1509419763,
+      1 => 1512807991,
       2 => 'file',
     ),
   ),
@@ -30,7 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59deb97d47d3b6_94903847')) {function content_59deb97d47d3b6_94903847($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?action=fgsuser">
+<?php if ($_valid && !is_callable('content_59deb97d47d3b6_94903847')) {function content_59deb97d47d3b6_94903847($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?action=fgsuser&do=fgs_user">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
 	<input type="hidden" name="username" value="<?php echo $_REQUEST['username'];?>
@@ -69,6 +69,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<li><a class="edit" href="?action=fgsuser&do=edit&id={id}&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " target="dialog" mask="true"><span>修改</span></a></li>
 				<li><a class="delete" href="?action=fgsuser&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>
+				<li><a class="icon" href="?dir=index&action=fgsuser&do=daochu_jingxiao" target="dwzExport" title="实要导出这些记录吗?"><span>导出经销商信息</span></a></li>
 				<li class="line">line</li>
 			</ul>
 		</div>

@@ -35,6 +35,12 @@ if($do=='list'){
             $v['identity']='经销商';
         }elseif($v['roleid']==4){
             $v['identity']='加盟商';
+        }elseif($v['roleid']==1){
+            $v['identity']='总部人员';            
+        }elseif($v['roleid']==6){
+            $v['identity']='董事长'; 
+        }elseif($v['roleid']==7){
+            $v['identity']='总经理';
         }
         //操作员
         if($v['userid']){
@@ -69,6 +75,8 @@ if($do=='list'){
     smarty_cfg($smt);
     $smt->assign('order_info',$order_info);
     $smt->assign('mobile',$_POST['mobile']);
+    $smt->assign('total',$total);
+    $smt->assign('pageNum',$_POST['pageNum']);
     $smt->display('order_list.html');
     exit();
 }
@@ -87,7 +95,7 @@ if($do=='edit'){//添加物流单号
     $order_info['store']=$db->fetchAll();
     
     foreach($order_info['store'] as &$v){
-        $sql="select a.*,b.name,b.money from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id  where a.fid=?";
+        $sql="select a.*,b.name,b.money,b.purchase_dw from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id  where a.fid=?";
         $db->p_e($sql, array($v['id']));
         $v['goods_info']=$db->fetchAll();
     }
@@ -159,7 +167,7 @@ if($do=='show_order'){
     $order_info['store']=$db->fetchAll();
     
     foreach($order_info['store'] as &$v){
-        $sql="select a.*,b.name,b.money from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id  where a.fid=?";
+        $sql="select a.*,b.name,b.money,b.purchase_dw from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id  where a.fid=?";
         $db->p_e($sql, array($v['id']));
         $v['goods_info']=$db->fetchAll();
     }
@@ -175,20 +183,26 @@ if($do=='updata'){
     If_rabc(); //检测权限
     $id=$_REQUEST['id'];
     $uid=$_SESSION['dys']['userid'];
+    $sql="select voucher_image from rv_order where id=?";
+    $db->p_e($sql, array($id));
+    $info=$db->fetchRow();
     if($db->update(0, 1, "rv_order", array(
         "order_number='$_REQUEST[order_number]'",
         "price='$_REQUEST[price]'",
         "userid='$uid'",
+        "beizhu='$_REQUEST[beizhu]'",
         "status=2"
     ),array(
         "id='$id'"
     ))){
-//         $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的订单已发货","order_number"=>$_REQUEST['order_number']);
-//         $cont=json_encode($cont);
-//         to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
-        echo close($msg, 'order');
+        //         $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的订单已发货","order_number"=>$_REQUEST['order_number']);
+        //         $cont=json_encode($cont);
+        //         to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
+        echo close($msg, 'order_list');
+        exit();
     }else{
         echo  error($msg);
+        exit();
     }
     exit;
 }
@@ -235,7 +249,7 @@ if($do=='daochu'){//导出
        $db->p_e($sql, array($k['id']));
        $k['store']=$db->fetchAll();
        foreach($k['store'] as &$val){
-           $sql="select a.*,b.name from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id where a.fid=?";
+           $sql="select a.*,b.name,b.purchase_dw from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id where a.fid=?";
            $db->p_e($sql, array($val['id']));
            $val['goods']=$db->fetchAll();
        }
@@ -283,7 +297,7 @@ if($do=='daochu'){//导出
                         $str2.="
                         <tr>
                             <td align='center'>".$vvv[name]."</td>
-                            <td align='center'>".$vvv[count]."</td>
+                            <td align='center'>".$vvv[count]."/".$vvv[purchase_dw]."</td>
                             <td align='center'>".$vvv[goods_price]."</td>
                         </tr>";
                         

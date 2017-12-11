@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-27 17:27:10
+<?php /* Smarty version Smarty-3.1.12, created on 2017-11-29 16:25:44
          compiled from ".\tpl\index\index.htm" */ ?>
 <?php /*%%SmartyHeaderCode:2459959dde825db31c9-44905419%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9ca9f456f8088b1d834dd24c941ad58479058ead' => 
     array (
       0 => '.\\tpl\\index\\index.htm',
-      1 => 1511774674,
+      1 => 1511943869,
       2 => 'file',
     ),
   ),
@@ -158,17 +158,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								</ul>
 							</li>
 							<?php }?>
+							<?php if (in_array('admin_xslr_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>销售录入记录管理</a>
 								<ul>
 									<li><a href="index.php?dir=admin&action=xslr" target="navTab" rel="xslr_list">销售录入列表</a></li>
 								</ul>
 							</li>
+							<?php }?>
+							<?php if (in_array('admin_xslr_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>销售录入记录查看</a>
 								<ul>
 									<li><a href="index.php?dir=admin&action=xslr&do=mendian" target="navTab" rel="xslr_list">按门店排行查看</a></li>
 									<li><a href="index.php?dir=admin&action=xslr&do=goods" target="navTab" rel="xslr_list">按产品销售排行</a></li>
 								</ul>
 							</li>
+							<?php }?>
 							<?php if (in_array('admin_gg_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>公告管理</a>
 								<ul>
@@ -176,6 +180,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								</ul>
 							</li>
 							<?php }?>
+							<?php if (in_array('index_user_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>用户管理</a>
 								<?php if (in_array('index_user_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 								<ul>
@@ -199,6 +204,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 									<li><a href="index.php?action=mduser&do=dc_user" target="navTab" rel="mduser">导出用户信息</a></li>
 								</ul>
 							</li>
+							<?php }?>
 							<?php if (in_array('index_role_',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>角色管理</a>
 								<ul>
@@ -206,11 +212,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								</ul>
 							</li>
 							<?php }?>
+							<?php if (in_array('admin_download_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>大区下载管理</a>
 								<ul>
 									<li><a href="index.php?action=download&dir=admin&do=list" target="navTab" rel="role">下载统计</a></li>
 								</ul>
 							</li>
+							<?php }?>
 							<?php if (in_array('admin_feedback_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>app用户反馈</a>
 								<ul>
@@ -256,7 +264,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<?php if (in_array('admin_order_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>进货订单</a>								
 								<ul>
-									<li><a href="index.php?action=order&dir=admin&do=list" target="navTab" rel="role">订单列表</a></li>
+									<li><a href="index.php?action=order&dir=admin&do=list" target="navTab" rel="order_list">订单列表</a></li>
 								</ul>
 							</li>
 							<?php }?>
