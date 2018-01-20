@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-10-12 11:41:31
+<?php /* Smarty version Smarty-3.1.12, created on 2017-12-28 11:03:34
          compiled from ".\tpl\admin\case_list.htm" */ ?>
 <?php /*%%SmartyHeaderCode:1578859dee46b458495-15761586%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '44a0346cb78ec2753af8da6f59c2f1ae066ffdd7' => 
     array (
       0 => '.\\tpl\\admin\\case_list.htm',
-      1 => 1502931754,
+      1 => 1514430208,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_59dee46b495520_67007595',
   'variables' => 
   array (
     'username' => 0,
@@ -24,17 +26,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageNum' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_59dee46b495520_67007595',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59dee46b495520_67007595')) {function content_59dee46b495520_67007595($_smarty_tpl) {?>
-<div class="page">
-	<div class="pageHeader">
+<?php if ($_valid && !is_callable('content_59dee46b495520_67007595')) {function content_59dee46b495520_67007595($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=case&do=list">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 " />
-	</div>
+</form>
+
+
+<div class="page">
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">				
@@ -62,7 +63,7 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 " >
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
 </td>
-					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['mname'];?>
+					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['mid'];?>
 </td>
 					<td align="center"><?php echo $_smarty_tpl->tpl_vars['row']->value['gname'];?>
 </td>

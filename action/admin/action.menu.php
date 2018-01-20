@@ -1,5 +1,6 @@
 <?php
 if(!defined('CORE'))exit("error!");
+$time=time();
 if($do=="list"){//广告管理
     If_rabc(); //检测权限  
     $arr=array();
@@ -23,6 +24,9 @@ if($do=="list"){//广告管理
     $sql2="SELECT * FROM rv_advinfo where 1=1 order by id desc LIMIT ".$pageNum.",".$numPerPage;
     $db->p_e($sql2,$arr);
     $list=$db->fetchAll();
+    foreach($list as &$v){
+            $v['addtime']=date('Y-m-d H:i:s',$v['addtime']);
+    }
     
     $smt=new Smarty();
     smarty_cfg($smt);
@@ -71,7 +75,7 @@ if($do=="add"){
         }
     }
     $imgs=implode(",", $img_names);
-    $insert_id=$db->insert(0, 2, "rv_advinfo",array("title='$_POST[title]'","url='$_POST[url]'","img='$imgs'","type='$_POST[type]'"));
+    $insert_id=$db->insert(0, 2, "rv_advinfo",array("title='$_POST[title]'","url='$_POST[url]'","img='$imgs'","type='$_POST[type]'","addtime=$time"));
     if($insert_id){
         echo close($msg,"menu_list");
     }else{echo  error($msg);}

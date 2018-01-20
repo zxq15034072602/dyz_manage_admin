@@ -33,6 +33,7 @@ if($do==""){
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
 	foreach($list as &$k){
+        $k['addtime']=date('Y-m-d H:i:s',$k['addtime1']);
 		$sql="select * from rv_user where 1=1 and id=?";
 		$db->p_e($sql,array($k['uid']));
 		$k['user']=$db->fetchRow();
@@ -131,12 +132,14 @@ if($do==""){
 }elseif ($do == "show_i_verify") { // 查看录入审核信息
     $vid = $_REQUEST['vid'];
 
-    $sql ="select b.id,b.uid,b.mid,b.addtime,b.endtime,u.name,b.status,b.total_price,b.sale_price,GROUP_CONCAT(bg.goods_id) as goods_id from rv_buy as b,rv_buy_goods as bg,rv_user as u where b.id=bg.buy_id and b.uid=u.id and b.id=?";
+    $sql ="select b.id,b.uid,b.mid,b.addtime1,b.endtime1,u.name,b.status,b.total_price,b.sale_price,GROUP_CONCAT(bg.goods_id) as goods_id from rv_buy as b,rv_buy_goods as bg,rv_user as u where b.id=bg.buy_id and b.uid=u.id and b.id=?";
     $db->p_e($sql, array(
         $vid
     ));
     $verify_info = $db->fetchRow();
     if($verify_info){
+        $verify_info['endtime']=date('Y-m-d H:i:s',$verify_info['endtime1']);
+        $verify_info['addtime']=date('Y-m-d H:i:s',$verify_info['addtime1']);
         $sql="select * from rv_buy_goods as bg, rv_goods as g where bg.goods_id=g.id and bg.goods_id and buy_id=?";
         $db->p_e($sql, array($verify_info[id]));
         $verify_info['goods']=$db->fetchAll();
@@ -171,7 +174,7 @@ if($do=='edit'){
     exit();
 }elseif($do=='update'){
     $id=$_POST['id'];
-    $time=date("Y-m-d H:i:s",time());
+    $time=time();
     if($_POST){
         foreach($_POST['id'] as $key=>$val){
             $goods[$key]['id']=$_POST['id'][$key];
@@ -494,10 +497,12 @@ if($do=='goods'){//按照产品排行排序
     $db->p_e($sql, $arr);
     $list=$db->fetchAll();
     
-    //所有门店
-    $sql="select * from rv_mendian";
-    $db->p_e($sql, array());
-    $name=$db->fetchAll();
+    if($_POST['name']){
+        $sql="select name from rv_mendian where status=1 and type=0 and id=?";
+        $db->p_e($sql, array($_POST['name']));
+        $name=$db->fetchRow()['name'];
+    }
+    
    
     $smt=new Smarty();
     smarty_cfg($smt);
@@ -506,6 +511,17 @@ if($do=='goods'){//按照产品排行排序
     $smt->assign('name',$name);
     $smt->assign('pageNum',$pageNum);
     $smt->display('xslr_goods_show.htm');
+    exit();
+}
+
+if($do=='search'){
+    $name=$_POST['name'];
+    $arr[]="%".$_POST['name']."%";
+    $sql="select id,name from rv_mendian where status=1 and type=0 and name like ?";
+    $db->p_e($sql, $arr);
+    $name=$db->fetchAll();
+    
+    echo '{"code":"200","name":'.json_encode($name).'}';
     exit();
 }
 

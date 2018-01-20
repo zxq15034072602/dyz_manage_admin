@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-29 17:04:23
+<?php /* Smarty version Smarty-3.1.12, created on 2017-12-28 12:02:24
          compiled from ".\tpl\admin\order_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:50825a1bdb3f797df1-40166763%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b4b76eacaa93e56c98ab149ddf661c36d45adcf6' => 
     array (
       0 => '.\\tpl\\admin\\order_list.html',
-      1 => 1511946258,
+      1 => 1514433735,
       2 => 'file',
     ),
   ),
@@ -56,7 +56,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">
-				<li><a class="icon" href="?dir=admin&action=order&do=daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出</span></a></li>
+				<li><form action="index.php?dir=admin&action=order&do=daochu" method='post'>
+				<input type='date' name='start' value=''>--
+				<input type='date' name='end'>
+				<select name='status'>
+					<option value='-1'>选择查看状态</option>
+					<option value='0'>查看全部</option>
+					<option value='3'>未完成</option>
+					<option value='2'>已发货</option>
+					<option value='1'>已完成</option>
+				</select>
+				<input type='submit' value='导出'>
+			</form></li>
+				<!-- <li><a class="icon" href="?dir=admin&action=order&do=daochu" target="dwzExport" title="实要导出这些记录吗?"><span>导出</span></a></li>-->
 				 <li class=""><a class="edit" href="?&dir=admin&action=order&do=show_order&id={id}" target="dialog" mask="true"><span>查看</span></a></li>
 				 <li><a class="edit" href="?dir=admin&action=order&do=edit&id={id}" target="dialog" mask="true"><span>添加订单号</span></a></li>
 				 <li><a class="delete" href="?dir=admin&action=order&do=del&id={id}" target="ajaxTodo"  title="确定要删除吗?"><span>删除</span></a></li>

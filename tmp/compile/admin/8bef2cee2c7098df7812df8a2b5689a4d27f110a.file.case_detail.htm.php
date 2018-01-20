@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-12-06 14:11:45
+<?php /* Smarty version Smarty-3.1.12, created on 2018-01-15 18:21:10
          compiled from ".\tpl\admin\case_detail.htm" */ ?>
 <?php /*%%SmartyHeaderCode:47055a211a1d436125-72028171%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8bef2cee2c7098df7812df8a2b5689a4d27f110a' => 
     array (
       0 => '.\\tpl\\admin\\case_detail.htm',
-      1 => 1512540697,
+      1 => 1516011529,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'case' => 0,
-    'md' => 0,
+    'case_class' => 0,
     'row' => 0,
+    'first_class_id' => 0,
     'sp' => 0,
     'img_names' => 0,
     'i' => 0,
@@ -42,22 +43,29 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div class="pageFormContent" layoutH="56">
 				<input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['case']->value['id'];?>
 " />
-				<dl>
-					<dt>来自门店：</dt>
-					<select name="mid">
-						<option value="<?php echo $_smarty_tpl->tpl_vars['case']->value['mid'];?>
-"><?php echo $_smarty_tpl->tpl_vars['case']->value['mname'];?>
-</option>					
+				<dl style="width:100%">
+					<dt>选择目录：</dt>
+					<select name="case_name" id="case_class" onchange="cases.changed(this,'names')">
+					    <option value="0">请选择</option>
 						<?php  $_smarty_tpl->tpl_vars['row'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['row']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['md']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_from = $_smarty_tpl->tpl_vars['case_class']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['row']->key => $_smarty_tpl->tpl_vars['row']->value){
 $_smarty_tpl->tpl_vars['row']->_loop = true;
 ?>
 						<option value="<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
-"><?php echo $_smarty_tpl->tpl_vars['row']->value['name'];?>
+"<?php if ($_smarty_tpl->tpl_vars['first_class_id']->value==$_smarty_tpl->tpl_vars['row']->value['id']){?> selected <?php }?>><?php echo $_smarty_tpl->tpl_vars['row']->value['name'];?>
 </option>
 						<?php } ?>
 					</select>
+					<select name="cname" id="names" style="width:100px;margin-left: 5px">
+					    <option value="0">请选择</option>
+						
+					</select>
+				</dl>
+				<dl>				    
+					<dt>来自门店：</dt>
+					<dd><input type="text" name="mid" class="required" size="30" value="<?php echo $_smarty_tpl->tpl_vars['case']->value['mid'];?>
+"/></dd>
 				</dl>
 				<dl>
 					<dt>产品：</dt>
@@ -151,9 +159,16 @@ $_smarty_tpl->tpl_vars['img']->_loop = true;
 	</div>
 </div>
 <script type="text/javascript">
-
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('editor');
     var ue = UE.getEditor('editor1');
-</script><?php }} ?>
+</script>
+<script type="text/javascript">
+	var case_class=$("#case_class").val();
+	if(case_class){
+		cases.loadCities(case_class,"names",<?php echo $_smarty_tpl->tpl_vars['case']->value['fatherid'];?>
+);
+	}
+</script>
+<?php }} ?>

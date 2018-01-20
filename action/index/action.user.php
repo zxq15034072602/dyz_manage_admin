@@ -1,5 +1,6 @@
 <?php
 if(!defined('CORE'))exit("error!"); 
+$time=time();
 //验证登录
 if($do=="loginok"){
 	$name=$_POST[username];
@@ -61,6 +62,10 @@ if($do==""){
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();	
 	foreach($list as &$k){
+		$k['created_at']=date('Y-m-d H:i:s',$k['created_at1']);
+		if($k['updated_at']){
+			$k['updated_at']=date('Y-m-d H:i:s',$k['updated_at1']);
+		}
 		$sql="select * from rv_zongbu where 1=1 and id=?";
 		$db->p_e($sql,array($k['zz']));
 		$k['zb']=$db->fetchRow();
@@ -110,6 +115,8 @@ if($do=="edit"){
 	$sql="SELECT * FROM rv_user where id=? LIMIT 1";
 	$db->p_e($sql,array($id));
 	$row=$db->fetchRow();
+	$row['updated_at']=date('Y-m-d H:i:s',$row['updated_at1']);
+	$row['created_at']=date('Y-m-d H:i:s',$row['created_at1']);
 	
 	$sql="select * from rv_zongbu where 1=1 and id=?";
 	$db->p_e($sql,array($row['zongbu']));
@@ -163,8 +170,9 @@ if($do=="add"){
 	$arr2=array($_POST[mobile]);
 	$db->p_e($sql2,$arr2);
 	if($db->fetchRow()){echo  error("错误!手机号已存在!");exit();}
-	$sql4="insert into rv_user (username,password,zz,roleid,created_at,userid,name,mobile) VALUES (?,?,?,?,now(),?,?,?)";
-	$arr1=array($_POST[username],$password,$_POST['zz'],$_POST[roleid],$_SESSION['dys']['userid'],$_POST[name],$_POST[mobile]);
+	
+	$sql4="insert into rv_user (username,password,zz,roleid,created_at,userid,name,mobile) VALUES (?,?,?,?,?,?,?,?)";
+	$arr1=array($_POST[username],$password,$_POST['zz'],$_POST[roleid],$time,$_SESSION['dys']['userid'],$_POST[name],$_POST[mobile]);
 	$db->p_e($sql4,$arr1);
 	//exit;
 	//增加用户时添加到独易网商城 20170417
@@ -191,7 +199,7 @@ if($do=="updatapass"){
 	}else{
 		$arr=array($updated_at,$_SESSION['dys']['userid'],$id);
 	}
-	$sql="UPDATE rv_user SET ".$pasql." updated_at=now(),userid=? WHERE id =? LIMIT 1";
+	$sql="UPDATE rv_user SET ".$pasql." updated_at=".$time.",userid=? WHERE id =? LIMIT 1";
 	if($db->p_e($sql,$arr)){echo forwardUrl("操作成功!","?action=user&do=logout");}else{echo  forwardUrl("操作失败!","?action=user&do=logout");}	
 	exit;
 }
@@ -207,7 +215,7 @@ if($do=="updata"){
 	}else{
 		$arr=array($_POST['username'],$_POST['mobile'],$_POST['roleid'],$_POST['zz'],$_SESSION['dys']['userid'],$_POST['name'],$id);
 	}
-	$sql="UPDATE rv_user SET ".$pasql." username=?,mobile=?,roleid=?,zz=?,updated_at=now(),userid=?,name=? WHERE id=? LIMIT 1";
+	$sql="UPDATE rv_user SET ".$pasql." username=?,mobile=?,roleid=?,zz=?,updated_at=".$time.",userid=?,name=? WHERE id=? LIMIT 1";
 	if($db->p_e($sql,$arr)){echo close($msg,"user");}else{echo  error($msg);}
 	exit;
 }

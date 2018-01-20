@@ -2,6 +2,33 @@
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
 </form>
+<style>
+    .test{
+        width: 152px;
+        height: auto;
+        overflow: hidden;
+    }
+    .test label{
+        width: 150px;
+        display: flex;
+    	padding: 0;
+    	align-items:flex-end;
+    	line-height:30px;
+    }
+    .test label span{
+        width: 130px;
+        display: block;
+    }
+    .test #input{
+        width: 150px;
+    }
+    #box{
+        width: 150px;
+        height: auto;
+        overflow: hidden;
+    	background:#fff;
+    }
+</style>
 <div class="page">
 	<div class="pageHeader">
 		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=xslr&do=goods" method="post">
@@ -9,12 +36,16 @@
 			<table class="searchContent">
 				<tr>
 					<td>
-						<select name="name">
+					<section class="test">
+					    <input type='text' name='name' id='input' value='<{$name}>'/>
+					    <div id="box"></div>
+					</section>	
+						<!-- <select name="name">
 							<option value="-1">选择门店进行检索</option>
 							<{foreach from=$name item=n}>
 							<option value="<{$n.id}>"><{$n.name}></option>
 							<{/foreach}>
-						</select>
+						</select> -->
 					</td>
 					<td>
 						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
@@ -68,3 +99,29 @@
 		</div>
 	</div>
 </div>
+<script>
+	$('#input').bind('blur', function() {
+		var name=$(this).val();
+		if(name){
+			 $.ajax({
+	             type: "post",
+	             url: "index.php?action=xslr&dir=admin&do=search",
+	             data: {name:name},
+	             dataType: "json",
+	             success: function(data){
+	                var html='';
+					for(var i=0;i<data.name.length;i++){ 
+						html+="<label><span>"+data.name[i].name+"</span> <input type='radio' name='name' value="+data.name[i].id+" /></label>";
+					}
+					$('#box').html(html);
+			        $("input[type='radio']").change( function() {
+			            let val=$('input:radio:checked').val();
+			            let html=$('input:radio:checked').parent().find('span').html();
+			            $('#input').val(html);
+			            $('#box').hide();
+			        });
+	             }
+	         });
+		}
+	});
+</script>

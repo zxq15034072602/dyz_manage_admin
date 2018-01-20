@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-12-06 14:18:19
+<?php /* Smarty version Smarty-3.1.12, created on 2018-01-13 16:20:14
          compiled from ".\tpl\admin\case_new.htm" */ ?>
 <?php /*%%SmartyHeaderCode:52355a211111d8a384-90200038%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97a7b76b4fac79e0150a2fafdc2419f7288b8d90' => 
     array (
       0 => '.\\tpl\\admin\\case_new.htm',
-      1 => 1512540658,
+      1 => 1515829852,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5a211111dc7404_89440849',
   'variables' => 
   array (
-    'md' => 0,
+    'case_class' => 0,
     'row' => 0,
     'sp' => 0,
   ),
@@ -32,16 +32,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript" charset="utf-8" src="http://app.duyiwang.cn/ueditor/lang/zh-cn/zh-cn.js"></script>
 
-
 <div class="page">
 	<div class="pageContent">
 		<form method="post" action="?dir=admin&action=case&do=add" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
 			<div class="pageFormContent" layoutH="56">
-				<dl>
-					<dt>来自门店：</dt>
-					<select name="mid">
+				<dl style="width:100%">
+					<dt>选择目录：</dt>
+					<select name="case_name" id="province" onchange="cases.changed(this,'names')">
+					    <option value="0">请选择</option>
 						<?php  $_smarty_tpl->tpl_vars['row'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['row']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['md']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_from = $_smarty_tpl->tpl_vars['case_class']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['row']->key => $_smarty_tpl->tpl_vars['row']->value){
 $_smarty_tpl->tpl_vars['row']->_loop = true;
 ?>
@@ -50,6 +50,14 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 </option>
 						<?php } ?>
 					</select>
+					<select name="cname" id="names" style="width:100px;margin-left: 5px">
+					    <option value="0">请选择</option>
+						
+					</select>
+				</dl>
+				<dl>				    
+					<dt>来自门店：</dt>
+					<dd><input type="text" name="mid" class="required" size="30" value=""/></dd>
 				</dl>
 				<dl>
 					<dt>产品：</dt>

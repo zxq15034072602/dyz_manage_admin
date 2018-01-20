@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-29 16:25:44
+<?php /* Smarty version Smarty-3.1.12, created on 2018-01-13 15:01:00
          compiled from ".\tpl\index\index.htm" */ ?>
 <?php /*%%SmartyHeaderCode:2459959dde825db31c9-44905419%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9ca9f456f8088b1d834dd24c941ad58479058ead' => 
     array (
       0 => '.\\tpl\\index\\index.htm',
-      1 => 1511943869,
+      1 => 1515826164,
       2 => 'file',
     ),
   ),
@@ -47,6 +47,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <script src="./themes/xheditor/xheditor-1.1.12-zh-cn.min.js" type="text/javascript"></script>
 <script src="./themes/javascripts/money.js" type="text/javascript"></script>
 <script src="./themes/javascripts/region.js" type="text/javascript"></script>
+<script src="./themes/javascripts/case.js" type="text/javascript"></script>
 <script src="./themes/javascripts/jquery.uploadify-3.1.min.js" type="text/javascript"></script>
 <script src="./themes/javascripts/image.js" type="text/javascript"></script>
 <script src="./themes/javascripts/api.js" type="text/javascript"></script>
@@ -255,9 +256,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<?php if (in_array('admin_data_list',$_smarty_tpl->tpl_vars['role1']->value)){?>
 							<li><a>资料模块</a>								
 								<ul>
-									<li><a href="index.php?action=product&dir=admin&do=list" target="navTab" rel="role">产品资料</a></li>
-									<li><a href="index.php?action=video&dir=admin&do=list" target="navTab" rel="role">营销秘籍视频</a></li>
-									<li><a href="index.php?action=case&dir=admin&do=list" target="navTab" rel="role">康复案例</a></li>
+									<li><a href="index.php?action=product&dir=admin&do=list" target="navTab" rel="product_list">产品资料</a></li>
+									<li><a href="index.php?action=video&dir=admin&do=list" target="navTab" rel="video_list">营销秘籍视频</a></li>
+									<li><a href="index.php?action=case&dir=admin&do=list" target="navTab" rel="case_list">康复案例</a></li>
+									<li><a href="index.php?action=case_class&dir=admin&do=list" target="navTab" rel="case_class">案例分类</a></li>
 								</ul>
 							</li>
 							<?php }?>

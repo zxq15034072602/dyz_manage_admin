@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-12-02 11:09:45
+<?php /* Smarty version Smarty-3.1.12, created on 2017-12-20 15:05:44
          compiled from ".\tpl\admin\video_type.htm" */ ?>
 <?php /*%%SmartyHeaderCode:2874559dee46a364258-52900248%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e80047a77d0177c3e779a02558aaf529b590a474' => 
     array (
       0 => '.\\tpl\\admin\\video_type.htm',
-      1 => 1512184179,
+      1 => 1513753525,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59dee46a3a12e4_14643122')) {function content_59dee46a3a12e4_14643122($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=feedback">
+<?php if ($_valid && !is_callable('content_59dee46a3a12e4_14643122')) {function content_59dee46a3a12e4_14643122($_smarty_tpl) {?><form id="pagerForm" method="post" action="index.php?dir=admin&action=video&do=list">
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
     <input type="hidden" name="name" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>

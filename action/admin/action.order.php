@@ -209,8 +209,20 @@ if($do=='updata'){
 
 if($do=='daochu'){//导出
     If_rabc(); //检测权限
-    $sql2="SELECT * FROM rv_order where 1=1 order by id desc";
-    $db->p_e($sql2,array());
+    $start=strtotime($_POST['start']);
+    $end=strtotime($_POST['end']);
+    $starttime=date("Y-m-d",$start);
+    $endtime=date("Y-m-d",$end);
+    if($_POST['status']){
+        $status=$_POST['status'];
+        if($status==3){
+            $status=0;
+        }
+        $sql2="SELECT * FROM rv_order where 1=1 and status=$status and starttime BETWEEN ? AND ? order by id desc";
+    }else{
+        $sql2="SELECT * FROM rv_order where 1=1 and starttime BETWEEN ? AND ? order by id desc";
+    }
+    $db->p_e($sql2,array($start,$end));
     $list=$db->fetchAll();
     foreach($list as &$k){
         //判断身份
@@ -226,40 +238,41 @@ if($do=='daochu'){//导出
             $k['endtime']=date('Y/m/d H:i:s',$k['endtime']);
         }
         //订单开始时间
-       $k['starttime']=date('Y/m/d H:i:s',$k['starttime']);
-       //查询操作人姓名
-       if($k['userid']){
-           $sql="select name from rv_user where id=?";
-           $db->p_e($sql, array($k['userid']));
-           $k['userid']=$db->fetchRow()['name'];
-       }else{
-           $k['userid']='无';
-       }
-       //判断订单状态
-       if(empty($k['voucher_image'])){
-           $k['status']='还未上传转账凭证';
-       }elseif(!empty($k['voucher_image']) && $k['status']==0){
-           $k['status']='订单未完成';
-       }elseif($k['status']==2){
-           $k['status']='已发货';
-       }elseif($k['status']==1){
-           $k['status']='已完成';
-       }
-       $sql="select a.*,b.name from rv_order_stores as a left join rv_mendian as b on a.mid=b.id where a.fid=?";
-       $db->p_e($sql, array($k['id']));
-       $k['store']=$db->fetchAll();
-       foreach($k['store'] as &$val){
-           $sql="select a.*,b.name,b.purchase_dw from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id where a.fid=?";
-           $db->p_e($sql, array($val['id']));
-           $val['goods']=$db->fetchAll();
-       }
+        $k['starttime']=date('Y/m/d H:i:s',$k['starttime']);
+        //查询操作人姓名
+        if($k['userid']){
+            $sql="select name from rv_user where id=?";
+            $db->p_e($sql, array($k['userid']));
+            $k['userid']=$db->fetchRow()['name'];
+        }else{
+            $k['userid']='无';
+        }
+        //判断订单状态
+        if(empty($k['voucher_image'])){
+            $k['status']='还未上传转账凭证';
+        }elseif(!empty($k['voucher_image']) && $k['status']==0){
+            $k['status']='订单未完成';
+        }elseif($k['status']==2){
+            $k['status']='已发货';
+        }elseif($k['status']==1){
+            $k['status']='已完成';
+        }
+        $sql="select a.*,b.name from rv_order_stores as a left join rv_mendian as b on a.mid=b.id where a.fid=?";
+        $db->p_e($sql, array($k['id']));
+        $k['store']=$db->fetchAll();
+        foreach($k['store'] as &$val){
+            $sql="select a.*,b.name,b.purchase_dw from rv_order_goods as a left join rv_goods as b on a.goods_id=b.id where a.fid=?";
+            $db->p_e($sql, array($val['id']));
+            $val['goods']=$db->fetchAll();
+        }
     }
     //exit();
     $time=date(time());
     header("Content-Type: application/vnd.ms-excel;charset=gbk");
     header("Content-Disposition: attachment; filename=".$time.".xls");
     echo "<table border='1'>";
-    echo "<tr>";
+    echo "<tr height='50'><th colspan='13'>$starttime 到 $endtime 订单记录</th></tr>";
+    echo "<tr height='30'>";
     echo "<th width='30' align='center'>ID</th>";
     echo "<th width='80' align='center'>用户id</th>";
     echo "<th width='120' align='center'>姓名</th>";
@@ -292,15 +305,15 @@ if($do=='daochu'){//导出
         foreach($v['store'] as $vv){
             $str2='';
             $str.="<h3>".$vv[name]."</h3>";
-            
+
             foreach($vv['goods'] as $vvv){
-                        $str2.="
+                $str2.="
                         <tr>
                             <td align='center'>".$vvv[name]."</td>
                             <td align='center'>".$vvv[count]."/".$vvv[purchase_dw]."</td>
                             <td align='center'>".$vvv[goods_price]."</td>
                         </tr>";
-                        
+
             }
             $str.="<table border='1'>
                         <tr>
@@ -313,7 +326,9 @@ if($do=='daochu'){//导出
         }
         echo "<td width='350' align='center'>".$str."</td>";
         echo "</tr>";
+        $sum+=$v['price'];
     }
+    echo "<tr height='30'><th colspan='13' align='center'>金额合计".$sum."（元）</th></tr>";
     echo "</table>";
     exit;
 }

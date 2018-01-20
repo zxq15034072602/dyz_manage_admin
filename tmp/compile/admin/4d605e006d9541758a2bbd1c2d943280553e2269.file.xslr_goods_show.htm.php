@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2017-11-04 11:16:59
+<?php /* Smarty version Smarty-3.1.12, created on 2018-01-02 10:25:48
          compiled from ".\tpl\admin\xslr_goods_show.htm" */ ?>
 <?php /*%%SmartyHeaderCode:1807359dde81ec080b3-32586044%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4d605e006d9541758a2bbd1c2d943280553e2269' => 
     array (
       0 => '.\\tpl\\admin\\xslr_goods_show.htm',
-      1 => 1509764695,
+      1 => 1514859945,
       2 => 'file',
     ),
   ),
@@ -33,6 +33,33 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<input type="hidden" name="pageNum" value="1" />
     <input type="hidden" name="numPerPage" value="20" />
 </form>
+<style>
+    .test{
+        width: 152px;
+        height: auto;
+        overflow: hidden;
+    }
+    .test label{
+        width: 150px;
+        display: flex;
+    	padding: 0;
+    	align-items:flex-end;
+    	line-height:30px;
+    }
+    .test label span{
+        width: 130px;
+        display: block;
+    }
+    .test #input{
+        width: 150px;
+    }
+    #box{
+        width: 150px;
+        height: auto;
+        overflow: hidden;
+    	background:#fff;
+    }
+</style>
 <div class="page">
 	<div class="pageHeader">
 		<form onsubmit="return navTabSearch(this);" action="index.php?dir=admin&action=xslr&do=goods" method="post">
@@ -40,7 +67,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<table class="searchContent">
 				<tr>
 					<td>
-						<select name="name">
+					<section class="test">
+					    <input type='text' name='name' id='input' value='<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+'/>
+					    <div id="box"></div>
+					</section>	
+						<!-- <select name="name">
 							<option value="-1">选择门店进行检索</option>
 							<?php  $_smarty_tpl->tpl_vars['n'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['n']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['name']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -51,7 +83,7 @@ $_smarty_tpl->tpl_vars['n']->_loop = true;
 "><?php echo $_smarty_tpl->tpl_vars['n']->value['name'];?>
 </option>
 							<?php } ?>
-						</select>
+						</select> -->
 					</td>
 					<td>
 						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
@@ -120,4 +152,30 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 
 		</div>
 	</div>
-</div><?php }} ?>
+</div>
+<script>
+	$('#input').bind('blur', function() {
+		var name=$(this).val();
+		if(name){
+			 $.ajax({
+	             type: "post",
+	             url: "index.php?action=xslr&dir=admin&do=search",
+	             data: {name:name},
+	             dataType: "json",
+	             success: function(data){
+	                var html='';
+					for(var i=0;i<data.name.length;i++){ 
+						html+="<label><span>"+data.name[i].name+"</span> <input type='radio' name='name' value="+data.name[i].id+" /></label>";
+					}
+					$('#box').html(html);
+			        $("input[type='radio']").change( function() {
+			            let val=$('input:radio:checked').val();
+			            let html=$('input:radio:checked').parent().find('span').html();
+			            $('#input').val(html);
+			            $('#box').hide();
+			        });
+	             }
+	         });
+		}
+	});
+</script><?php }} ?>
