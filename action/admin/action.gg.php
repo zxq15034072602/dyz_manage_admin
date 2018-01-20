@@ -30,8 +30,8 @@ if($do==""){
 	$sql2="SELECT * FROM rv_gonggao where 1=1 and status!=2 ".$search."order by id desc LIMIT ".$pageNum.",".$numPerPage;
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
-	foreach ($list as &$v){
-	    $v['addtime']=date('Y-m-d H:i:s',$v['addtime']);
+	foreach($list as &$v){
+		$v['addtime']=date('Y-m-d H:i:s',$v['addtime']);
 	}
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
@@ -76,8 +76,9 @@ if($do=="add"){
 	$db->p_e($sql,$arr);
 	if($db->fetchRow()){echo  error("错误!公告已存在!");exit();}	
 	//var_dump($_POST);exit();
+	$time=time();
 	$sql="insert into rv_gonggao (uid,title,content,status,addtime) VALUES (?,?,?,1,?)";
-	$arr1=array($_SESSION['dys']['userid'],$_POST['name'],$_POST['content'],time());
+	$arr1=array($_SESSION['dys']['userid'],$_POST['name'],$_POST['content'],$time);
 	if($db->p_e($sql,$arr1)){echo close($msg,"gg_list");}else{echo  error($msg);}
 	exit;
 }

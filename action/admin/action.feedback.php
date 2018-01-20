@@ -25,6 +25,7 @@ if($do == "list"){//用户反馈列表
     $db->p_e($sql2,$arr);
     $list=$db->fetchAll();
     foreach($list as &$k){
+        $k['addtime']=date('Y-m-d H:i:s',$k['addtime1']);
         $sql="select * from rv_user where 1=1 and id=?";
         $db->p_e($sql,array($k['uid']));
         $k['user']=$db->fetchRow(); 

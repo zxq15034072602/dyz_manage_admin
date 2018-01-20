@@ -24,6 +24,9 @@ if($do=="list"){//广告管理
     $sql2="SELECT * FROM rv_advinfo where 1=1 order by id desc LIMIT ".$pageNum.",".$numPerPage;
     $db->p_e($sql2,$arr);
     $list=$db->fetchAll();
+    foreach($list as &$v){
+            $v['addtime']=date('Y-m-d H:i:s',$v['addtime']);
+    }
     
     $smt=new Smarty();
     smarty_cfg($smt);

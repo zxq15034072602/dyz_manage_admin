@@ -1,5 +1,6 @@
 <?php
 if(!defined('CORE'))exit("error!");
+$time=time();
 if($do =='store_list'){ //所属门店审核
     If_rabc(); //检测权限
 
@@ -27,10 +28,13 @@ if($do =='store_list'){ //所属门店审核
 	$db->p_e($sql1,$arr);
 	$total=$db->fetch_count();//总条数
 	//查询
-	$sql2="SELECT v.id,u.name,m.name as mdname,v.addtime,v.status,v.uid,v.mid FROM rv_verify as v,rv_user as u,rv_mendian as m where 1=1 and v.mid =m.id and u.id=v.uid and v.type=1  ".$search." order by v.addtime desc LIMIT ".$pageNum.",".$numPerPage;
+	$sql2="SELECT v.id,u.name,m.name as mdname,v.addtime1,v.status,v.uid,v.mid FROM rv_verify as v,rv_user as u,rv_mendian as m where 1=1 and v.mid =m.id and u.id=v.uid and v.type=1  ".$search." order by v.addtime1 desc LIMIT ".$pageNum.",".$numPerPage;
 
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
+	foreach($list as &$v){
+			$v['addtime']=date('Y-m-d H:i:s',$v['addtime1']);
+	}
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('list',$list);
@@ -67,10 +71,11 @@ if($do =='store_list1'){ //经销商所属门店审核
 	$db->p_e($sql1,$arr);
 	$total=$db->fetch_count();//总条数
 	//查询
-	$sql2="select v.id,u.name,v.addtime,v.status,v.uid,v.mid,v.cityid,v.areaid from (rv_verify as v left join rv_user as u on v.uid=u.id)left join rv_mendian as m on v.mid=m.id where 1=1 and v.type=2 ".$search." order by v.addtime desc LIMIT ".$pageNum.",".$numPerPage;
+	$sql2="select v.id,u.name,v.addtime1,v.status,v.uid,v.mid,v.cityid,v.areaid from (rv_verify as v left join rv_user as u on v.uid=u.id)left join rv_mendian as m on v.mid=m.id where 1=1 and v.type=2 ".$search." order by v.addtime1 desc LIMIT ".$pageNum.",".$numPerPage;
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
 	foreach($list as $k=>&$v){
+		$v['addtime']=date('Y-m-d H:i:s',$v['addtime1']);
 	    $v['midArr']=explode(",", $v['mid']);
 	    foreach($v['midArr'] as $kk=>$vv){
 	        $sql="select name from rv_mendian where id=$vv";
@@ -140,10 +145,11 @@ if($do =='store_list2'){ //加盟商所属门店审核
 	$db->p_e($sql1,$arr);
 	$total=$db->fetch_count();//总条数
 	//查询
-    $sql2="select v.id,u.name,v.addtime,v.status,v.uid,v.mid,v.cityid,v.areaid from (rv_verify as v left join rv_user as u on v.uid=u.id)left join rv_mendian as m on v.mid=m.id where 1=1 and v.type=3 ".$search." order by v.addtime desc LIMIT ".$pageNum.",".$numPerPage;
+    $sql2="select v.id,u.name,v.addtime1,v.status,v.uid,v.mid,v.cityid,v.areaid from (rv_verify as v left join rv_user as u on v.uid=u.id)left join rv_mendian as m on v.mid=m.id where 1=1 and v.type=3 ".$search." order by v.addtime1 desc LIMIT ".$pageNum.",".$numPerPage;
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
 	foreach($list as $k=>&$v){
+		$v['addtime']=date('Y-m-d H:i:s',$v['addtime1']);
 	    if($v['mid']){
 	        $v['midArr']=explode(",", $v['mid']);
 	        foreach($v['midArr'] as $kk=>$vv){
@@ -218,9 +224,12 @@ if($do =='store_list3'){ //总部人员所属门店审核
 	$total=$db->fetch_count();//总条数
 	//查询
 	
-	$sql2="select v.id,u.name,v.addtime,v.status,v.uid,v.mid,m.name as mdname from (rv_verify as v left join rv_user as u on v.uid=u.id)left join rv_mendian as m on v.mid=m.id where 1=1 and v.type=4 ".$search." order by v.addtime desc LIMIT ".$pageNum.",".$numPerPage;
+	$sql2="select v.id,u.name,v.addtime1,v.status,v.uid,v.mid,m.name as mdname from (rv_verify as v left join rv_user as u on v.uid=u.id)left join rv_mendian as m on v.mid=m.id where 1=1 and v.type=4 ".$search." order by v.addtime1 desc LIMIT ".$pageNum.",".$numPerPage;
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
+	foreach($list as &$v){
+			$v['addtime']=date('Y-m-d H:i:s',$v['addtime1']);
+	}
 
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
@@ -257,9 +266,12 @@ if($do =='store_list4'){ //店员所属门店审核
 	$total=$db->fetch_count();//总条数
 	//查询
 	
-	$sql2="select v.id,u.name,v.addtime,v.status,v.uid,v.mid,m.name as mdname from (rv_verify as v left join rv_user as u on v.uid=u.id)left join rv_mendian as m on v.mid=m.id where 1=1 and v.type=0 ".$search." order by v.addtime desc LIMIT ".$pageNum.",".$numPerPage;
+	$sql2="select v.id,u.name,v.addtime1,v.status,v.uid,v.mid,m.name as mdname from (rv_verify as v left join rv_user as u on v.uid=u.id)left join rv_mendian as m on v.mid=m.id where 1=1 and v.type=0 ".$search." order by v.addtime1 desc LIMIT ".$pageNum.",".$numPerPage;
 	$db->p_e($sql2,$arr1);
 	$list=$db->fetchAll();
+	foreach($list as &$v){
+			$v['addtime']=date('Y-m-d H:i:s',$v['addtime1']);
+	}
 
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
@@ -273,8 +285,8 @@ if($do =='store_list4'){ //店员所属门店审核
 
 if($do == "tg"){
 	//If_rabc(); //检测权限
-	$sql="UPDATE rv_verify set status=1,updatetime=now() where id=? limit 1";
-	if($db->p_e($sql,array($id))){
+	$sql="UPDATE rv_verify set status=1,updatetime1=? where id=? limit 1";
+	if($db->p_e($sql,array($time,$id))){
 	    $sql="select roleid,zz from rv_user where id=?";
 	    $db->p_e($sql, array($_REQUEST[uid]));
 	    $role=$db->fetchRow();
@@ -286,10 +298,10 @@ if($do == "tg"){
 		$db->p_e($sql,array($_REQUEST[uid]));
         $sql="UPDATE rv_mendian set person_id=? where id=? ";
         if($db->p_e($sql,array($_REQUEST[uid],$_REQUEST[mid]))){
-        	$sql="UPDATE rv_user set roleid=5,updated_at=now() where zz=? and id=?";
-        	$db->p_e($sql,array($_REQUEST[mid],$_REQUEST[uid]));
-        	$sql="UPDATE rv_user set zz=?,updated_at=now(),roleid=3 where id=? limit 1";
-	        if($db->p_e($sql,array($_REQUEST[mid],$_REQUEST[uid]))){
+        	$sql="UPDATE rv_user set roleid=5,updated_at1=? where zz=? and id=?";
+        	$db->p_e($sql,array($time,$_REQUEST[mid],$_REQUEST[uid]));
+        	$sql="UPDATE rv_user set zz=?,updated_at1=?,roleid=3 where id=? limit 1";
+	        if($db->p_e($sql,array($_REQUEST[mid],$time,$_REQUEST[uid]))){
 	        	$cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>3);
 	        	$cont=json_encode($cont);
 	            to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
@@ -304,8 +316,8 @@ if($do == "tg"){
 }
 if($do == "tg_dy"){//店员审核通过
 	//If_rabc(); //检测权限
-	$sql="UPDATE rv_verify set status=1,updatetime=now() where id=? limit 1";
-	if($db->p_e($sql,array($id))){
+	$sql="UPDATE rv_verify set status=1,updatetime1=? where id=? limit 1";
+	if($db->p_e($sql,array($time,$id))){
 	    $sql="select roleid,zz from rv_user where id=?";
 	    $db->p_e($sql, array($_REQUEST[uid]));
 	    $role=$db->fetchRow();
@@ -314,8 +326,8 @@ if($do == "tg_dy"){//店员审核通过
 	        $db->p_e($sql, array($role['zz']));
 	    }
 
-    	$sql="UPDATE rv_user set zz=?,updated_at=now(),roleid=5 where id=? limit 1";
-        if($db->p_e($sql,array($_REQUEST[mid],$_REQUEST[uid]))){
+    	$sql="UPDATE rv_user set zz=?,updated_at1=?,roleid=5 where id=? limit 1";
+        if($db->p_e($sql,array($_REQUEST[mid],$time,$_REQUEST[uid]))){
         	$cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>5);
         	$cont=json_encode($cont);
             to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
@@ -332,16 +344,16 @@ if($do == "tg_dy"){//店员审核通过
 if($do == "tg_zb"){//总部人员审核
 	//If_rabc(); //检测权限
 	
-	$sql="UPDATE rv_verify set status=1,updatetime=now() where id=? limit 1";
-	if($db->p_e($sql,array($id))){
+	$sql="UPDATE rv_verify set status=1,updatetime1=? where id=? limit 1";
+	if($db->p_e($sql,array($time,$id))){
 	    $sql="select * from rv_user_jingxiao_jiameng where uid=?";
 	    $db->p_e($sql, array($_REQUEST[uid]));
 	    $arr=$db->fetchRow();
 	    if($arr){
 	        $sql="delete from rv_user_jingxiao_jiameng where uid=?";
 	        if($db->p_e($sql, array($_REQUEST[uid]))){
-	            $sql="UPDATE rv_user set zz=?,updated_at=now(),roleid=1 where id=? limit 1";
-	            if($db->p_e($sql,array($_REQUEST[mid],$_REQUEST[uid]))){
+	            $sql="UPDATE rv_user set zz=?,updated_at1=?,roleid=1 where id=? limit 1";
+	            if($db->p_e($sql,array($_REQUEST[mid],$time,$_REQUEST[uid]))){
 	                $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>1);
 	                $cont=json_encode($cont);
 	                to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
@@ -349,8 +361,8 @@ if($do == "tg_zb"){//总部人员审核
 	            } 
 	        }	        
 	    }else{
-	        $sql="UPDATE rv_user set zz=?,updated_at=now(),roleid=1 where id=? limit 1";
-	        if($db->p_e($sql,array($_REQUEST[mid],$_REQUEST[uid]))){
+	        $sql="UPDATE rv_user set zz=?,updated_at1=?,roleid=1 where id=? limit 1";
+	        if($db->p_e($sql,array($_REQUEST[mid],$time,$_REQUEST[uid]))){
 	            $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>1);
 	            $cont=json_encode($cont);
 	            to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
@@ -364,8 +376,8 @@ if($do == "tg_zb"){//总部人员审核
 }
 
 if($do=='tg_jx'){//经销商审核通过操作
-    $sql="UPDATE rv_verify set status=1,updatetime=now() where id=? limit 1";
-    if($db->p_e($sql, array($id))){
+    $sql="UPDATE rv_verify set status=1,updatetime1=? where id=? limit 1";
+    if($db->p_e($sql, array($time,$id))){
         $sql="select * from rv_user_jingxiao_jiameng where 1=1 and uid=?";
         $db->p_e($sql, array($_REQUEST['uid']));
         $arr=$db->fetchRow();
@@ -377,8 +389,8 @@ if($do=='tg_jx'){//经销商审核通过操作
             ),array(
                 "uid='$_REQUEST[uid]'"
             ))){
-                $sql="update rv_user set zz=?,updated_at=now(),roleid=2 where id=? limit 1";
-                if($db->p_e($sql,array($arr['id'],$_REQUEST[uid]))){
+                $sql="update rv_user set zz=?,updated_at1=?,roleid=2 where id=? limit 1";
+                if($db->p_e($sql,array($arr['id'],$time,$_REQUEST[uid]))){
                     $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>2);
                     $cont=json_encode($cont);
                     to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
@@ -394,8 +406,8 @@ if($do=='tg_jx'){//经销商审核通过操作
                 "areaid='$_REQUEST[areaid]'"
            ));
            if($last_id){
-               $sql="update rv_user set zz=?,updated_at=now(),roleid=2 where id=? limit 1";
-               if($db->p_e($sql,array($last_id,$_REQUEST[uid]))){
+               $sql="update rv_user set zz=?,updated_at1=?,roleid=2 where id=? limit 1";
+               if($db->p_e($sql,array($last_id,$time,$_REQUEST[uid]))){
                    $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>2);
                    $cont=json_encode($cont);
                    to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
@@ -410,8 +422,8 @@ if($do=='tg_jx'){//经销商审核通过操作
     exit();
 }
 if($do=='tg_jm'){//加盟商审核通过操作
-    $sql="UPDATE rv_verify set status=1,updatetime=now() where id=? limit 1";
-    if($db->p_e($sql, array($id))){       
+    $sql="UPDATE rv_verify set status=1,updatetime1=? where id=? limit 1";
+    if($db->p_e($sql, array($time,$id))){       
         $sql="select * from rv_user_jingxiao_jiameng where 1=1 and uid=?";
         $db->p_e($sql, array($_REQUEST['uid']));
         $arr=$db->fetchRow();
@@ -423,8 +435,8 @@ if($do=='tg_jm'){//加盟商审核通过操作
             ),array(
                 "uid='$_REQUEST[uid]'"
             ))){
-                $sql="update rv_user set zz=?,updated_at=now(),roleid=4 where id=? limit 1";
-                if($db->p_e($sql,array($arr['id'],$_REQUEST[uid]))){
+                $sql="update rv_user set zz=?,updated_at1=?,roleid=4 where id=? limit 1";
+                if($db->p_e($sql,array($arr['id'],$time,$_REQUEST[uid]))){
                     $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>4);
                     $cont=json_encode($cont);
                     to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
@@ -440,8 +452,8 @@ if($do=='tg_jm'){//加盟商审核通过操作
                 "areaid='$_REQUEST[areaid]'"
            ));
            if($last_id){
-               $sql="update rv_user set zz=?,updated_at=now(),roleid=4 where id=? limit 1";
-               if($db->p_e($sql,array($last_id,$_REQUEST[uid]))){
+               $sql="update rv_user set zz=?,updated_at1=?,roleid=4 where id=? limit 1";
+               if($db->p_e($sql,array($last_id,$time,$_REQUEST[uid]))){
                    $cont=array("time"=>date('m月d日 H:i'),"msg"=>"你好，你的申请已被通过!","store_id"=>$_REQUEST[mid],"roleid"=>4);
                    $cont=json_encode($cont);
                    to_msg(array('type'=>'verify_to_user','cont'=>$cont,'to'=>$_REQUEST[uid]));
@@ -459,8 +471,8 @@ if($do=='tg_jm'){//加盟商审核通过操作
 
 if($do == "jj"){
 	//If_rabc(); //检测权限
-	$sql="UPDATE rv_verify set status=2,updatetime=now() where id=? limit 1";
-	if($db->p_e($sql,array($id))){
+	$sql="UPDATE rv_verify set status=2,updatetime1=? where id=? limit 1";
+	if($db->p_e($sql,array($time,$id))){
         echo success($msg);
 	}else{
 		echo  error($msg);

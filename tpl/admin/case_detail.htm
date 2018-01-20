@@ -12,10 +12,10 @@
 				<input type="hidden" name="id" value="<{$case.id}>" />
 				<dl style="width:100%">
 					<dt>选择目录：</dt>
-					<select name="case_name" id="province" onchange="cases.changed(this,'names')">
+					<select name="case_name" id="case_class" onchange="cases.changed(this,'names')">
 					    <option value="0">请选择</option>
-						<{foreach from=$case_class item=rows}>
-						<option value="<{$rows.id}>" <{if $case.classid ==$rows.id}> selected <{/if}>><{$rows.name}></option>
+						<{foreach from=$case_class item=row}>
+						<option value="<{$row.id}>"<{if $first_class_id==$row.id}> selected <{/if}>><{$row.name}></option>
 						<{/foreach}>
 					</select>
 					<select name="cname" id="names" style="width:100px;margin-left: 5px">
@@ -94,17 +94,14 @@
 	</div>
 </div>
 <script type="text/javascript">
-
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('editor');
     var ue = UE.getEditor('editor1');
-    
-    //目录
-    $(function(){
-    	var province=$("#province").val();
-    	if(province){
-    		cases.loadCities(<{$row.provinceid}>,"names",<{$case.fatherid}>);
-    	}
-    });
+</script>
+<script type="text/javascript">
+	var case_class=$("#case_class").val();
+	if(case_class){
+		cases.loadCities(case_class,"names",<{$case.fatherid}>);
+	}
 </script>

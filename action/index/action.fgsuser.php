@@ -1,5 +1,6 @@
 <?php
 if(!defined('CORE'))exit("error!"); 
+$time=time();
 //经销商用户列表	
 if($do=="fgs_user"){	
 	If_rabc(); //检测权限
@@ -26,6 +27,8 @@ if($do=="fgs_user"){
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();	
 	foreach($list as &$k){
+		$k['created_at']=date('Y-m-d H:i:s',$k['created_at1']);
+		$k['updated_at']=date('Y-m-d H:i:s',$k['updated_at1']);
 	    $sql="select mid,cityid from rv_user_jingxiao_jiameng where 1=1 and id=?";
 	    $db->p_e($sql, array($k['zz']));
 	    $k['md']=$db->fetchRow();
@@ -142,6 +145,8 @@ if($do=='jms_user'){
     $db->p_e($sql2,$arr);
     $list=$db->fetchAll();
     foreach($list as &$k){
+    	$k['created_at']=date('Y-m-d H:i:s',$k['created_at1']);
+		$k['updated_at']=date('Y-m-d H:i:s',$k['updated_at1']);
         $sql="select mid,cityid from rv_user_jingxiao_jiameng where 1=1 and id=?";
         $db->p_e($sql, array($k['zz']));
         $k['md']=$db->fetchRow();
@@ -268,6 +273,8 @@ if($do=="edit"){
 	$sql="SELECT * FROM rv_user where id=? LIMIT 1";
 	$db->p_e($sql,array($id));
 	$row=$db->fetchRow();
+	$row['created_at']=date('Y-m-d H:i:s',$row['created_at1']);
+	$row['updated_at']=date('Y-m-d H:i:s',$row['updated_at1']);
 	//角色数组
 	$sql="SELECT id,title FROM rv_role where id in (2,4)";
 	$db->query($sql);
@@ -329,7 +336,6 @@ if($do=="add"){
 	$arr=array($_POST[username],$_POST[mobile]);
 	$db->p_e($sql,$arr);
 	if($db->fetchRow()){echo  error("错误!用户已存在!");exit();}
-	$time=date("Y-m-d H:i:s",time());
 	$userid=$_SESSION[dys][userid];
 	$last_id=$db->insert(0, 2, "rv_user", array(
 	    "username='$_POST[username]'",
@@ -371,7 +377,7 @@ if($do=="updata"){
 	}else{
 	    $arr=array($_POST['username'],$_POST['zz'],$_POST[mobile],$_POST['roleid'],$_SESSION['dys']['userid'],$_POST['name'],$id);
 	}
-	$sql="UPDATE rv_user SET ".$pasql." username=?,zz=?,mobile=?,roleid=?,updated_at=now(),userid=?,name=? WHERE id=? LIMIT 1";
+	$sql="UPDATE rv_user SET ".$pasql." username=?,zz=?,mobile=?,roleid=?,updated_at=".$time.",userid=?,name=? WHERE id=? LIMIT 1";
 	if($db->p_e($sql,$arr)){
 	    $lastid=$db->update(0, 1, "rv_user_jingxiao_jiameng", array(
 	        "mid='$_POST[mid]'",

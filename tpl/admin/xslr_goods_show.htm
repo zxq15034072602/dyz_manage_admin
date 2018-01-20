@@ -39,7 +39,13 @@
 					<section class="test">
 					    <input type='text' name='name' id='input' value='<{$name}>'/>
 					    <div id="box"></div>
-					</section>			
+					</section>	
+						<!-- <select name="name">
+							<option value="-1">选择门店进行检索</option>
+							<{foreach from=$name item=n}>
+							<option value="<{$n.id}>"><{$n.name}></option>
+							<{/foreach}>
+						</select> -->
 					</td>
 					<td>
 						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
@@ -93,7 +99,6 @@
 		</div>
 	</div>
 </div>
-<!-- <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script> -->
 <script>
 	$('#input').bind('blur', function() {
 		var name=$(this).val();

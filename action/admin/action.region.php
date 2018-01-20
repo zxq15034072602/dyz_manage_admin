@@ -22,7 +22,7 @@ if($do=="ajax_region"){
 
 if($do=='ajax_case'){
     $id=$_REQUEST['id']??0;
-    $case=$db->select(0, 0, "rv_case_disease_class","*","and fatheridid=$id","id asc");
+    $case=$db->select(0, 0, "rv_case_disease_class","*","and fatherid=$id","id asc");
     if($case){
         echo '{"code":"200","cases":'.json_encode($case).'}'; 
     }else{

@@ -29,6 +29,9 @@ if($do==""){
 	$sql2="SELECT * FROM rv_fengongsi where 1=1 and status!=2 ".$search."order by id desc LIMIT ".$pageNum.",".$numPerPage;
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();
+	foreach($list as &$v){
+			$v['addtime']=date('Y-m-d H:i:s',$v['addtime']);
+	}
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('list',$list);
@@ -71,8 +74,9 @@ if($do=="add"){
 	$arr=array($_POST['name']);
 	$db->p_e($sql,$arr);
 	if($db->fetchRow()){echo  error("错误!用户已存在!");exit();}
-	$sql="insert into rv_fengongsi (name,tel,uid) VALUES (?,?,?)";
-	$arr1=array($_POST['name'],$_POST['tel'],$_SESSION['dys']['userid']);
+	$time=time();
+	$sql="insert into rv_fengongsi (name,tel,uid,addtime) VALUES (?,?,?,?)";
+	$arr1=array($_POST['name'],$_POST['tel'],$_SESSION['dys']['userid'],$time);
 	if($db->p_e($sql,$arr1)){echo close($msg,"fgs_list");}else{echo  error($msg);}
 	exit;
 }

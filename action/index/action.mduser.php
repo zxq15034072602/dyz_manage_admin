@@ -29,6 +29,10 @@ if($do=="md_user"){
 	$db->p_e($sql2,$arr);
 	$list=$db->fetchAll();	
 	foreach($list as &$k){
+		$k['created_at']=date('Y-m-d H:i:s',$k['created_at1']);
+		if($k['updated_at1']){
+			$k['updated_at']=date('Y-m-d H:i:s',$k['updated_at1']);
+		}
 		$sql="select name from rv_mendian where 1=1 and id=?";
 		$db->p_e($sql,array($k['zz']));
 		$k['mdname']=$db->fetch_count();
@@ -74,6 +78,12 @@ if($do=='dc_user'){
     $sql="select u.*,m.name as mdname from rv_user as u left join rv_mendian as m on u.zz=m.id where u.id>200 and u.type=$type order by id desc LIMIT ".$pageNum.",".$numPerPage;
     $db->p_e($sql, array());
     $list=$db->fetchAll();
+    foreach($list as &$v){
+    	$v['created_at']=date('Y-m-d H:i:s',$v['created_at1']);
+		if($v['updated_at1']){
+			$v['updated_at']=date('Y-m-d H:i:s',$v['updated_at1']);
+		}
+    }
     
     $smt=new Smarty();
     smarty_cfg($smt);
@@ -224,6 +234,8 @@ if($do=="edit"){
 	$sql="SELECT * FROM rv_user where id=? LIMIT 1";
 	$db->p_e($sql,array($id));
 	$row=$db->fetchRow();
+	$row['created_at']=date('Y-m-d H:i:s',$row['created_at1']);
+	$row['updated_at']=date('Y-m-d H:i:s',$row['updated_at1']);
 	//角色数组
 	$sql="SELECT id,title FROM rv_role where id in (5)";
 	$db->query($sql);
@@ -282,8 +294,8 @@ if($do=="add"){
 	    }   
 	}
 	
-	$sql="insert into rv_user (username,password,zz,roleid,created_at,userid,name,mobile,head_img,type) VALUES (?,?,?,?,now(),?,?,?,?,?)";
-	$arr1=array($_POST[username],$password,$_POST['md'],$_POST[roleid],$_SESSION['dys']['userid'],$_POST[name],$_POST[mobile],$head_img,$type);
+	$sql="insert into rv_user (username,password,zz,roleid,created_at,userid,name,mobile,head_img,type) VALUES (?,?,?,?,?,?,?,?,?,?)";
+	$arr1=array($_POST[username],$password,$_POST['md'],$_POST[roleid],$time,$_SESSION['dys']['userid'],$_POST[name],$_POST[mobile],$head_img,$type);
 	if($db->p_e($sql,$arr1)){
 	    echo close("添加成功！","user");
 	}else{
@@ -328,10 +340,10 @@ if($do=="updata"){
 		$pasql="password=?,";
 		$arr=array($password,$_POST['username'],$_POST[mobile],$zz,$_POST['roleid'],$_SESSION['dys']['userid'],$_POST['name'],$head_img,$id);
 	}else{
-		$arr=array($_POST['username'],$_POST[mobile],$zz,$_POST['roleid'],$_SESSION['dys']['userid'],$_POST['name'],$head_img,$id);
+		$arr=array($_POST['username'],$_POST[mobile],$zz,$_POST['roleid'],$time,$_SESSION['dys']['userid'],$_POST['name'],$head_img,$id);
 	}
 	file_put_contents("e://error.txt",$zz);
-	$sql="UPDATE rv_user SET ".$pasql." username=?,mobile=?,zz=?,roleid=?,updated_at=now(),userid=?,name=?,head_img=? WHERE id=? LIMIT 1";
+	$sql="UPDATE rv_user SET ".$pasql." username=?,mobile=?,zz=?,roleid=?,updated_at=?,userid=?,name=?,head_img=? WHERE id=? LIMIT 1";
 	if($db->p_e($sql,$arr)){
 	    echo close($msg,"mduser");
 	}else{echo  error($msg);}

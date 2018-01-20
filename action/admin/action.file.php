@@ -24,6 +24,9 @@ if($do=='list'){//文件上传列表页
     $sql2="SELECT * FROM rv_file where 1=1 order by id desc LIMIT ".$pageNum.",".$numPerPage;
     $db->p_e($sql2,$arr);
     $list=$db->fetchAll();
+    foreach($list as &$v){
+            $v['addtime']=date('Y-m-d H:i:s',$v['addtime']);
+    }
     
     $smt=new Smarty();
     smarty_cfg($smt);
@@ -59,7 +62,6 @@ if($do=="add"){
     if(!is_dir($dirname)){
         mkdir($dirname);
     }
-    $time=date("Y-m-d",time());
 
     foreach($upfilename as $k=>$v){
         

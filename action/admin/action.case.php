@@ -44,9 +44,9 @@ if($do=="new"){
   
     $smt = new smarty();
     smarty_cfg($smt);
-    $smt->assign('sp',$sp);
     $case_class=get_case_class();
     $smt->assign("case_class",$case_class);
+    $smt->assign('sp',$sp);
     $smt->display('case_new.htm');
     exit;
 
@@ -56,7 +56,6 @@ if($do=="add"){
     //查询
     If_rabc(); //检测权限
     $img_names=array();
-
 	foreach($_FILES['img']['tmp_name'] as $k=>$v){
 	    if(is_uploaded_file($_FILES['img']['tmp_name'][$k])){
     	    $save=$img->root_path.$img->images_dir."/".$img->random_filename().$img->get_filetype($_FILES['img']['name'][$k]);
@@ -74,8 +73,8 @@ if($do=="add"){
 	}
 	$imgs=implode(",", $img_names);
     $time=date("Y-m-d",time());
-    $sql="insert into rv_case(mid,gid,case_img,addtime,name,age,yongyao,date,way,content,process,fatherid,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    $arr=array($_POST['mid'],$_POST['gid'],$imgs,$time,$_POST['name'],$_POST['age'],$_POST['yongyao'],$_POST['date'],$_POST['way'],$_POST['content'],$_POST['process'],$_POST['cname'],$_POST['status']);
+    $sql="insert into rv_case(mid,gid,case_img,addtime,name,age,yongyao,date,way,content,process,fatherid) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    $arr=array($_POST['mid'],$_POST['gid'],$imgs,$time,$_POST['name'],$_POST['age'],$_POST['yongyao'],$_POST['date'],$_POST['way'],$_POST['content'],$_POST['process'],$_POST['cname']);
     if($db->p_e($sql,$arr)){echo close($msg,"case_list");}else{echo  error($msg);}
     exit;
 }
@@ -88,21 +87,19 @@ if($do=='edit'){//编辑案例详情页
         $cid
     ));
     $case=$db->fetchRow();
-    
+
     //查询第一级分类id
     $sql="select a.id from rv_case_class as a left join rv_case_disease_class as b on a.id=b.fatherid where b.id=?";
     $db->p_e($sql, array($case['fatherid']));
     $first_class_id=$db->fetch_count();
-    
-    $sql="select a.* from rv_case_class as a left join rv_case_disease_class as b on a.id=b.fatherid where b.id=?";
-    $db->p_e($sql, array($case['fatherid']));
-    $case['classid']=$db->fetchRow()['id'];
     if($case['case_img']){
         $img_names=explode(",", $case['case_img']);//获取图片数组
     }
     $case['content']=htmlspecialchars_decode($case['content']);
     $case['process']=htmlspecialchars_decode($case['process']);
-
+    if(empty($case['fatherid'])){
+        $case['fatherid']=0;
+    }
     //商品
     $sql="select g.* from rv_goods as g left join rv_type as t on g.fatherid=t.id where 1=1 and t.type=0 ";
     $db->p_e($sql, array());
@@ -149,8 +146,8 @@ if($do=='update'){//
 	}
 	$imgs=implode(",", $img_names);
 	$time=date("Y-m-d",time());
-    $arr=array($_POST['mid'],$_POST['gid'],$imgs,$time,$_POST['name'],$_POST['age'],$_POST['yongyao'],$_POST['date'],$_POST['way'],$_POST['content'],$_POST['process'],$id);
-    $sql="UPDATE rv_case SET mid=?,gid=?,case_img=?,addtime=?,name=?,age=?,yongyao=?,date=?,way=?,content=?,process=? WHERE id=? LIMIT 1";
+    $arr=array($_POST['mid'],$_POST['gid'],$imgs,$time,$_POST['name'],$_POST['age'],$_POST['yongyao'],$_POST['date'],$_POST['way'],$_POST['content'],$_POST['process'],$_POST['cname'],$id);
+    $sql="UPDATE rv_case SET mid=?,gid=?,case_img=?,addtime=?,name=?,age=?,yongyao=?,date=?,way=?,content=?,process=?,fatherid=? WHERE id=? LIMIT 1";
 	if($db->p_e($sql,$arr)){
 	    echo close($msg,"case_list");
 	}else{echo  error($msg);}
@@ -202,18 +199,3 @@ if($do=='del'){
     }
     echo error("删除失败！");exit;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
