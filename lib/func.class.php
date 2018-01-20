@@ -287,3 +287,9 @@ function get_province(){
     global $db;
     return $db->select(0, 0, "rv_province","*","","id asc");
 }
+
+//获取案例一级分类
+function get_case_class(){
+    global $db;
+    return $db->select(0,0,"rv_case_class","*","","id asc");
+}

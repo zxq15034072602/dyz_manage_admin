@@ -1,7 +1,7 @@
 <?php
 if(!defined('CORE'))exit("error!"); 
 //列表	
-
+$time=time();
 if($do==""){
 	If_rabc(); //检测权限
 	$type=$_REQUEST[type]??0;
@@ -146,7 +146,7 @@ if($do=="add"){
 
 	$imgs=implode(",", $img_names);
 	$iuid=$_SESSION['dys'][userid];
-	$insert_id=$db->insert(0, 2, "rv_mendian",array("fid=$_POST[fid]","name='$_POST[name]'","uid=$iuid","tel=$_POST[tel]","provinceid=$_REQUEST[province]","cityid=$_REQUEST[selCities]","areaid=$_REQUEST[selarea]","address='$_REQUEST[address]'","introduction='$_REQUEST[introduction]'","img_names='$imgs'","person_id=$_REQUEST[person_id]","type=$type"));
+	$insert_id=$db->insert(0, 2, "rv_mendian",array("fid=$_POST[fid]","name='$_POST[name]'","uid=$iuid","tel=$_POST[tel]","provinceid=$_REQUEST[province]","cityid=$_REQUEST[selCities]","areaid=$_REQUEST[selarea]","address='$_REQUEST[address]'","introduction='$_REQUEST[introduction]'","img_names='$imgs'","person_id=$_REQUEST[person_id]","type=$type","addtime=$time"));
 	if($insert_id){
 	    $sql="update rv_user set zz=?,roleid=3 where 1=1 and id=?";//添加门店后将用户所属门店以及身份更新为店长身份
 	    $db->p_e($sql, array($insert_id,$_REQUEST[person_id]));

@@ -1,0 +1,22 @@
+<div class="page">
+	<div class="pageContent">
+		<form method="post" action="?dir=admin&action=case_class&do=son_update" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+			<input type="hidden" name="id" value="<{$row.id}>" />
+			<div class="pageFormContent" layoutH="56">
+				<dl>
+					<dt>分类名称：</dt>
+					<dd><input type="text" name="cname" disable="disable" size="30" value="<{$row.cname}>"/></dd>
+				</dl>
+				<dl>
+					<dt>分类名称：</dt>
+					<dd><input type="text" name="name" class="required" size="30" value="<{$row.name}>"/></dd>
+				</dl>
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>

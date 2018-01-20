@@ -1,34 +1,3 @@
-
-<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
-	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
-	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
-	<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
-	<script charset="utf-8" src="kindeditor/plugins/code/prettify.js"></script>
-	<script>
-		KindEditor.ready(function(K) {
-			var editor1 = K.create('textarea[name="content"]', {
-				cssPath : 'kindeditor/plugins/code/prettify.css',
-				uploadJson : 'kindeditor/php/upload_json.php',
-				fileManagerJson : 'kindeditor/php/file_manager_json.php',
-				allowFileManager : true,
-				afterBlur: function () { this.sync(); },
-				afterCreate : function() {
-					var self = this;
-					K.ctrl(document, 13, function() {
-						self.sync();
-						K('form[name=example]')[0].submit();
-					});
-					K.ctrl(self.edit.doc, 13, function() {
-						self.sync();
-						K('form[name=example]')[0].submit();
-					});
-				}
-
-			});
-			prettyPrint();
-		});
-	</script>
-
 <div class="page">
 	<div class="pageContent">
 		<form method="post" enctype="multipart/form-data"  action="?dir=admin&action=video&do=video_add" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">		
@@ -39,7 +8,7 @@
 				</dl>
 				<dl>
 					<dt>简介：</dt>
-					<dd ><textarea name="content" placeholder="请输入产品详情" style="width:700px;height:200px;visibility:hidden;float:left;"></textarea></dd>
+					<dd><textarea cols="50" rows="6" name="content"></textarea></dd>
 				</dl>
 								<dl>
 					<dt>文件类型</dt>

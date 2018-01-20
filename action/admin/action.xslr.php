@@ -494,10 +494,11 @@ if($do=='goods'){//按照产品排行排序
     $db->p_e($sql, $arr);
     $list=$db->fetchAll();
     
-    //所有门店
-    $sql="select * from rv_mendian";
-    $db->p_e($sql, array());
-    $name=$db->fetchAll();
+    if($_POST['name']){
+        $sql="select name from rv_mendian where status=1 and type=0 and id=?";
+        $db->p_e($sql, array($_POST['name']));
+        $name=$db->fetchRow()['name'];
+    }
    
     $smt=new Smarty();
     smarty_cfg($smt);
@@ -506,6 +507,17 @@ if($do=='goods'){//按照产品排行排序
     $smt->assign('name',$name);
     $smt->assign('pageNum',$pageNum);
     $smt->display('xslr_goods_show.htm');
+    exit();
+}
+
+if($do=='search'){
+    $name=$_POST['name'];
+    $arr[]="%".$_POST['name']."%";
+    $sql="select id,name from rv_mendian where status=1 and type=0 and name like ?";
+    $db->p_e($sql, $arr);
+    $name=$db->fetchAll();
+    
+    echo '{"code":"200","name":'.json_encode($name).'}';
     exit();
 }
 
@@ -760,6 +772,5 @@ if($do=='daochu_goods_year'){
         echo "</tr>";
     }
     echo "</table>";
-
 }
 ?>

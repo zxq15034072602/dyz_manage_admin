@@ -103,7 +103,7 @@ if($do=='updatevideo'){
 	}
 	$arr=array($_POST['name'],$_POST['content'],$_POST['type'],$video_img,$id);
     $sql="UPDATE rv_video_type SET name=?,content=?,type=?,video_img=? WHERE id=? LIMIT 1";
-    if($db->p_e($sql,$arr)){echo close($msg,"video_type");}else{echo  error($msg);}
+    if($db->p_e($sql,$arr)){echo close($msg,"video_list");}else{echo  error($msg);}
     exit;
 }
 //删除视频图文
@@ -224,7 +224,7 @@ if($do=='article_add'){//添加图文
     If_rabc(); //检测权限
     $sql="insert into rv_article_list (vid,title,teacher,content) VALUES (?,?,?,?)";
     $arr1=array($_POST['vid'],$_POST['title'],$_POST['teacher'],$_POST['content']);
-    if($db->p_e($sql,$arr1)){echo close($msg,"article_list");}else{echo  error($msg);}
+    if($db->p_e($sql,$arr1)){echo close($msg,"video_list");}else{echo  error($msg);}
     exit;
 }
 

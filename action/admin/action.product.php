@@ -68,7 +68,7 @@ if($do=="add"){
     $time=date('Y-m-d',time());
     $sql="insert into rv_goods (name,fatherid,money,dw,is_recommend,good_url,good_img,description,addtime,content,title) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     $arr1=array($_POST['name'],$_POST['pp'],$_POST['money'],$_POST['dw'],$_REQUEST['is_recommend'],$_REQUEST['good_url'],$good_img,$_REQUEST['description'],$time,$_POST['content'],$_POST['title']);
-    if($db->p_e($sql,$arr1)){echo close($msg,"goods_list");}else{echo  error($msg);}
+    if($db->p_e($sql,$arr1)){echo close($msg,"product_list");}else{echo  error($msg);}
     exit;
 }
 //修改
@@ -113,7 +113,7 @@ if($do=='update'){
     }
     $arr=array($_POST['name'],$_POST['money'],$_POST['dw'],$_POST['pp'],$_REQUEST['is_recommend'],$_REQUEST['good_url'],$good_img,$_REQUEST['description'],$_POST['title'],$_POST['content'],$id);
     $sql="UPDATE rv_goods SET name=?,money=?,dw=?,fatherid=?,is_recommend=?,good_url=?,good_img=?,description=?,title=?,content=? WHERE id=? LIMIT 1";
-    if($db->p_e($sql,$arr)){echo close($msg,"goods_list");}else{echo  error($msg);}
+    if($db->p_e($sql,$arr)){echo close($msg,"product_list");}else{echo  error($msg);}
     exit;
 }
 

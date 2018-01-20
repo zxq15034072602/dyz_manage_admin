@@ -209,8 +209,20 @@ if($do=='updata'){
 
 if($do=='daochu'){//导出
     If_rabc(); //检测权限
-    $sql2="SELECT * FROM rv_order where 1=1 order by id desc";
-    $db->p_e($sql2,array());
+    $start=strtotime($_POST['start']);
+    $end=strtotime($_POST['end']);
+    $starttime=date("Y-m-d",$start);
+    $endtime=date("Y-m-d",$end);
+    if($_POST['status']){
+        $status=$_POST['status'];
+        if($status==3){
+            $status=0;
+        }
+        $sql2="SELECT * FROM rv_order where 1=1 and status=$status and starttime BETWEEN ? AND ? order by id desc";
+    }else{
+        $sql2="SELECT * FROM rv_order where 1=1 and starttime BETWEEN ? AND ? order by id desc";
+    }
+    $db->p_e($sql2,array($start,$end));
     $list=$db->fetchAll();
     foreach($list as &$k){
         //判断身份
@@ -259,7 +271,8 @@ if($do=='daochu'){//导出
     header("Content-Type: application/vnd.ms-excel;charset=gbk");
     header("Content-Disposition: attachment; filename=".$time.".xls");
     echo "<table border='1'>";
-    echo "<tr>";
+    echo "<tr height='50'><th colspan='13'>$starttime 到 $endtime 订单记录</th></tr>";
+    echo "<tr height='30'>";
     echo "<th width='30' align='center'>ID</th>";
     echo "<th width='80' align='center'>用户id</th>";
     echo "<th width='120' align='center'>姓名</th>";
@@ -313,11 +326,12 @@ if($do=='daochu'){//导出
         }
         echo "<td width='350' align='center'>".$str."</td>";
         echo "</tr>";
+        $sum+=$v['price'];
     }
+    echo "<tr height='30'><th colspan='13' align='center'>金额合计".$sum."（元）</th></tr>";
     echo "</table>";
     exit;
 }
-
 
 if($do=='del'){//删除订单
     If_rabc(); //检测权限
